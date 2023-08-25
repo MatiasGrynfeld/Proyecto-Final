@@ -36,6 +36,7 @@ namespace Proyecto_Final___Wingo
             this.lbl_red = new System.Windows.Forms.Label();
             this.lbl_green = new System.Windows.Forms.Label();
             this.lbl_blue = new System.Windows.Forms.Label();
+            this.bt_resetear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_wheel
@@ -102,12 +103,23 @@ namespace Proyecto_Final___Wingo
             this.lbl_blue.TabIndex = 6;
             this.lbl_blue.Text = "Blue:";
             // 
+            // bt_resetear
+            // 
+            this.bt_resetear.Location = new System.Drawing.Point(83, 12);
+            this.bt_resetear.Name = "bt_resetear";
+            this.bt_resetear.Size = new System.Drawing.Size(75, 23);
+            this.bt_resetear.TabIndex = 7;
+            this.bt_resetear.Text = "Reset";
+            this.bt_resetear.UseVisualStyleBackColor = true;
+            this.bt_resetear.Click += new System.EventHandler(this.bt_resetear_Click);
+            // 
             // Personalización___perfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(375, 551);
+            this.Controls.Add(this.bt_resetear);
             this.Controls.Add(this.lbl_blue);
             this.Controls.Add(this.lbl_green);
             this.Controls.Add(this.lbl_red);
@@ -129,9 +141,10 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Panel panel_wheel;
         private System.Windows.Forms.Label lbl_selec_color;
         private System.Windows.Forms.Label lbl_color_seleccionado;
-        private System.Windows.Forms.Panel panel_muestra;
+        public System.Windows.Forms.Panel panel_muestra;
         private System.Windows.Forms.Label lbl_red;
         private System.Windows.Forms.Label lbl_green;
         private System.Windows.Forms.Label lbl_blue;
+        private System.Windows.Forms.Button bt_resetear;
     }
 }

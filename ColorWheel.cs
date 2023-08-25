@@ -13,13 +13,16 @@ namespace Proyecto_Final___Wingo
 {
     public partial class Personalización___perfil : Form
     {
-        //Funciones
+        //Variables
 
-        int red=0;
-        int green=0;
+        int red = 0;
+        int green = 0;
         int blue = 0;
         bool mouse_apretado = false;
+        Color color_leds;
+        Color color_default;
 
+        //Funciones
 
         void color_picker(Graphics graphs, int wid, int hgt)
         {
@@ -70,7 +73,7 @@ namespace Proyecto_Final___Wingo
             graphs.FillEllipse(path_brush, perimetro);
         }
 
-        void obtener_color_pixel(Point lugar_clickeado)
+        Color obtener_color_pixel(Point lugar_clickeado)
         {
             Point centro = new Point(panel_wheel.Width / 2, panel_wheel.Height / 2);
             Bitmap perimetro = new Bitmap(panel_wheel.Width, panel_wheel.Height);
@@ -86,12 +89,20 @@ namespace Proyecto_Final___Wingo
                 green = color_pixel.G;
                 blue = color_pixel.B;
                 panel_muestra.BackColor = Color.FromArgb(red, green, blue);
+                color_leds = Color.FromArgb(red, green, blue);
                 lbl_red.Visible = true;
                 lbl_red.Text = $"Red: {red}.";
                 lbl_green.Visible = true;
                 lbl_green.Text = $"Green: {green}.";
                 lbl_blue.Visible = true;
                 lbl_blue.Text = $"Blue: {blue}.";
+                bt_resetear.Visible = true;
+                lbl_color_seleccionado.Visible = true;
+                return color_leds;
+            }
+            else
+            {
+                return color_leds;
             }
         }
         double CalcularDistancia(int x1, int y1, int x2, int y2)
@@ -102,13 +113,25 @@ namespace Proyecto_Final___Wingo
             return distance;
         }
 
+        public Color Color_del_panel()
+        {
+            color_leds = panel_muestra.BackColor;
+            return color_leds;
+        }
+
+        //Load
         public Personalización___perfil()
         {
             InitializeComponent();
             lbl_blue.Visible = false;
             lbl_green.Visible = false;
             lbl_red.Visible = false;
+            bt_resetear.Visible = false;
+            lbl_color_seleccionado.Visible = false;
+            color_default = panel_muestra.BackColor;
         }
+
+        //Events
 
         private void panel_wheel_Paint(object sender, PaintEventArgs e)
         {
@@ -117,7 +140,7 @@ namespace Proyecto_Final___Wingo
         }
         private void panel_wheel_MouseClick(object sender, MouseEventArgs e)
         {
-            obtener_color_pixel(e.Location);
+            color_leds=obtener_color_pixel(e.Location);
         }
         private void panel_wheel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -127,12 +150,22 @@ namespace Proyecto_Final___Wingo
         {
             if (mouse_apretado)
             {
-                obtener_color_pixel(e.Location);
+                color_leds = obtener_color_pixel(e.Location);
             }
         }
         private void panel_wheel_MouseUp(object sender, MouseEventArgs e)
         {
             mouse_apretado = false;
+        }
+
+        private void bt_resetear_Click(object sender, EventArgs e)
+        {
+            panel_muestra.BackColor = color_default;
+            bt_resetear.Visible = false;
+            lbl_color_seleccionado.Visible = false;
+            lbl_red.Visible = false;
+            lbl_green.Visible = false;
+            lbl_blue.Visible = false;
         }
     }
 }

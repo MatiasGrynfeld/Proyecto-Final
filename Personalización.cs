@@ -19,14 +19,19 @@ namespace Proyecto_Final___Wingo
         int perfil_seleccionado;
         bool modo_dibujo = false;
         bool dibujando = false;
-        Point punto_anterior;
-        Pen pen_color= new Pen(Color.Black);
         Color color_pincel_inicial;
+        Personalización___perfil color_wheel;
+        Point punto_anterior;
+        Graphics g;
+        List<Rectangle> rectangles = new List<Rectangle>();
+        Pen pen= new Pen()
 
         //Form
         public Personalización()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
+            TopMost = true;
         }
         private void bt_volver_Click(object sender, EventArgs e)
         {
@@ -46,7 +51,7 @@ namespace Proyecto_Final___Wingo
         // Funciones
         void abrir_ventana(string nombre_previo, int x, int y)
         {
-            Personalización___perfil color_picker = new Personalización___perfil() { TopLevel = false, Dock = DockStyle.Fill };
+            color_wheel = new Personalización___perfil() { TopLevel = false, Dock = DockStyle.Fill };
             if (nombre_previo == "")
             {
                 panel_perfil.Visible=false;
@@ -55,9 +60,9 @@ namespace Proyecto_Final___Wingo
                 bt_pincel.Visible = false;
                 bt_mouse.Visible = false;
                 panel_wheel.Visible=false;
-                color_picker.Close();
-                panel_wheel.Controls.Remove(color_picker);
-                color_picker.Dispose();
+                color_wheel.Close();
+                panel_wheel.Controls.Remove(color_wheel);
+                color_wheel.Dispose();
                 panel_wheel.Invalidate();
             }
             else
@@ -65,11 +70,14 @@ namespace Proyecto_Final___Wingo
                 panel_perfil.Visible = true;
                 bt_pincel.Visible = true;
                 bt_mouse.Visible = true;
+                panel_imgs.Visible = false;
+                bt_anterior_img.Visible = false;
+                bt_siguiente_img.Visible = false;
                 panel_wheel.Visible = true;
-                panel_wheel.Controls.Add(color_picker);
-                color_picker.Show();
+                panel_wheel.Controls.Add(color_wheel);
+                color_wheel.Show();
 
-                //color_pincel_inicial = color_para_led();
+                color_pincel_inicial = color_wheel.Color_del_panel();
             }
         }
         (bool, string) validar_nombre(string nombre)
@@ -87,22 +95,18 @@ namespace Proyecto_Final___Wingo
                 return (true, nombre);
             }
         }
-
-        //Color color_para_led()
-        //{
-        //    Bitmap perimetro = new Bitmap(this.Width,this.Height);
-        //    Point punto_saca_color = new Point(panel_wheel.Location.X + 285,panel_wheel.Location.Y + 35);
-        //    Color pixel_seleccionado = perimetro.GetPixel(punto_saca_color.X, punto_saca_color.Y);
-
-        //    Color color_seleccionado = Color.FromArgb(pixel_seleccionado.R, pixel_seleccionado.G, pixel_seleccionado.B);
-        //    return color_seleccionado;
-            
-        //}
-
+        void Mouse_click_levanta_panel_MouseUp(object sender, EventArgs e)
+        {
+            dibujando = false;
+        }
+        
         //Perfil 1
 
         string nombre_perfil_1="";
         int y1 = 88;
+        Color[,] colores_arriba_perfil1 = new Color[8,8];
+        Color[,] colores_izq_perfil1 = new Color[8, 8];
+        Color[,] colores_der_perfil1 = new Color[8, 8];
 
         private void bt_perfil_1_Click(object sender, EventArgs e)
         {
@@ -120,6 +124,9 @@ namespace Proyecto_Final___Wingo
 
         string nombre_perfil_2="";
         int y2 = 264;
+        Color[,] colores_arriba_perfil2 = new Color[8, 8];
+        Color[,] colores_izq_perfil2 = new Color[8, 8];
+        Color[,] colores_der_perfil2 = new Color[8, 8];
 
         private void bt_perfil_2_Click(object sender, EventArgs e)
         {
@@ -154,51 +161,100 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-        private void bt_cambiar_nombre_Click(object sender, EventArgs e)
+        private void bt_cambiar_nombre_Click_1(object sender, EventArgs e)
         {
             panel_perfil.Visible = false;
             panel_nom.Visible = true;
         }
-        private void panel_perfil_MouseDown(object sender, MouseEventArgs e)
-        {
-            dibujando = true;
-            punto_anterior = e.Location;
-        }
-        private void panel_perfil_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (dibujando && modo_dibujo)
-            {
-                Graphics dibujo = panel_perfil.CreateGraphics();
-                //if(color_para_led() != color_pincel_inicial)
-                //{
-                //    pen_color.Color =color_para_led();
-                    dibujo.DrawLine(pen_color, punto_anterior, e.Location);
-                    punto_anterior = e.Location;
-                //}
-                //else
-                //{
-                    //MessageBox.Show("Por faovr, seleccioná un color primero.", "Error");
-                //    dibujando = false;
-                //}
-            }
-        }
-        private void panel_perfil_MouseUp(object sender, MouseEventArgs e)
-        {
-            dibujando = false;
-        }
-
         private void bt_mouse_Click(object sender, EventArgs e)
         {
             bt_mouse.Enabled = false;
             bt_pincel.Enabled = true;
             modo_dibujo = false;
         }
-
         private void bt_pincel_Click(object sender, EventArgs e)
         {
             bt_mouse.Enabled = true;
             bt_pincel.Enabled = false;
             modo_dibujo = true;
+        }
+        private void Comb_tipos__personalizados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Comb_tipos_personalizados.SelectedIndex == 0)
+            {
+                panel_imgs.Visible = true;
+                bt_anterior_img.Visible = true;
+                bt_siguiente_img.Visible = true;
+                //iniciializar_paneles();
+            }
+
+        }
+
+        private void panel_imgs_MouseDown(object sender, MouseEventArgs e)
+        {
+            dibujando = true;
+            punto_anterior = e.Location;
+            label1.BackColor = color_wheel.Color_del_panel();
+        }
+
+        private void panel_imgs_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dibujando && modo_dibujo)
+            {
+                if(color_wheel.Color_del_panel() != color_pincel_inicial)
+                {
+                    foreach (Control control in panel_imgs.Controls)
+                    {
+                        if (control.Bounds.Contains(punto_anterior))
+                        {
+                            control.BackColor = color_wheel.Color_del_panel();
+                            punto_anterior = e.Location;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error", "Error");
+                }
+
+            }
+
+        }
+
+        private void panel_imgs_MouseUp(object sender, MouseEventArgs e)
+        {
+            dibujando = false;
+            label1.BackColor = Color.Black;
+        }
+
+        private void panel_imgs_Paint(object sender, PaintEventArgs e)
+        {
+            int num_columnas = 8;
+            int num_filas = 8;
+            int celda_ancho = 836 / num_columnas;
+            int celda_altura = 574 / num_filas;
+
+            int total_ancho = num_columnas * celda_ancho;
+            int total_altura = num_filas * celda_altura;
+
+            int desplazamiento_horizontal = (836 - total_ancho) / 2;
+            int verticalOffset = (574 - total_altura) / 2;
+
+            for (int fila = 0; fila < num_filas; fila++)
+            {
+                for (int col = 0; col < num_columnas; col++)
+                {
+                    int x = desplazamiento_horizontal + col * celda_ancho;
+                    int y = verticalOffset + fila * celda_altura;
+                    Rectangle rectangle = new Rectangle(x, y, celda_ancho, celda_altura);
+                    rectangles.Add(rectangle);
+                }
+            }
+
+            for (int i=0; i < 64; i++)
+            {
+                g.DrawRectangles(rectangles[i]);
+            }
         }
     }
 }
