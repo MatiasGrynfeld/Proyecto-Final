@@ -20,7 +20,7 @@ namespace Proyecto_Final___Wingo
         int blue = 0;
         bool mouse_apretado = false;
         Color color_leds;
-        Color color_default;
+        public Color color_default;
 
         //Funciones
 
@@ -119,6 +119,16 @@ namespace Proyecto_Final___Wingo
             return color_leds;
         }
 
+        public void resetear()
+        {
+            panel_muestra.BackColor = color_default;
+            bt_resetear.Visible = false;
+            lbl_color_seleccionado.Visible = false;
+            lbl_red.Visible = false;
+            lbl_green.Visible = false;
+            lbl_blue.Visible = false;
+        }
+
         //Load
         public Personalización___perfil()
         {
@@ -160,12 +170,7 @@ namespace Proyecto_Final___Wingo
 
         private void bt_resetear_Click(object sender, EventArgs e)
         {
-            panel_muestra.BackColor = color_default;
-            bt_resetear.Visible = false;
-            lbl_color_seleccionado.Visible = false;
-            lbl_red.Visible = false;
-            lbl_green.Visible = false;
-            lbl_blue.Visible = false;
+            resetear();
         }
     }
 }
