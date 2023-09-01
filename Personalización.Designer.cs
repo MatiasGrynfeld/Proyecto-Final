@@ -41,12 +41,27 @@ namespace Proyecto_Final___Wingo
             this.bt_mouse = new System.Windows.Forms.Button();
             this.bt_pincel = new System.Windows.Forms.Button();
             this.panel_perfil = new System.Windows.Forms.Panel();
+            this.panel_derecha = new System.Windows.Forms.Panel();
+            this.trackBar_der = new System.Windows.Forms.TrackBar();
+            this.lbl_selec_velocidad_der = new System.Windows.Forms.Label();
+            this.panel_izquierda = new System.Windows.Forms.Panel();
+            this.trackBar_izq = new System.Windows.Forms.TrackBar();
+            this.lbl_selec_velocidad_izq = new System.Windows.Forms.Label();
             this.comb_angulo = new System.Windows.Forms.ComboBox();
             this.Comb_tipos_personalizados = new System.Windows.Forms.ComboBox();
             this.panel_arriba = new System.Windows.Forms.Panel();
+            this.trackBar_arr = new System.Windows.Forms.TrackBar();
+            this.lbl_selec_velocidad_arr = new System.Windows.Forms.Label();
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
+            this.bt_enviar_configuraciones = new System.Windows.Forms.Button();
             this.panel_nom.SuspendLayout();
             this.panel_perfil.SuspendLayout();
+            this.panel_derecha.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_der)).BeginInit();
+            this.panel_izquierda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_izq)).BeginInit();
+            this.panel_arriba.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_arr)).BeginInit();
             this.SuspendLayout();
             // 
             // bt_volver
@@ -154,6 +169,8 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_perfil
             // 
+            this.panel_perfil.Controls.Add(this.panel_derecha);
+            this.panel_perfil.Controls.Add(this.panel_izquierda);
             this.panel_perfil.Controls.Add(this.comb_angulo);
             this.panel_perfil.Controls.Add(this.Comb_tipos_personalizados);
             this.panel_perfil.Controls.Add(this.panel_arriba);
@@ -162,6 +179,84 @@ namespace Proyecto_Final___Wingo
             this.panel_perfil.Name = "panel_perfil";
             this.panel_perfil.Size = new System.Drawing.Size(911, 666);
             this.panel_perfil.TabIndex = 3;
+            // 
+            // panel_derecha
+            // 
+            this.panel_derecha.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_derecha.Controls.Add(this.trackBar_der);
+            this.panel_derecha.Controls.Add(this.lbl_selec_velocidad_der);
+            this.panel_derecha.Location = new System.Drawing.Point(16, 214);
+            this.panel_derecha.Name = "panel_derecha";
+            this.panel_derecha.Size = new System.Drawing.Size(836, 574);
+            this.panel_derecha.TabIndex = 3;
+            this.panel_derecha.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_derecha_Paint);
+            this.panel_derecha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_derecha_MouseDown);
+            this.panel_derecha.MouseLeave += new System.EventHandler(this.panel_derecha_MouseLeave);
+            this.panel_derecha.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_derecha_MouseMove);
+            this.panel_derecha.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_derecha_MouseUp);
+            // 
+            // trackBar_der
+            // 
+            this.trackBar_der.Location = new System.Drawing.Point(60, 55);
+            this.trackBar_der.Maximum = 1000;
+            this.trackBar_der.Minimum = 1;
+            this.trackBar_der.Name = "trackBar_der";
+            this.trackBar_der.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar_der.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackBar_der.Size = new System.Drawing.Size(45, 400);
+            this.trackBar_der.TabIndex = 1;
+            this.trackBar_der.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_der.Value = 1;
+            this.trackBar_der.Visible = false;
+            this.trackBar_der.Scroll += new System.EventHandler(this.trackBar_der_Scroll);
+            // 
+            // lbl_selec_velocidad_der
+            // 
+            this.lbl_selec_velocidad_der.AutoSize = true;
+            this.lbl_selec_velocidad_der.Location = new System.Drawing.Point(57, 24);
+            this.lbl_selec_velocidad_der.Name = "lbl_selec_velocidad_der";
+            this.lbl_selec_velocidad_der.Size = new System.Drawing.Size(176, 13);
+            this.lbl_selec_velocidad_der.TabIndex = 0;
+            this.lbl_selec_velocidad_der.Text = "Seleccionar la velocidad del efecto:";
+            // 
+            // panel_izquierda
+            // 
+            this.panel_izquierda.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_izquierda.Controls.Add(this.trackBar_izq);
+            this.panel_izquierda.Controls.Add(this.lbl_selec_velocidad_izq);
+            this.panel_izquierda.Location = new System.Drawing.Point(19, 138);
+            this.panel_izquierda.Name = "panel_izquierda";
+            this.panel_izquierda.Size = new System.Drawing.Size(836, 574);
+            this.panel_izquierda.TabIndex = 2;
+            this.panel_izquierda.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_izquierda_Paint);
+            this.panel_izquierda.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_izquierda_MouseDown);
+            this.panel_izquierda.MouseLeave += new System.EventHandler(this.panel_izquierda_MouseLeave);
+            this.panel_izquierda.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_izquierda_MouseMove);
+            this.panel_izquierda.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_izquierda_MouseUp);
+            // 
+            // trackBar_izq
+            // 
+            this.trackBar_izq.Location = new System.Drawing.Point(60, 55);
+            this.trackBar_izq.Maximum = 1000;
+            this.trackBar_izq.Minimum = 1;
+            this.trackBar_izq.Name = "trackBar_izq";
+            this.trackBar_izq.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar_izq.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackBar_izq.Size = new System.Drawing.Size(45, 400);
+            this.trackBar_izq.TabIndex = 2;
+            this.trackBar_izq.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_izq.Value = 1;
+            this.trackBar_izq.Visible = false;
+            this.trackBar_izq.Scroll += new System.EventHandler(this.trackBar_izq_Scroll);
+            // 
+            // lbl_selec_velocidad_izq
+            // 
+            this.lbl_selec_velocidad_izq.AutoSize = true;
+            this.lbl_selec_velocidad_izq.Location = new System.Drawing.Point(70, 23);
+            this.lbl_selec_velocidad_izq.Name = "lbl_selec_velocidad_izq";
+            this.lbl_selec_velocidad_izq.Size = new System.Drawing.Size(176, 13);
+            this.lbl_selec_velocidad_izq.TabIndex = 1;
+            this.lbl_selec_velocidad_izq.Text = "Seleccionar la velocidad del efecto:";
             // 
             // comb_angulo
             // 
@@ -180,7 +275,11 @@ namespace Proyecto_Final___Wingo
             // 
             this.Comb_tipos_personalizados.FormattingEnabled = true;
             this.Comb_tipos_personalizados.Items.AddRange(new object[] {
-            "Independiente"});
+            "Independiente",
+            "A",
+            "B",
+            "C",
+            "D"});
             this.Comb_tipos_personalizados.Location = new System.Drawing.Point(86, 40);
             this.Comb_tipos_personalizados.Name = "Comb_tipos_personalizados";
             this.Comb_tipos_personalizados.Size = new System.Drawing.Size(173, 21);
@@ -189,6 +288,9 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_arriba
             // 
+            this.panel_arriba.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_arriba.Controls.Add(this.trackBar_arr);
+            this.panel_arriba.Controls.Add(this.lbl_selec_velocidad_arr);
             this.panel_arriba.Location = new System.Drawing.Point(38, 67);
             this.panel_arriba.Name = "panel_arriba";
             this.panel_arriba.Size = new System.Drawing.Size(836, 574);
@@ -198,6 +300,30 @@ namespace Proyecto_Final___Wingo
             this.panel_arriba.MouseLeave += new System.EventHandler(this.panel_arriba_MouseLeave);
             this.panel_arriba.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_arriba_MouseMove);
             this.panel_arriba.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_arriba_MouseUp);
+            // 
+            // trackBar_arr
+            // 
+            this.trackBar_arr.Location = new System.Drawing.Point(60, 55);
+            this.trackBar_arr.Maximum = 1000;
+            this.trackBar_arr.Minimum = 1;
+            this.trackBar_arr.Name = "trackBar_arr";
+            this.trackBar_arr.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar_arr.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackBar_arr.Size = new System.Drawing.Size(45, 400);
+            this.trackBar_arr.TabIndex = 3;
+            this.trackBar_arr.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_arr.Value = 1;
+            this.trackBar_arr.Visible = false;
+            this.trackBar_arr.Scroll += new System.EventHandler(this.trackBar_arr_Scroll);
+            // 
+            // lbl_selec_velocidad_arr
+            // 
+            this.lbl_selec_velocidad_arr.AutoSize = true;
+            this.lbl_selec_velocidad_arr.Location = new System.Drawing.Point(51, 12);
+            this.lbl_selec_velocidad_arr.Name = "lbl_selec_velocidad_arr";
+            this.lbl_selec_velocidad_arr.Size = new System.Drawing.Size(176, 13);
+            this.lbl_selec_velocidad_arr.TabIndex = 2;
+            this.lbl_selec_velocidad_arr.Text = "Seleccionar la velocidad del efecto:";
             // 
             // bt_cambiar_nombre
             // 
@@ -209,11 +335,22 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre.UseVisualStyleBackColor = true;
             this.bt_cambiar_nombre.Click += new System.EventHandler(this.bt_cambiar_nombre_Click_1);
             // 
+            // bt_enviar_configuraciones
+            // 
+            this.bt_enviar_configuraciones.Location = new System.Drawing.Point(1063, 639);
+            this.bt_enviar_configuraciones.Name = "bt_enviar_configuraciones";
+            this.bt_enviar_configuraciones.Size = new System.Drawing.Size(205, 89);
+            this.bt_enviar_configuraciones.TabIndex = 8;
+            this.bt_enviar_configuraciones.Text = "Enviar configuraciones";
+            this.bt_enviar_configuraciones.UseVisualStyleBackColor = true;
+            this.bt_enviar_configuraciones.Click += new System.EventHandler(this.bt_enviar_configuraciones_Click);
+            // 
             // Personalización
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.bt_enviar_configuraciones);
             this.Controls.Add(this.bt_pincel);
             this.Controls.Add(this.bt_mouse);
             this.Controls.Add(this.panel_wheel);
@@ -230,6 +367,15 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.ResumeLayout(false);
             this.panel_nom.PerformLayout();
             this.panel_perfil.ResumeLayout(false);
+            this.panel_derecha.ResumeLayout(false);
+            this.panel_derecha.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_der)).EndInit();
+            this.panel_izquierda.ResumeLayout(false);
+            this.panel_izquierda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_izq)).EndInit();
+            this.panel_arriba.ResumeLayout(false);
+            this.panel_arriba.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_arr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +398,14 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Panel panel_arriba;
         private System.Windows.Forms.ComboBox Comb_tipos_personalizados;
         private System.Windows.Forms.ComboBox comb_angulo;
+        private System.Windows.Forms.Panel panel_derecha;
+        private System.Windows.Forms.Panel panel_izquierda;
+        private System.Windows.Forms.Label lbl_selec_velocidad_der;
+        private System.Windows.Forms.Label lbl_selec_velocidad_izq;
+        private System.Windows.Forms.Label lbl_selec_velocidad_arr;
+        private System.Windows.Forms.TrackBar trackBar_der;
+        private System.Windows.Forms.TrackBar trackBar_izq;
+        private System.Windows.Forms.TrackBar trackBar_arr;
+        private System.Windows.Forms.Button bt_enviar_configuraciones;
     }
 }
