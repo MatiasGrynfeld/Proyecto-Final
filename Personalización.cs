@@ -26,6 +26,7 @@ namespace Proyecto_Final___Wingo
         Rectangle[,] ellipses = new Rectangle[8,8];
         Pen pen = new Pen(Color.Black);
         bool validado_seguido = false;
+        bool cambia_nombre=false;
 
         //Form
         public Personalización()
@@ -50,6 +51,7 @@ namespace Proyecto_Final___Wingo
             bt_mouse.Visible = false;
             panel_derecha.Location = panel_arriba.Location;
             panel_izquierda.Location = panel_arriba.Location;
+            bt_enviar_configuraciones.Visible = false;
         }
 
         // Funciones
@@ -256,18 +258,20 @@ namespace Proyecto_Final___Wingo
                     case 1:
                         nombre_perfil_1 = nombre;
                         bt_perfil_1.Text = nombre;
-                        if (validado_seguido)
+                        if (validado_seguido || cambia_nombre)
                         {
                             validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
                         }
+                        cambia_nombre = false;
                         return;
                     case 2:
                         nombre_perfil_2 = nombre;
                         bt_perfil_2.Text = nombre;
-                        if (validado_seguido)
+                        if (validado_seguido || cambia_nombre)
                         {
                             validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
                         }
+                        cambia_nombre = false;
                         return;
 
                 }
@@ -276,7 +280,11 @@ namespace Proyecto_Final___Wingo
         private void bt_cambiar_nombre_Click_1(object sender, EventArgs e)
         {
             panel_perfil.Visible = false;
+            panel_wheel.Visible = false;
+            bt_mouse.Visible = false;
+            bt_pincel.Visible= false;
             panel_nom.Visible = true;
+            cambia_nombre = true;
         }
 
         //Eventos modos
@@ -308,6 +316,9 @@ namespace Proyecto_Final___Wingo
             lbl_selec_velocidad_arr.Location = new System.Drawing.Point(100, 50);
             lbl_selec_velocidad_izq.Location = new System.Drawing.Point(100, 50);
             lbl_selec_velocidad_der.Location = new System.Drawing.Point(100, 50);
+            trackBar_arr.Visible = false;
+            trackBar_izq.Visible = false;
+            trackBar_der.Visible = false;
             //trackBar_arr.Value = 0;
             //trackBar_izq.Value = 0;
             //trackBar_der.Value = 0;
@@ -319,23 +330,25 @@ namespace Proyecto_Final___Wingo
         }
         private void comb_angulo_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            panel_arriba.Visible = false;
+            panel_derecha.Visible = false;
+            panel_izquierda.Visible = false;
             Comb_tipos_personalizados.Visible = true;
             angulo_seleccionado=comb_angulo.SelectedIndex;
             Comb_tipos_personalizados.SelectedItem = null;
-            reset_paneles();
         }
 
         //Evento seleccionar tipo de iluminación
         private void Comb_tipos__personalizados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel_arriba.Invalidate();
-            panel_izquierda.Invalidate();
-            panel_derecha.Invalidate();
             if (Comb_tipos_personalizados.SelectedItem != null)
             {
                 reset_paneles();
+                panel_arriba.Invalidate();
+                panel_izquierda.Invalidate();
+                panel_derecha.Invalidate();
                 asignar_modalidad(perfil_seleccionado, angulo_seleccionado, Comb_tipos_personalizados.SelectedItem.ToString().ToLower());
-
+                bt_enviar_configuraciones.Visible = true;
                 switch (angulo_seleccionado)
                 {
                     case 0:
@@ -513,7 +526,6 @@ namespace Proyecto_Final___Wingo
 
         private void panel_arriba_Paint(object sender, PaintEventArgs e)
         {
-            trackBar_arr.Visible = false;
             graphs_arriba = panel_arriba.CreateGraphics();
             if (Comb_tipos_personalizados.SelectedItem != null)
             {
@@ -537,7 +549,6 @@ namespace Proyecto_Final___Wingo
 
         private void panel_derecha_Paint(object sender, PaintEventArgs e)
         {
-            trackBar_der.Visible = false;
             graphs_derecha = panel_derecha.CreateGraphics();
             panel_paint(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_derecha);
         }
@@ -571,7 +582,6 @@ namespace Proyecto_Final___Wingo
         Graphics graphs_izq;
         private void panel_izquierda_Paint(object sender, PaintEventArgs e)
         {
-            trackBar_izq.Visible = false;
             graphs_izq = panel_izquierda.CreateGraphics();
             panel_paint(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_izq);
         }
@@ -617,7 +627,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", 1, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila,columna],num_led);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", 1, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila,columna],num_led,-1,-1,"",-1);
                                 mensajes.Add(mensaje);
                                 num_led++;
                             }
@@ -628,7 +638,7 @@ namespace Proyecto_Final___Wingo
                         {
                              for (int columna = 0; columna < cant_columnas; columna++)
                              {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", 2, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila,columna], num_led);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", 2, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila,columna], num_led, -1, -1, "", -1);
                                 mensajes.Add(mensaje);
                              }
                         }
@@ -640,11 +650,11 @@ namespace Proyecto_Final___Wingo
                 switch (perfil_seleccionado)
                 {
                     case 1:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White,-1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White,-1, -1, -1, "", -1);
                         mensajes.Add(mensaje);
                         return mensajes;
                     case 2:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White,-1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White,-1, -1, -1, "", -1);
                         mensajes.Add(mensaje);
                         return mensajes;
                 }
@@ -688,9 +698,14 @@ namespace Proyecto_Final___Wingo
                     port.Open();
                     var todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2);
                     foreach (string mensaje in todos_msgs){
-                        port.Write(mensaje);
+                        port.WriteLine(mensaje);
                     }
-                        MessageBox.Show("Arduino conectado", "Success");
+                    port.WriteLine("end");
+                    string resp=port.ReadLine();
+                    if (resp =="recibido")
+                    {
+                        MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
+                    }
                     break;
                 }
                 catch
@@ -700,8 +715,7 @@ namespace Proyecto_Final___Wingo
             }
         }
 
-        //Solucionar cmabios de modalidad
-        //Conextar con arduino y mandar mensjaes
         //Base de datos
+        //Diseño
     }
 }

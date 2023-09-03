@@ -22,7 +22,8 @@ namespace Proyecto_Final___Wingo
         int recor_seleccionado;
         bool nececitar_cant;
         bool nuevo_necesitar_cant;
-        
+        bool validado_seguido=false;
+        bool cambia_nombre=false;
         // Funciones
 
         bool comprobar_si_es_num(string texto_a_analizar)
@@ -41,12 +42,15 @@ namespace Proyecto_Final___Wingo
             }
             return true;
         }
-        void abrir_ventana(string nombre_previo, int x, int y)
+        bool abrir_ventana(string nombre_previo, int x, int y)
         {
+            bool abrir_seguido = false;
             if (nombre_previo == null)
             {
                 gb_nom.Location = new Point(x, y);
                 gb_nom.Visible = true;
+                abrir_seguido = true;
+                return abrir_seguido;
             }
             else
             {
@@ -61,6 +65,8 @@ namespace Proyecto_Final___Wingo
                 comb_pasos_hechos_recor2.Visible = false;
                 comb_pasos_hechos_recor3.Visible = false;
                 bt_modificar_paso.Visible = false;
+                abrir_seguido = false;
+                return abrir_seguido;
             }
         }
         (bool,string) validar_nombre(string nombre)
@@ -142,7 +148,8 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-                // Form
+        
+        // Form
         public Manejo()
         {
             InitializeComponent();
@@ -177,8 +184,11 @@ namespace Proyecto_Final___Wingo
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
-            abrir_ventana(nombre_recor1, x, y1);
+            validado_seguido=abrir_ventana(nombre_recor1, x, y1);
             recor_seleccionado = 1;
+            bt_recorrido1.Enabled = false;
+            bt_recorrido2.Enabled = true;
+            bt_recorrido3.Enabled = true;
         }
 
         // Recor 2
@@ -197,8 +207,11 @@ namespace Proyecto_Final___Wingo
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
-            abrir_ventana(nombre_recor2, x, y2);
+            validado_seguido = abrir_ventana(nombre_recor2, x, y2);
             recor_seleccionado = 2;
+            bt_recorrido1.Enabled = true;
+            bt_recorrido2.Enabled = false;
+            bt_recorrido3.Enabled = true;
         }
 
         // Recor 3
@@ -217,8 +230,11 @@ namespace Proyecto_Final___Wingo
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
-            abrir_ventana(nombre_recor3, x, y3);
+            validado_seguido = abrir_ventana(nombre_recor3, x, y3);
             recor_seleccionado = 3;
+            bt_recorrido1.Enabled = true;
+            bt_recorrido2.Enabled = true;
+            bt_recorrido3.Enabled = false;
         }
 
         // Group boxes
@@ -232,14 +248,29 @@ namespace Proyecto_Final___Wingo
                     case 1:
                         nombre_recor1 = nombre;
                         bt_recorrido1.Text = nombre_recor1;
+                        if (validado_seguido || cambia_nombre)
+                        {
+                            validado_seguido = abrir_ventana(nombre_recor1, x, y1);
+                        }
+                        cambia_nombre = false;
                         return;
                     case 2:
                         nombre_recor2 = nombre;
                         bt_recorrido2.Text = nombre_recor2;
+                        if (validado_seguido || cambia_nombre)
+                        {
+                            validado_seguido = abrir_ventana(nombre_recor2, x, y2);
+                        }
+                        cambia_nombre = false;
                         return;
                     case 3:
                         nombre_recor3 = nombre;
                         bt_recorrido3.Text = nombre_recor3;
+                        if (validado_seguido || cambia_nombre)
+                        {
+                            validado_seguido = abrir_ventana(nombre_recor3, x, y3);
+                        }
+                        cambia_nombre = false;
                         return;
 
                 }
@@ -250,6 +281,7 @@ namespace Proyecto_Final___Wingo
         {
             gb_pasos.Visible = false;
             gb_nom.Visible = true;
+            cambia_nombre = true;
         }
 
         private void bt_agregar_paso_recor1_Click(object sender, EventArgs e)
@@ -421,5 +453,15 @@ namespace Proyecto_Final___Wingo
             }
         }
 
+        //Enviar
+
+        private void bt_enviar_Click(object sender, EventArgs e)
+        {
+            List<string> mensajes = new List<string>();
+            for(int i = 0; i < paso_recor_1.Count; i++)
+            {
+
+            }
+        }
     }
 }

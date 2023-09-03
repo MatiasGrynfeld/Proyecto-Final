@@ -51,7 +51,6 @@ namespace Proyecto_Final___Wingo
             this.comb_pasos_hechos_recor2 = new System.Windows.Forms.ComboBox();
             this.lbl_pasos_hechos = new System.Windows.Forms.Label();
             this.comb_pasos_hechos_recor1 = new System.Windows.Forms.ComboBox();
-            this.bt_conectar_ardu = new System.Windows.Forms.Button();
             this.bt_enviar = new System.Windows.Forms.Button();
             this.lbl_pasos_hechos_recor1 = new System.Windows.Forms.Label();
             this.bt_enviar_paso = new System.Windows.Forms.Button();
@@ -161,7 +160,6 @@ namespace Proyecto_Final___Wingo
             this.gb_pasos.Controls.Add(this.comb_pasos_hechos_recor2);
             this.gb_pasos.Controls.Add(this.lbl_pasos_hechos);
             this.gb_pasos.Controls.Add(this.comb_pasos_hechos_recor1);
-            this.gb_pasos.Controls.Add(this.bt_conectar_ardu);
             this.gb_pasos.Controls.Add(this.bt_enviar);
             this.gb_pasos.Controls.Add(this.lbl_pasos_hechos_recor1);
             this.gb_pasos.Controls.Add(this.bt_enviar_paso);
@@ -288,16 +286,6 @@ namespace Proyecto_Final___Wingo
             this.comb_pasos_hechos_recor1.TabIndex = 10;
             this.comb_pasos_hechos_recor1.SelectedIndexChanged += new System.EventHandler(this.comb_pasos_hechos_recor1_SelectedIndexChanged);
             // 
-            // bt_conectar_ardu
-            // 
-            this.bt_conectar_ardu.Location = new System.Drawing.Point(23, 320);
-            this.bt_conectar_ardu.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_conectar_ardu.Name = "bt_conectar_ardu";
-            this.bt_conectar_ardu.Size = new System.Drawing.Size(99, 49);
-            this.bt_conectar_ardu.TabIndex = 9;
-            this.bt_conectar_ardu.Text = "Conectar con el auto";
-            this.bt_conectar_ardu.UseVisualStyleBackColor = true;
-            // 
             // bt_enviar
             // 
             this.bt_enviar.Location = new System.Drawing.Point(350, 320);
@@ -307,6 +295,7 @@ namespace Proyecto_Final___Wingo
             this.bt_enviar.TabIndex = 8;
             this.bt_enviar.Text = "Enviar recorrido";
             this.bt_enviar.UseVisualStyleBackColor = true;
+            this.bt_enviar.Click += new System.EventHandler(this.bt_enviar_Click);
             // 
             // lbl_pasos_hechos_recor1
             // 
@@ -440,7 +429,6 @@ namespace Proyecto_Final___Wingo
         private System.IO.Ports.SerialPort serialPortArduino;
         private System.Windows.Forms.Label lbl_pasos_hechos;
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor1;
-        private System.Windows.Forms.Button bt_conectar_ardu;
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor3;
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor2;
         private System.Windows.Forms.Button bt_modificar_paso;

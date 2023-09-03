@@ -98,7 +98,7 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.Controls.Add(this.bt_enviar_nombre);
             this.panel_nom.Controls.Add(this.txt_nombre);
             this.panel_nom.Controls.Add(this.lbl_nombre);
-            this.panel_nom.Location = new System.Drawing.Point(0, 672);
+            this.panel_nom.Location = new System.Drawing.Point(12, 675);
             this.panel_nom.Name = "panel_nom";
             this.panel_nom.Size = new System.Drawing.Size(240, 65);
             this.panel_nom.TabIndex = 0;

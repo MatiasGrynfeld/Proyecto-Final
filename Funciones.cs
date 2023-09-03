@@ -9,7 +9,7 @@ namespace Proyecto_Final___Wingo
 {
     class Funciones
     {
-        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int num_led)
+        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int num_led, int man_perf, int man_pasonum, string man_tipo_paso, int man_cant_paso)
         {
             string mensaje_final = null;
             if (tipo_modalidad == "personalizacion")
@@ -48,7 +48,18 @@ namespace Proyecto_Final___Wingo
             }
             else
             {
-                return null;
+                mensaje_final = $"paso{man_pasonum}:{man_tipo_paso}:{man_cant_paso}";
+                switch (man_perf)
+                {
+                    case 1:
+                        mensaje_final = $"recor1:{mensaje_final}"; break;
+                    case 2:
+                        mensaje_final = $"recor12:{mensaje_final}"; break;
+                    case 3:
+                        mensaje_final = $"recor13:{mensaje_final}"; break;
+                }
+                mensaje_final = $"manejo:{mensaje_final}";
+                return mensaje_final;
             }
         }
     }
