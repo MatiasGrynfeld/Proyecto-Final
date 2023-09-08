@@ -61,6 +61,7 @@ namespace Proyecto_Final___Wingo
             this.bt_agregar_paso = new System.Windows.Forms.Button();
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.serialPortArduino = new System.IO.Ports.SerialPort(this.components);
+            this.bt_personalizacion = new System.Windows.Forms.Button();
             this.gb_nom.SuspendLayout();
             this.gb_pasos.SuspendLayout();
             this.gb_modificar_paso.SuspendLayout();
@@ -379,11 +380,22 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre.UseVisualStyleBackColor = true;
             this.bt_cambiar_nombre.Click += new System.EventHandler(this.bt_cambiar_nombre_recor1_Click);
             // 
+            // bt_personalizacion
+            // 
+            this.bt_personalizacion.Location = new System.Drawing.Point(25, 181);
+            this.bt_personalizacion.Name = "bt_personalizacion";
+            this.bt_personalizacion.Size = new System.Drawing.Size(102, 48);
+            this.bt_personalizacion.TabIndex = 10;
+            this.bt_personalizacion.Text = "Ir a personalización";
+            this.bt_personalizacion.UseVisualStyleBackColor = true;
+            this.bt_personalizacion.Click += new System.EventHandler(this.bt_personalizacion_Click);
+            // 
             // Manejo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bt_personalizacion);
             this.Controls.Add(this.gb_pasos);
             this.Controls.Add(this.gb_nom);
             this.Controls.Add(this.bt_recorrido3);
@@ -438,5 +450,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_enviar_nuevo_paso;
         private System.Windows.Forms.Label lbl_nuevo_cant_paso;
         private System.Windows.Forms.Label lbl_nuevo_tipo_paso;
+        private System.Windows.Forms.Button bt_personalizacion;
     }
 }

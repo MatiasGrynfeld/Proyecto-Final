@@ -23,10 +23,10 @@ namespace Proyecto_Final___Wingo
         bool Dibujando = false;
         Color color_pincel_inicial;
         Personalización___perfil color_wheel;
-        Rectangle[,] ellipses = new Rectangle[8,8];
+        Rectangle[,] ellipses = new Rectangle[8, 8];
         Pen pen = new Pen(Color.Black);
         bool validado_seguido = false;
-        bool cambia_nombre=false;
+        bool cambia_nombre = false;
 
         //Form
         public Personalización()
@@ -69,12 +69,12 @@ namespace Proyecto_Final___Wingo
             bool abrir_seguido = false;
             if (nombre_previo == "")
             {
-                panel_perfil.Visible=false;
+                panel_perfil.Visible = false;
                 panel_nom.Location = new Point(x, y);
                 panel_nom.Visible = true;
                 bt_pincel.Visible = false;
                 bt_mouse.Visible = false;
-                panel_wheel.Visible=false;
+                panel_wheel.Visible = false;
                 panel_arriba.Visible = false;
                 panel_izquierda.Visible = false;
                 panel_derecha.Visible = false;
@@ -91,7 +91,7 @@ namespace Proyecto_Final___Wingo
                 panel_derecha.Visible = false;
                 Comb_tipos_personalizados.Visible = false;
                 bt_mouse.Visible = false;
-                bt_pincel.Visible=false;
+                bt_pincel.Visible = false;
                 bt_mouse.Enabled = false;
                 bt_pincel.Enabled = true;
                 Modo_dibujo = false;
@@ -139,7 +139,7 @@ namespace Proyecto_Final___Wingo
                     int x = startpositioninx + horizontalmente * cell_width;
                     int y = startpositioniny + arriba * cell_height;
                     Rectangle ellip = new Rectangle(x, y, cell_width, cell_height);
-                    ellipses[horizontalmente,arriba]=ellip;
+                    ellipses[horizontalmente, arriba] = ellip;
                 }
             }
         }
@@ -147,7 +147,6 @@ namespace Proyecto_Final___Wingo
         (bool, int, int, SolidBrush color) coloreando(bool dibujando, bool modo_dibujo, Color color_inicial, Color nuevo_color, Point punto, Graphics g)
         {
             SolidBrush color = new SolidBrush(nuevo_color);
-            //Pen pen = new Pen(Color.White);
             int arriba_devuelve = -1;
             int horizontalmente_devuelve = -1;
             bool validado = false;
@@ -196,15 +195,15 @@ namespace Proyecto_Final___Wingo
 
         //Perfil 1
 
-        string nombre_perfil_1="";
+        string nombre_perfil_1 = "";
         int y1 = 88;
         string[] modalidad_angulos_perfil1 = new string[3];
         string[] values_angulo_perfil1 = new string[3];
-        Color[,] colores_arriba_perfil1 = new Color[8,8];
+        Color[,] colores_arriba_perfil1 = new Color[8, 8];
         Color[,] colores_izq_perfil1 = new Color[8, 8];
         Color[,] colores_der_perfil1 = new Color[8, 8];
 
-        int filas_arr=8;
+        int filas_arr = 8;
         int columnas_arr = 8;
         int filas_izq = 8;
         int columnas_izq = 8;
@@ -218,16 +217,16 @@ namespace Proyecto_Final___Wingo
             perfil_seleccionado = 0;
             panel_nom.Visible = false;
             panel_perfil.Visible = false;
-            panel_wheel.Visible=false;
+            panel_wheel.Visible = false;
             perfil_seleccionado = 1;
-            validado_seguido=abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
+            validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
         }
 
         //Perfil 2
 
-        string nombre_perfil_2="";
+        string nombre_perfil_2 = "";
         int y2 = 264;
-        string[]  modalidad_angulos_perfil2= new string[3];
+        string[] modalidad_angulos_perfil2 = new string[3];
         string[] values_angulo_perfil2 = new string[3];
         Color[,] colores_arriba_perfil2 = new Color[8, 8];
         Color[,] colores_izq_perfil2 = new Color[8, 8];
@@ -243,7 +242,7 @@ namespace Proyecto_Final___Wingo
             panel_perfil.Visible = false;
             panel_wheel.Visible = false;
             perfil_seleccionado = 2;
-            validado_seguido=abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
+            validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
         }
 
         //Eventos nombre
@@ -282,9 +281,15 @@ namespace Proyecto_Final___Wingo
             panel_perfil.Visible = false;
             panel_wheel.Visible = false;
             bt_mouse.Visible = false;
-            bt_pincel.Visible= false;
+            bt_pincel.Visible = false;
             panel_nom.Visible = true;
             cambia_nombre = true;
+        }
+        private void bt_manejo_Click(object sender, EventArgs e)
+        {
+            Manejo manejo = new Manejo();
+            manejo.Show();
+            this.Close();
         }
 
         //Eventos modos
@@ -313,15 +318,38 @@ namespace Proyecto_Final___Wingo
             lbl_selec_velocidad_arr.Visible = false;
             lbl_selec_velocidad_izq.Visible = false;
             lbl_selec_velocidad_der.Visible = false;
-            lbl_selec_velocidad_arr.Location = new System.Drawing.Point(100, 50);
-            lbl_selec_velocidad_izq.Location = new System.Drawing.Point(100, 50);
-            lbl_selec_velocidad_der.Location = new System.Drawing.Point(100, 50);
+            lbl_selec_velocidad_arr.Location = new Point(100, 50);
+            lbl_selec_velocidad_izq.Location = new Point(100, 50);
+            lbl_selec_velocidad_der.Location = new Point(100, 50);
+            int x_velocidades = 150;
+            int y_rap = 75;
+            int y_len = 414;
+            int y_med = 217;
+            lbl_rap_arr.Visible = false;
+            lbl_rap_izq.Visible = false;
+            lbl_rap_der.Visible = false;
+            lbl_med_arr.Visible = false;
+            lbl_med_izq.Visible = false;
+            lbl_med_der.Visible = false;
+            lbl_len_arr.Visible = false;
+            lbl_len_izq.Visible = false;
+            lbl_len_der.Visible = false;
+            lbl_rap_arr.Location = new Point(x_velocidades, y_rap);
+            lbl_rap_izq.Location = new Point(x_velocidades, y_rap);
+            lbl_rap_der.Location = new Point(x_velocidades, y_rap);
+            lbl_med_arr.Location = new Point(x_velocidades, y_med);
+            lbl_med_izq.Location = new Point(x_velocidades, y_med);
+            lbl_med_der.Location = new Point(x_velocidades, y_med);
+            lbl_len_arr.Location = new Point(x_velocidades, y_len);
+            lbl_len_izq.Location = new Point(x_velocidades, y_len);
+            lbl_len_der.Location = new Point(x_velocidades, y_len);
             trackBar_arr.Visible = false;
             trackBar_izq.Visible = false;
             trackBar_der.Visible = false;
-            //trackBar_arr.Value = 0;
-            //trackBar_izq.Value = 0;
-            //trackBar_der.Value = 0;
+            bt_enviar_configuraciones.Visible = true;
+            trackBar_arr.Value = trackBar_arr.Minimum;
+            trackBar_izq.Value = trackBar_izq.Minimum;
+            trackBar_der.Value = trackBar_der.Minimum;
             bt_mouse.Enabled = false;
             bt_pincel.Enabled = true;
             Modo_dibujo = false;
@@ -333,8 +361,15 @@ namespace Proyecto_Final___Wingo
             panel_arriba.Visible = false;
             panel_derecha.Visible = false;
             panel_izquierda.Visible = false;
+            panel_wheel.Visible = false;
             Comb_tipos_personalizados.Visible = true;
-            angulo_seleccionado=comb_angulo.SelectedIndex;
+            bt_enviar_configuraciones.Visible = false;
+            bt_mouse.Visible = false;
+            bt_pincel.Visible = false;
+            bt_mouse.Enabled = false;
+            bt_pincel.Enabled = true;
+            Modo_dibujo = false;
+            angulo_seleccionado =comb_angulo.SelectedIndex;
             Comb_tipos_personalizados.SelectedItem = null;
         }
 
@@ -385,12 +420,21 @@ namespace Proyecto_Final___Wingo
                 {
                     case 0:
                         trackBar_arr.Visible = true;
+                        lbl_rap_arr.Visible = true;
+                        lbl_med_arr.Visible = true;
+                        lbl_len_arr.Visible = true;
                         break;
                     case 1:
                         trackBar_izq.Visible = true;
+                        lbl_rap_izq.Visible = true;
+                        lbl_med_izq.Visible = true;
+                        lbl_len_izq.Visible = true;
                         break;
                     case 2:
                         trackBar_der.Visible = true;
+                        lbl_rap_der.Visible = true;
+                        lbl_med_der.Visible = true;
+                        lbl_len_der.Visible = true;
                         break;
                 }
             }
@@ -692,24 +736,37 @@ namespace Proyecto_Final___Wingo
             string[] nombres_puertos = SerialPort.GetPortNames();
             foreach (string nom_puerto in nombres_puertos)
             {
-                SerialPort port = new SerialPort(nom_puerto, 9600);
+                serialPort_arduino.PortName = nom_puerto;
+                serialPort_arduino.BaudRate = 9600;
                 try
                 {
-                    port.Open();
+                    serialPort_arduino.Open();
+                    /*int index = 0;
                     var todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2);
-                    foreach (string mensaje in todos_msgs){
-                        port.WriteLine(mensaje);
-                    }
-                    port.WriteLine("end");
-                    string resp=port.ReadLine();
-                    if (resp =="recibido")
+                    foreach (string mensaje in todos_msgs)
                     {
-                        MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
+                        serialPort_arduino.WriteLine(mensaje + '\n');
+                        index++;
+                        break;
+                        
                     }
+                    serialPort_arduino.WriteLine("end");
+                    List<string> regreso = new List<string>();
+                    for (int i = 0; i < index; i++)
+                    {
+                        regreso.Add(serialPort_arduino.ReadLine());
+                    }*/
+                    string mensaje = "255:0:255:0:255:0:255:0";
+                    serialPort_arduino.WriteLine(mensaje + '\n');
+                    string hola = serialPort_arduino.ReadLine();
+                    //serialPort_arduino.WriteLine("end");
+                    serialPort_arduino.Close();
+                    MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
                     break;
                 }
                 catch
                 {
+                    MessageBox.Show("Error", "Error");
                     throw;
                 }
             }

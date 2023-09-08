@@ -22,8 +22,8 @@ namespace Proyecto_Final___Wingo
         int recor_seleccionado;
         bool nececitar_cant;
         bool nuevo_necesitar_cant;
-        bool validado_seguido=false;
-        bool cambia_nombre=false;
+        bool validado_seguido = false;
+        bool cambia_nombre = false;
         // Funciones
 
         bool comprobar_si_es_num(string texto_a_analizar)
@@ -69,7 +69,7 @@ namespace Proyecto_Final___Wingo
                 return abrir_seguido;
             }
         }
-        (bool,string) validar_nombre(string nombre)
+        (bool, string) validar_nombre(string nombre)
         {
             if (nombre == "")
             {
@@ -81,7 +81,7 @@ namespace Proyecto_Final___Wingo
             {
                 gb_nom.Visible = false;
                 txt_nom.Text = "";
-                return (true,nombre);
+                return (true, nombre);
             }
         }
         (bool, string, string, string) enviar_y_verificar_paso(string tipo_paso_ingresado, string cant_paso_ingresado, bool necesitar_cantidad)
@@ -148,7 +148,7 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-        
+
         // Form
         public Manejo()
         {
@@ -184,7 +184,7 @@ namespace Proyecto_Final___Wingo
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
-            validado_seguido=abrir_ventana(nombre_recor1, x, y1);
+            validado_seguido = abrir_ventana(nombre_recor1, x, y1);
             recor_seleccionado = 1;
             bt_recorrido1.Enabled = false;
             bt_recorrido2.Enabled = true;
@@ -292,14 +292,15 @@ namespace Proyecto_Final___Wingo
 
         private void cb_tipo_paso_recor1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (comb_tipo_paso.SelectedIndex==6 || comb_tipo_paso.SelectedIndex==7)
+            if (comb_tipo_paso.SelectedIndex == 6 || comb_tipo_paso.SelectedIndex == 7)
             {
                 bt_enviar_paso.Visible = true;
                 nececitar_cant = false;
                 lbl_cant_paso.Visible = false;
                 txt_cant_paso.Visible = false;
             }
-            else if(comb_tipo_paso.SelectedIndex==2 || comb_tipo_paso.SelectedIndex==3){
+            else if (comb_tipo_paso.SelectedIndex == 2 || comb_tipo_paso.SelectedIndex == 3)
+            {
                 lbl_cant_paso.Text = "¿Cuántos grados va a girar?";
                 unidad = "grados";
                 lbl_cant_paso.Visible = true;
@@ -324,7 +325,8 @@ namespace Proyecto_Final___Wingo
             var (verificado, tipo_paso, cant_paso, paso_hecho) = enviar_y_verificar_paso(comb_tipo_paso.Text, txt_cant_paso.Text, nececitar_cant);
             if (verificado)
             {
-                switch (recor_seleccionado){
+                switch (recor_seleccionado)
+                {
                     case 1:
                         paso_recor_1.Add(tipo_paso);
                         if (!nececitar_cant)
@@ -457,11 +459,53 @@ namespace Proyecto_Final___Wingo
 
         private void bt_enviar_Click(object sender, EventArgs e)
         {
+            Funciones func = new Funciones();
             List<string> mensajes = new List<string>();
-            for(int i = 0; i < paso_recor_1.Count; i++)
+            for (int i = 0; i < paso_recor_1.Count; i++)
             {
-
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
             }
+            for (int i = 0; i < paso_recor_2.Count; i++)
+            {
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
+            }
+            for (int i = 0; i < paso_recor_3.Count; i++)
+            {
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
+            }
+
+            string[] nombres_puertos = SerialPort.GetPortNames();
+            foreach (string nom_puerto in nombres_puertos)
+            {
+                serialPortArduino.PortName = nom_puerto;
+                serialPortArduino.BaudRate = 9600;
+                try
+                {
+                    serialPortArduino.Open();
+                    foreach (string mensaje in mensajes)
+                    {
+                        serialPortArduino.WriteLine(mensaje + '\n');
+                    }
+                    serialPortArduino.WriteLine("end");
+                    serialPortArduino.Close();
+                    MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
+                    break;
+                }
+                catch
+                {
+                    MessageBox.Show("Error", "Error");
+                    throw;
+                }
+            }
+
+        }
+        
+        private void bt_personalizacion_Click(object sender, EventArgs e)
+        {
+            Personalización personalización = new Personalización();
+            personalización.Show();
+            this.Close();
         }
     }
 }
+

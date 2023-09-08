@@ -20,45 +20,45 @@ namespace Proyecto_Final___Wingo
                 }
                 else
                 {
-                    mensaje_final = $"{pers_modalidad}:{delay}";
+                    mensaje_final = $"{pers_modalidad}:{delay}:null:null";
                 }
                 switch (pers_angulo)
                 {
                     case 0:
-                        mensaje_final = $"arriba:{mensaje_final}";
+                        mensaje_final = $"a:{mensaje_final}";
                         break;
                     case 1:
-                        mensaje_final = $"izquierda:{mensaje_final}";
+                        mensaje_final = $"i:{mensaje_final}";
                         break;
                     case 2:
-                        mensaje_final = $"derrecha:{mensaje_final}";
+                        mensaje_final = $"d:{mensaje_final}";
                         break;
                 }
                 switch (pers_perfil)
                 {
                     case 1:
-                        mensaje_final = $"perfil1:{mensaje_final}";
-                        break;
+                        mensaje_final = $"1{mensaje_final}";
+                        break; 
                     case 2:
-                        mensaje_final = $"perfil2:{mensaje_final}";
+                        mensaje_final = $"2{mensaje_final}";
                         break;
                 }
-                mensaje_final = $"personalizacion:{mensaje_final}";
+                mensaje_final = $"p:{mensaje_final}";
                 return mensaje_final;
             }
             else
             {
-                mensaje_final = $"paso{man_pasonum}:{man_tipo_paso}:{man_cant_paso}";
+                mensaje_final = $"paso{man_pasonum}:{man_tipo_paso}:{man_cant_paso}:null:null";
                 switch (man_perf)
                 {
                     case 1:
-                        mensaje_final = $"recor1:{mensaje_final}"; break;
+                        mensaje_final = $"1:{mensaje_final}"; break;
                     case 2:
-                        mensaje_final = $"recor12:{mensaje_final}"; break;
+                        mensaje_final = $"2:{mensaje_final}"; break;
                     case 3:
-                        mensaje_final = $"recor13:{mensaje_final}"; break;
+                        mensaje_final = $"3:{mensaje_final}"; break;
                 }
-                mensaje_final = $"manejo:{mensaje_final}";
+                mensaje_final = $"m:{mensaje_final}";
                 return mensaje_final;
             }
         }
