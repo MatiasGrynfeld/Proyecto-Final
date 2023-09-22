@@ -351,7 +351,8 @@ namespace Proyecto_Final___Wingo
             "A",
             "B",
             "C",
-            "D"});
+            "D",
+            "Apagado"});
             this.Comb_tipos_personalizados.Location = new System.Drawing.Point(86, 40);
             this.Comb_tipos_personalizados.Name = "Comb_tipos_personalizados";
             this.Comb_tipos_personalizados.Size = new System.Drawing.Size(173, 21);

@@ -384,6 +384,11 @@ namespace Proyecto_Final___Wingo
                 panel_derecha.Invalidate();
                 asignar_modalidad(perfil_seleccionado, angulo_seleccionado, Comb_tipos_personalizados.SelectedItem.ToString().ToLower());
                 bt_enviar_configuraciones.Visible = true;
+                if (Comb_tipos_personalizados.SelectedItem.ToString().ToLower() == "apagado")
+                {
+                    SolidBrush xx = new SolidBrush(Color.White);
+                    asignar_valores(Comb_tipos_personalizados.SelectedItem.ToString().ToLower(), -1, -1, xx, -1);
+                }
                 switch (angulo_seleccionado)
                 {
                     case 0:
@@ -411,6 +416,7 @@ namespace Proyecto_Final___Wingo
                     graph.DrawEllipse(pen, rectangle);
                 }
             }
+            else if (modo_de_luz=="Apagado") { }
             else
             {
                 lbl_selec_velocidad_arr.Visible = true;
@@ -504,6 +510,40 @@ namespace Proyecto_Final___Wingo
                             case 2:
                                 colores_der_perfil2[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil2[2] = "";
+                                return;
+                        }
+                        return;
+                }
+            }
+            else if (modo_luz == "Apagado")
+            {
+                switch (perfil_seleccionado)
+                {
+                    case 1:
+                        switch (angulo_seleccionado)
+                        {
+                            case 0:
+                                values_angulo_perfil1[0] = "apagado";
+                                return;
+                            case 1:
+                                values_angulo_perfil1[1] = "apagado";
+                                return;
+                            case 2:
+                                values_angulo_perfil1[2] = "apagado";
+                                return;
+                        }
+                        return;
+                    case 2:
+                        switch (angulo_seleccionado)
+                        {
+                            case 0:
+                                values_angulo_perfil2[0] = "apagado";
+                                return;
+                            case 1:
+                                values_angulo_perfil2[1] = "apagado";
+                                return;
+                            case 2:
+                                values_angulo_perfil2[2] = "apagado";
                                 return;
                         }
                         return;
@@ -662,7 +702,6 @@ namespace Proyecto_Final___Wingo
             List<string> mensajes=new List<string>();
             Funciones func_enviar = new Funciones();
             string mensaje = null;
-            int num_led = 0;
             if (modalidad == "independiente") {
                 switch (perfil)
                 {
@@ -671,9 +710,8 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", 1, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila,columna],num_led,-1,-1,"",-1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila,columna],fila,columna,-1,-1,"",-1);
                                 mensajes.Add(mensaje);
-                                num_led++;
                             }
                         }
                         return mensajes;
@@ -682,7 +720,7 @@ namespace Proyecto_Final___Wingo
                         {
                              for (int columna = 0; columna < cant_columnas; columna++)
                              {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", 2, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila,columna], num_led, -1, -1, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila,columna], fila, columna, -1, -1, "", -1);
                                 mensajes.Add(mensaje);
                              }
                         }
@@ -691,14 +729,14 @@ namespace Proyecto_Final___Wingo
             }
             else
             {
-                switch (perfil_seleccionado)
+                switch (perfil)
                 {
                     case 1:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White,-1, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White,-1, -1, -1, -1, "", -1);
                         mensajes.Add(mensaje);
                         return mensajes;
                     case 2:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil_seleccionado, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White,-1, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White,-1, -1, -1, -1, "", -1);
                         mensajes.Add(mensaje);
                         return mensajes;
                 }
@@ -732,46 +770,40 @@ namespace Proyecto_Final___Wingo
                         break;
                 }
             }
-
             string[] nombres_puertos = SerialPort.GetPortNames();
-            foreach (string nom_puerto in nombres_puertos)
+            if (nombres_puertos.Length == 0)
             {
-                serialPort_arduino.PortName = nom_puerto;
-                serialPort_arduino.BaudRate = 9600;
-                try
+                MessageBox.Show("Por favor, conectar el auto a la computadora.", "Error");
+            }
+            else
+            {
+                foreach (string nom_puerto in nombres_puertos)
                 {
-                    serialPort_arduino.Open();
-                    /*int index = 0;
-                    var todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2);
-                    foreach (string mensaje in todos_msgs)
+                    serialPort_arduino.PortName = nom_puerto;
+                    serialPort_arduino.BaudRate = 9600;
+                    try
                     {
-                        serialPort_arduino.WriteLine(mensaje + '\n');
-                        index++;
+                        var todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2);
+                        serialPort_arduino.Open();
+                        foreach (string mensaje in todos_msgs)
+                        {
+                            serialPort_arduino.WriteLine(mensaje + '\n');
+                        }
+                        serialPort_arduino.WriteLine("end");
+                        serialPort_arduino.Close();
+                        MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
                         break;
-                        
                     }
-                    serialPort_arduino.WriteLine("end");
-                    List<string> regreso = new List<string>();
-                    for (int i = 0; i < index; i++)
+                    catch
                     {
-                        regreso.Add(serialPort_arduino.ReadLine());
-                    }*/
-                    string mensaje = "255:0:255:0:255:0:255:0";
-                    serialPort_arduino.WriteLine(mensaje + '\n');
-                    string hola = serialPort_arduino.ReadLine();
-                    //serialPort_arduino.WriteLine("end");
-                    serialPort_arduino.Close();
-                    MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
-                    break;
-                }
-                catch
-                {
-                    MessageBox.Show("Error", "Error");
-                    throw;
+                        MessageBox.Show("Error", "Error");
+                        throw;
+                    }
                 }
             }
         }
 
+        //Num modalidad en funciones
         //Base de datos
         //Diseño
     }

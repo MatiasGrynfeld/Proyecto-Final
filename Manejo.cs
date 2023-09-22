@@ -13,7 +13,6 @@ namespace Proyecto_Final___Wingo
 {
     public partial class Manejo : Form
     {
-        //Configurar botones de conectar y enviar recorrido
         // Variables generales
 
         string unidad;
@@ -153,6 +152,7 @@ namespace Proyecto_Final___Wingo
         public Manejo()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
         }
         private void Manejo_Load(object sender, EventArgs e)
         {
@@ -463,18 +463,22 @@ namespace Proyecto_Final___Wingo
             List<string> mensajes = new List<string>();
             for (int i = 0; i < paso_recor_1.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
             }
             for (int i = 0; i < paso_recor_2.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
             }
             for (int i = 0; i < paso_recor_3.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
             }
 
             string[] nombres_puertos = SerialPort.GetPortNames();
+            if (nombres_puertos.Length == 0)
+            {
+                MessageBox.Show("Por favor, conectar el auto a la computadora.", "Error");
+            }
             foreach (string nom_puerto in nombres_puertos)
             {
                 serialPortArduino.PortName = nom_puerto;

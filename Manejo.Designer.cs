@@ -331,11 +331,7 @@ namespace Proyecto_Final___Wingo
             "Retroceder",
             "Girar hacia la izquierda",
             "Girar hacia la derecha",
-            "Esperar",
-            "Hacer sonido",
-            "Prender luz",
-            "Apagar luz",
-            "Mantener luz"});
+            "Esperar"});
             this.comb_tipo_paso.Location = new System.Drawing.Point(23, 128);
             this.comb_tipo_paso.Name = "comb_tipo_paso";
             this.comb_tipo_paso.Size = new System.Drawing.Size(122, 21);
