@@ -32,6 +32,7 @@ namespace Proyecto_Final___Wingo
             this.bt_personalización = new System.Windows.Forms.Button();
             this.bt_manejo = new System.Windows.Forms.Button();
             this.bt_cerrar_app = new System.Windows.Forms.Button();
+            this.bt_ajustes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bt_personalización
@@ -65,11 +66,22 @@ namespace Proyecto_Final___Wingo
             this.bt_cerrar_app.UseVisualStyleBackColor = true;
             this.bt_cerrar_app.Click += new System.EventHandler(this.bt_cerrar_app_Click);
             // 
+            // bt_ajustes
+            // 
+            this.bt_ajustes.Location = new System.Drawing.Point(685, 12);
+            this.bt_ajustes.Name = "bt_ajustes";
+            this.bt_ajustes.Size = new System.Drawing.Size(103, 53);
+            this.bt_ajustes.TabIndex = 3;
+            this.bt_ajustes.Text = "Configuraciones";
+            this.bt_ajustes.UseVisualStyleBackColor = true;
+            this.bt_ajustes.Click += new System.EventHandler(this.bt_ajustes_Click);
+            // 
             // Pantalla_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bt_ajustes);
             this.Controls.Add(this.bt_cerrar_app);
             this.Controls.Add(this.bt_manejo);
             this.Controls.Add(this.bt_personalización);
@@ -85,6 +97,7 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_personalización;
         private System.Windows.Forms.Button bt_manejo;
         private System.Windows.Forms.Button bt_cerrar_app;
+        private System.Windows.Forms.Button bt_ajustes;
     }
 }
 

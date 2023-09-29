@@ -172,5 +172,11 @@ namespace Proyecto_Final___Wingo
         {
             resetear();
         }
+
+        private void bt_apagado_Click(object sender, EventArgs e)
+        {
+            panel_muestra.BackColor = Color.Black;
+            bt_resetear.Visible = true;
+        }
     }
 }

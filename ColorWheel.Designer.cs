@@ -37,6 +37,7 @@ namespace Proyecto_Final___Wingo
             this.lbl_green = new System.Windows.Forms.Label();
             this.lbl_blue = new System.Windows.Forms.Label();
             this.bt_resetear = new System.Windows.Forms.Button();
+            this.bt_apagado = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_wheel
@@ -105,7 +106,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_resetear
             // 
-            this.bt_resetear.Location = new System.Drawing.Point(83, 12);
+            this.bt_resetear.Location = new System.Drawing.Point(15, 12);
             this.bt_resetear.Name = "bt_resetear";
             this.bt_resetear.Size = new System.Drawing.Size(75, 23);
             this.bt_resetear.TabIndex = 7;
@@ -113,12 +114,23 @@ namespace Proyecto_Final___Wingo
             this.bt_resetear.UseVisualStyleBackColor = true;
             this.bt_resetear.Click += new System.EventHandler(this.bt_resetear_Click);
             // 
+            // bt_apagado
+            // 
+            this.bt_apagado.Location = new System.Drawing.Point(146, 12);
+            this.bt_apagado.Name = "bt_apagado";
+            this.bt_apagado.Size = new System.Drawing.Size(75, 23);
+            this.bt_apagado.TabIndex = 8;
+            this.bt_apagado.Text = "Apagado";
+            this.bt_apagado.UseVisualStyleBackColor = true;
+            this.bt_apagado.Click += new System.EventHandler(this.bt_apagado_Click);
+            // 
             // Personalización___perfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(375, 551);
+            this.Controls.Add(this.bt_apagado);
             this.Controls.Add(this.bt_resetear);
             this.Controls.Add(this.lbl_blue);
             this.Controls.Add(this.lbl_green);
@@ -146,5 +158,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_green;
         private System.Windows.Forms.Label lbl_blue;
         private System.Windows.Forms.Button bt_resetear;
+        private System.Windows.Forms.Button bt_apagado;
     }
 }

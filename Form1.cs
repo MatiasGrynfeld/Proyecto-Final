@@ -12,6 +12,7 @@ namespace Proyecto_Final___Wingo
 {
     public partial class Pantalla_principal : Form
     {
+        public int ult_puerto_selec = -1;
         public Pantalla_principal()
         {
             InitializeComponent();
@@ -34,6 +35,13 @@ namespace Proyecto_Final___Wingo
         private void bt_cerrar_app_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void bt_ajustes_Click(object sender, EventArgs e)
+        {
+            Ajustes ajustes = new Ajustes();
+            ajustes.Show();
+            this.Hide();
         }
     }
 }

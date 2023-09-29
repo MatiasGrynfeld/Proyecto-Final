@@ -64,6 +64,9 @@ namespace Proyecto_Final___Wingo
                 comb_pasos_hechos_recor2.Visible = false;
                 comb_pasos_hechos_recor3.Visible = false;
                 bt_modificar_paso.Visible = false;
+                bt_eliminar_paso.Visible = false;
+                gb_modificar_paso.Visible = false;
+                nuevo_necesitar_cant = false;
                 abrir_seguido = false;
                 return abrir_seguido;
             }
@@ -153,6 +156,10 @@ namespace Proyecto_Final___Wingo
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
+            Point punto_combo = new Point(258, 128);
+            comb_pasos_hechos_recor1.Location = punto_combo;
+            comb_pasos_hechos_recor2.Location = punto_combo;
+            comb_pasos_hechos_recor3.Location = punto_combo;
         }
         private void Manejo_Load(object sender, EventArgs e)
         {
@@ -383,14 +390,18 @@ namespace Proyecto_Final___Wingo
         private void comb_pasos_hechos_recor1_SelectedIndexChanged(object sender, EventArgs e)
         {
             bt_modificar_paso.Visible = true;
+            bt_eliminar_paso.Visible = true;
         }
 
         private void bt_modificar_paso_Click(object sender, EventArgs e)
         {
-            gb_modificar_paso.Visible = true;
-            bt_enviar_nuevo_paso.Visible = false;
-            lbl_nuevo_cant_paso.Visible = false;
-            txt_nuevo_cant_paso.Visible = false;
+            if (comb_pasos_hechos_recor1.SelectedIndex != -1 || comb_pasos_hechos_recor2.SelectedIndex != -1 || comb_pasos_hechos_recor3.SelectedIndex != -1)
+            {
+                gb_modificar_paso.Visible = true;
+                bt_enviar_nuevo_paso.Visible = false;
+                lbl_nuevo_cant_paso.Visible = false;
+                txt_nuevo_cant_paso.Visible = false;
+            }
         }
 
         private void comb_nuevo_tipo_paso_SelectedIndexChanged(object sender, EventArgs e)
@@ -455,6 +466,46 @@ namespace Proyecto_Final___Wingo
             }
         }
 
+        private void bt_personalizacion_Click(object sender, EventArgs e)
+        {
+            Personalización personalización = new Personalización();
+            personalización.Show();
+            this.Close();
+        }
+
+        private void bt_eliminar_paso_Click(object sender, EventArgs e)
+        {
+            if (comb_pasos_hechos_recor1.SelectedIndex != -1 || comb_pasos_hechos_recor2.SelectedIndex != -1 || comb_pasos_hechos_recor3.SelectedIndex != -1)
+            {
+                switch (recor_seleccionado)
+                {
+                    case 1:
+                        comb_pasos_hechos_recor1.Items.RemoveAt(comb_pasos_hechos_recor1.SelectedIndex);
+                        comb_pasos_hechos_recor1.Text = "";
+                        break;
+                    case 2:
+                        comb_pasos_hechos_recor2.Items.RemoveAt(comb_pasos_hechos_recor2.SelectedIndex);
+                        comb_pasos_hechos_recor2.Text = "";
+                        break;
+                    case 3:
+                        comb_pasos_hechos_recor3.Items.RemoveAt(comb_pasos_hechos_recor3.SelectedIndex);
+                        comb_pasos_hechos_recor3.Text = "";
+                        break;
+                }
+            }
+        }
+
+        private void comb_pasos_hechos_recor3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bt_modificar_paso.Visible = true;
+            bt_eliminar_paso.Visible = true;
+        }
+
+        private void comb_pasos_hechos_recor2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bt_modificar_paso.Visible = true;
+            bt_eliminar_paso.Visible = true;
+        }
         //Enviar
 
         private void bt_enviar_Click(object sender, EventArgs e)
@@ -463,15 +514,15 @@ namespace Proyecto_Final___Wingo
             List<string> mensajes = new List<string>();
             for (int i = 0; i < paso_recor_1.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
             }
             for (int i = 0; i < paso_recor_2.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
             }
             for (int i = 0; i < paso_recor_3.Count; i++)
             {
-                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1,-1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
+                mensajes.Add(func.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
             }
 
             string[] nombres_puertos = SerialPort.GetPortNames();
@@ -503,13 +554,7 @@ namespace Proyecto_Final___Wingo
             }
 
         }
-        
-        private void bt_personalizacion_Click(object sender, EventArgs e)
-        {
-            Personalización personalización = new Personalización();
-            personalización.Show();
-            this.Close();
-        }
+
     }
 }
 

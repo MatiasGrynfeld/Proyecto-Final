@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Threading;
 
 namespace Proyecto_Final___Wingo
 {
@@ -783,13 +784,23 @@ namespace Proyecto_Final___Wingo
                     serialPort_arduino.BaudRate = 9600;
                     try
                     {
-                        var todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2);
+                        List<string>[] todos_msgs = new List<string>[6];
+                        todos_msgs[0] = msgs_angulo_arr1;
+                        todos_msgs[1] = msgs_angulo_arr2;
+                        todos_msgs[2] = msgs_angulo_izq1;
+                        todos_msgs[3] = msgs_angulo_izq2;
+                        todos_msgs[4] = msgs_angulo_der1;
+                        todos_msgs[5] = msgs_angulo_der2;
                         serialPort_arduino.Open();
-                        foreach (string mensaje in todos_msgs)
+                        foreach (List<string> parte in todos_msgs)
                         {
-                            serialPort_arduino.WriteLine(mensaje + '\n');
+                            foreach (string mensaje in parte)
+                            {
+                                serialPort_arduino.WriteLine(mensaje + '\n');
+                                Thread.Sleep(10);
+                            }
                         }
-                        serialPort_arduino.WriteLine("end");
+                        serialPort_arduino.WriteLine("end" + '\n');
                         serialPort_arduino.Close();
                         MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
                         break;

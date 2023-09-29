@@ -62,6 +62,7 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.serialPortArduino = new System.IO.Ports.SerialPort(this.components);
             this.bt_personalizacion = new System.Windows.Forms.Button();
+            this.bt_eliminar_paso = new System.Windows.Forms.Button();
             this.gb_nom.SuspendLayout();
             this.gb_pasos.SuspendLayout();
             this.gb_modificar_paso.SuspendLayout();
@@ -155,6 +156,7 @@ namespace Proyecto_Final___Wingo
             // 
             // gb_pasos
             // 
+            this.gb_pasos.Controls.Add(this.bt_eliminar_paso);
             this.gb_pasos.Controls.Add(this.gb_modificar_paso);
             this.gb_pasos.Controls.Add(this.bt_modificar_paso);
             this.gb_pasos.Controls.Add(this.comb_pasos_hechos_recor3);
@@ -256,18 +258,20 @@ namespace Proyecto_Final___Wingo
             // comb_pasos_hechos_recor3
             // 
             this.comb_pasos_hechos_recor3.FormattingEnabled = true;
-            this.comb_pasos_hechos_recor3.Location = new System.Drawing.Point(258, 128);
+            this.comb_pasos_hechos_recor3.Location = new System.Drawing.Point(220, 70);
             this.comb_pasos_hechos_recor3.Name = "comb_pasos_hechos_recor3";
             this.comb_pasos_hechos_recor3.Size = new System.Drawing.Size(191, 21);
             this.comb_pasos_hechos_recor3.TabIndex = 13;
+            this.comb_pasos_hechos_recor3.SelectedIndexChanged += new System.EventHandler(this.comb_pasos_hechos_recor3_SelectedIndexChanged);
             // 
             // comb_pasos_hechos_recor2
             // 
             this.comb_pasos_hechos_recor2.FormattingEnabled = true;
-            this.comb_pasos_hechos_recor2.Location = new System.Drawing.Point(258, 128);
+            this.comb_pasos_hechos_recor2.Location = new System.Drawing.Point(146, 32);
             this.comb_pasos_hechos_recor2.Name = "comb_pasos_hechos_recor2";
             this.comb_pasos_hechos_recor2.Size = new System.Drawing.Size(191, 21);
             this.comb_pasos_hechos_recor2.TabIndex = 12;
+            this.comb_pasos_hechos_recor2.SelectedIndexChanged += new System.EventHandler(this.comb_pasos_hechos_recor2_SelectedIndexChanged);
             // 
             // lbl_pasos_hechos
             // 
@@ -386,6 +390,16 @@ namespace Proyecto_Final___Wingo
             this.bt_personalizacion.UseVisualStyleBackColor = true;
             this.bt_personalizacion.Click += new System.EventHandler(this.bt_personalizacion_Click);
             // 
+            // bt_eliminar_paso
+            // 
+            this.bt_eliminar_paso.Location = new System.Drawing.Point(258, 165);
+            this.bt_eliminar_paso.Name = "bt_eliminar_paso";
+            this.bt_eliminar_paso.Size = new System.Drawing.Size(92, 23);
+            this.bt_eliminar_paso.TabIndex = 16;
+            this.bt_eliminar_paso.Text = "Eliminar paso";
+            this.bt_eliminar_paso.UseVisualStyleBackColor = true;
+            this.bt_eliminar_paso.Click += new System.EventHandler(this.bt_eliminar_paso_Click);
+            // 
             // Manejo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,5 +461,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_nuevo_cant_paso;
         private System.Windows.Forms.Label lbl_nuevo_tipo_paso;
         private System.Windows.Forms.Button bt_personalizacion;
+        private System.Windows.Forms.Button bt_eliminar_paso;
     }
 }
