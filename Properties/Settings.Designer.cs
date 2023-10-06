@@ -34,5 +34,41 @@ namespace Proyecto_Final___Wingo.Properties {
                 this["pathConfig"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int lastAngulo {
+            get {
+                return ((int)(this["lastAngulo"]));
+            }
+            set {
+                this["lastAngulo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int lastPerf {
+            get {
+                return ((int)(this["lastPerf"]));
+            }
+            set {
+                this["lastPerf"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string puertoCOM {
+            get {
+                return ((string)(this["puertoCOM"]));
+            }
+            set {
+                this["puertoCOM"] = value;
+            }
+        }
     }
 }

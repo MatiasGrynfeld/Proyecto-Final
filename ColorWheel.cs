@@ -177,6 +177,9 @@ namespace Proyecto_Final___Wingo
         {
             panel_muestra.BackColor = Color.Black;
             bt_resetear.Visible = true;
+            lbl_blue.Text = "Blue: 255";
+            lbl_green.Text = "Green: 255";
+            lbl_red.Text = "Red: 255";
         }
     }
 }

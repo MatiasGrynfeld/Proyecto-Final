@@ -87,7 +87,7 @@ namespace Proyecto_Final___Wingo
             this.Controls.Add(this.bt_personalización);
             this.Name = "Pantalla_principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Wingo";
+            this.Text = "Principal";
             this.ResumeLayout(false);
 
         }
