@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
+using System.IO;
 
 namespace Proyecto_Final___Wingo
 {
     public partial class Personalización : Form
     {
+        string pathconfig = Path.Combine(Application.StartupPath, "config.txt");
+        
         // Variables
 
         int x = 60;
@@ -28,14 +31,50 @@ namespace Proyecto_Final___Wingo
         Pen pen = new Pen(Color.Black);
         bool validado_seguido = false;
         bool cambia_nombre = false;
+        int linea_nom_perf1 = 3;
+        int linea_nom_perf2 = 13;
+        int mod_1a = 4;
+        int lin_1a = 5;
+        int mod_1i = 6;
+        int lin_1i = 7;
+        int mod_1d = 8;
+        int lin_1d = 9;
+
+        int mod_2a = 14;
+        int lin_2a = 15;
+        int mod_2i = 16;
+        int lin_2i = 17;
+        int mod_2d = 18;
+        int lin_2d = 19;
 
         //Form
         public Personalización()
         {
             InitializeComponent();
+            Proyecto_Final___Wingo.Properties.Settings.Default.pathConfig = pathconfig;
             WindowState = FormWindowState.Maximized;
             //TopMost = true;
             color_wheel = new Personalización___perfil() { TopLevel = false, Dock = DockStyle.Fill };
+            Funciones funciones = new Funciones();
+            nombre_perfil_1 = funciones.leer_datos(linea_nom_perf1);
+            nombre_perfil_2 = funciones.leer_datos(linea_nom_perf2);
+            if (nombre_perfil_1 != "")
+            {
+                bt_perfil_1.Text = nombre_perfil_1;
+            }
+            else
+            {
+                bt_perfil_1.Text = "Nuevo Perfil";
+            }
+            if (nombre_perfil_2 != "")
+            {
+                bt_perfil_2.Text = nombre_perfil_2;
+            }
+            else
+            {
+                bt_perfil_2.Text = "Nuevo Perfil";
+            }
+
         }
         private void bt_volver_Click(object sender, EventArgs e)
         {
@@ -53,8 +92,80 @@ namespace Proyecto_Final___Wingo
             panel_derecha.Location = panel_arriba.Location;
             panel_izquierda.Location = panel_arriba.Location;
             bt_enviar_configuraciones.Visible = false;
+            int lastAngulo = Proyecto_Final___Wingo.Properties.Settings.Default.lastAngulo;
+            int lastPerf = Proyecto_Final___Wingo.Properties.Settings.Default.lastPerf;
+            Funciones funciones = new Funciones();
+            if (lastPerf == 1)
+            {
+                perfil_seleccionado = lastPerf;
+                bool validado=abrir_ventana(nombre_perfil_1, x, y1, lastPerf);
+                if (validado_seguido)
+                {
+                    validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, lastPerf);
+                }
+                switch (lastAngulo)
+                {
+                    case 0:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value10=funciones.leer_valores(mod_1a);
+                        Comb_tipos_personalizados.SelectedItem = mod_value10[0];
+                        break;
+                    case 1:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value11 = funciones.leer_valores(mod_1i);
+                        Comb_tipos_personalizados.SelectedItem = mod_value11[0];
+                        break;
+                    case 2:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value12 = funciones.leer_valores(mod_1a);
+                        Comb_tipos_personalizados.SelectedItem = mod_value12[0];
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (lastPerf==2)
+            {
+                perfil_seleccionado = lastPerf;
+                bool validado = abrir_ventana(nombre_perfil_2, x, y2, lastPerf);
+                if (validado_seguido)
+                {
+                    validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, lastPerf);
+                }
+                switch (lastAngulo)
+                {
+                    case 0:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value10 = funciones.leer_valores(mod_1a);
+                        Comb_tipos_personalizados.SelectedItem = mod_value10[0];
+                        break;
+                    case 1:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value11 = funciones.leer_valores(mod_1i);
+                        Comb_tipos_personalizados.SelectedItem = mod_value11[0];
+                        break;
+                    case 2:
+                        comb_angulo.SelectedIndex = lastAngulo;
+                        comb_angulo_change();
+                        string[] mod_value12 = funciones.leer_valores(mod_1a);
+                        Comb_tipos_personalizados.SelectedItem = mod_value12[0];
+                        break;
+                    default:
+                        break;
+                }
+            }
+            angulo_seleccionado = lastAngulo;
         }
-
+        private void Personalización_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Proyecto_Final___Wingo.Properties.Settings.Default.lastPerf = perfil_seleccionado;
+            Proyecto_Final___Wingo.Properties.Settings.Default.lastAngulo = angulo_seleccionado;
+        }
         // Funciones
 
         void open_form()
@@ -171,7 +282,6 @@ namespace Proyecto_Final___Wingo
                     if (rectangle.Contains(punto))
                     {
                         g.FillEllipse(color, rectangle);
-                        //g.DrawEllipse(pen, rectangle);
                         validado = true;
                         arriba_devuelve = arriba;
                         horizontalmente_devuelve = horizontalmente;
@@ -250,6 +360,7 @@ namespace Proyecto_Final___Wingo
 
         private void bt_enviar_nombre_Click(object sender, EventArgs e)
         {
+            Funciones funciones = new Funciones();
             var (validado, nombre) = validar_nombre(txt_nombre.Text);
             if (validado)
             {
@@ -258,6 +369,7 @@ namespace Proyecto_Final___Wingo
                     case 1:
                         nombre_perfil_1 = nombre;
                         bt_perfil_1.Text = nombre;
+                        funciones.escribir_datos(linea_nom_perf1, nombre);
                         if (validado_seguido || cambia_nombre)
                         {
                             validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
@@ -267,6 +379,7 @@ namespace Proyecto_Final___Wingo
                     case 2:
                         nombre_perfil_2 = nombre;
                         bt_perfil_2.Text = nombre;
+                        funciones.escribir_datos(linea_nom_perf2, nombre);
                         if (validado_seguido || cambia_nombre)
                         {
                             validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
@@ -283,6 +396,17 @@ namespace Proyecto_Final___Wingo
             panel_wheel.Visible = false;
             bt_mouse.Visible = false;
             bt_pincel.Visible = false;
+            switch (perfil_seleccionado)
+            {
+                case 1:
+                    panel_nom.Location = new Point(x, y1);
+                    break;
+                case 2:
+                    panel_nom.Location = new Point(x, y2);
+                    break;
+
+            }
+            
             panel_nom.Visible = true;
             cambia_nombre = true;
         }
@@ -357,7 +481,8 @@ namespace Proyecto_Final___Wingo
             bt_mouse.Visible = false;
             bt_pincel.Visible = false;
         }
-        private void comb_angulo_SelectionChangeCommitted(object sender, EventArgs e)
+
+        void comb_angulo_change()
         {
             panel_arriba.Visible = false;
             panel_derecha.Visible = false;
@@ -370,7 +495,11 @@ namespace Proyecto_Final___Wingo
             bt_mouse.Enabled = false;
             bt_pincel.Enabled = true;
             Modo_dibujo = false;
-            angulo_seleccionado =comb_angulo.SelectedIndex;
+            angulo_seleccionado = comb_angulo.SelectedIndex;
+        }
+        private void comb_angulo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comb_angulo_change();
             Comb_tipos_personalizados.SelectedItem = null;
         }
 
@@ -379,6 +508,7 @@ namespace Proyecto_Final___Wingo
         {
             if (Comb_tipos_personalizados.SelectedItem != null)
             {
+                Funciones funciones = new Funciones();
                 reset_paneles();
                 panel_arriba.Invalidate();
                 panel_izquierda.Invalidate();
@@ -393,31 +523,107 @@ namespace Proyecto_Final___Wingo
                 switch (angulo_seleccionado)
                 {
                     case 0:
-                        panel_arriba.Visible = true; return;
+                        panel_arriba.Visible = true; break;
                     case 1:
-                        panel_izquierda.Visible = true; return;
+                        panel_izquierda.Visible = true; break;
                     case 2:
-                        panel_derecha.Visible = true; return;
+                        panel_derecha.Visible = true; break;
+                }
+                if (perfil_seleccionado == 1)
+                {
+                    switch (angulo_seleccionado)
+                    {
+                        case 0:
+                            funciones.escribir_valores(mod_1a, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                        case 1:
+                            funciones.escribir_valores(mod_1i, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                        case 2:
+                            funciones.escribir_valores(mod_1d, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (angulo_seleccionado)
+                    {
+                        case 0:
+                            funciones.escribir_valores(mod_2a, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                        case 1:
+                            funciones.escribir_valores(mod_2i, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                        case 2:
+                            funciones.escribir_valores(mod_2d, Comb_tipos_personalizados.SelectedItem.ToString(),0);
+                            break;
+                    }
                 }
             }
 
         }
 
         //Funciones paneles
+        Color[,] dibujar_colorear_ellipses(Funciones funciones, int linea_leer, Graphics graph, string modo_luz, int x, int y)
+        {
+            var (colores_ellipses, rColores)=funciones.leer_colores(linea_leer,x,y);
+            int color_index = 0;
+            foreach (Rectangle rectangle in ellipses)
+            {
+                graph.DrawEllipse(pen, rectangle);
+                if (colores_ellipses.Count > 0)
+                {
+                    SolidBrush color = new SolidBrush(colores_ellipses[color_index]);
+                    graph.FillEllipse(color, rectangle);
+                }
+                color_index++;
+            }
+            return rColores;
+        }
         void panel_paint(string modo_de_luz, Graphics graph)
         {
+            SolidBrush a = new SolidBrush(Color.White);
+            Funciones funciones = new Funciones();
             if (modo_de_luz == "Independiente")
             {
                 open_form();
                 crear_ellipses(panel_arriba.Width, panel_arriba.Height, 8, 8);
                 bt_pincel.Visible = true;
                 bt_mouse.Visible = true;
-                foreach (Rectangle rectangle in ellipses)
+                if (perfil_seleccionado == 1)
                 {
-                    graph.DrawEllipse(pen, rectangle);
+                    switch (angulo_seleccionado)
+                    {
+                        case 0:
+                            colores_arriba_perfil1 = dibujar_colorear_ellipses(funciones, lin_1a, graph, modo_de_luz,columnas_arr,filas_arr);
+                            break;
+                        case 1:
+                            colores_izq_perfil1=dibujar_colorear_ellipses(funciones, lin_1i, graph, modo_de_luz, columnas_izq, filas_izq);
+                            break;
+                        case 2:
+                            colores_der_perfil1=dibujar_colorear_ellipses(funciones, lin_1d, graph, modo_de_luz, columnas_der, filas_der);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (angulo_seleccionado)
+                    {
+                        case 0:
+                            colores_arriba_perfil2=dibujar_colorear_ellipses(funciones, lin_2a, graph, modo_de_luz, columnas_arr, filas_arr);
+                            break;
+                        case 1:
+                            colores_izq_perfil2=dibujar_colorear_ellipses(funciones, lin_2i, graph, modo_de_luz, columnas_izq, filas_izq);
+                            break;
+                        case 2:
+                            colores_der_perfil2=dibujar_colorear_ellipses(funciones, lin_2d, graph, modo_de_luz, columnas_der, filas_der);
+                            break;
+                    }
                 }
             }
-            else if (modo_de_luz=="Apagado") { }
+            else if (modo_de_luz=="Apagado"){
+                asignar_valores(modo_de_luz, -1, -1, a, -1);
+            }
             else
             {
                 lbl_selec_velocidad_arr.Visible = true;
@@ -426,18 +632,72 @@ namespace Proyecto_Final___Wingo
                 switch (angulo_seleccionado)
                 {
                     case 0:
+                        if (perfil_seleccionado == 1)
+                        {
+                            string[] mod_value1a = funciones.leer_valores(mod_1a);
+                            if (mod_value1a.Length > 1 && mod_value1a[1]!="")
+                            {
+                                trackBar_arr.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1a[1])));
+                                asignar_valores(mod_value1a[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1a[1]))));
+                            }
+                        }
+                        else
+                        {
+                            string[] mod_value2a = funciones.leer_valores(mod_2a);
+                            if (mod_value2a.Length > 1 && mod_value2a[1] != "")
+                            {
+                                trackBar_arr.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2a[1])));
+                                asignar_valores(mod_value2a[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2a[1]))));
+                            }
+                        }
                         trackBar_arr.Visible = true;
                         lbl_rap_arr.Visible = true;
                         lbl_med_arr.Visible = true;
                         lbl_len_arr.Visible = true;
                         break;
                     case 1:
+                        if (perfil_seleccionado == 1)
+                        {
+                            string[] mod_value1i = funciones.leer_valores(mod_1i);
+                            if (mod_value1i.Length > 1 && mod_value1i[1] != "")
+                            {
+                                trackBar_izq.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1i[1])));
+                                asignar_valores(mod_value1i[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1i[1]))));
+                            }
+                        }
+                        else
+                        {
+                            string[] mod_value2i = funciones.leer_valores(mod_2i);
+                            if (mod_value2i.Length > 1 && mod_value2i[1] != "")
+                            {
+                                trackBar_izq.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2i[1])));
+                                asignar_valores(mod_value2i[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2i[1]))));
+                            }
+                        }
                         trackBar_izq.Visible = true;
                         lbl_rap_izq.Visible = true;
                         lbl_med_izq.Visible = true;
                         lbl_len_izq.Visible = true;
                         break;
                     case 2:
+                        if (perfil_seleccionado == 1)
+                        {
+                            string[] mod_value1d = funciones.leer_valores(mod_1d);
+                            if (mod_value1d.Length > 1 && mod_value1d[1] != "")
+                            {
+                                trackBar_der.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1d[1])));
+                                asignar_valores(mod_value1d[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value1d[1]))));
+                            }
+                        }
+                        else
+                        {
+                            string[] mod_value2d = funciones.leer_valores(mod_2d);
+                            if (mod_value2d.Length > 1 && mod_value2d[1] != "")
+                            {
+                                trackBar_der.Value = Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2d[1])));
+                                asignar_valores(mod_value2d[0], -1, -1, a, Convert.ToInt32(valor_track(Convert.ToInt32(mod_value2d[1]))));
+                            }
+                        }
                         trackBar_der.Visible = true;
                         lbl_rap_der.Visible = true;
                         lbl_med_der.Visible = true;
@@ -460,10 +720,10 @@ namespace Proyecto_Final___Wingo
                     asignar_valores(modo_de_luz, horizontalmente, arriba, color, -1);
                 }
             }
-
         }
         void Mouse_leave_up(string modo_de_luz)
         {
+            Funciones funciones = new Funciones();
             if (modo_de_luz == "Independiente")
             {
                 Dibujando = false;
@@ -476,6 +736,7 @@ namespace Proyecto_Final___Wingo
         }
         void asignar_valores(string modo_luz, int horizontalmente, int arriba, SolidBrush color, int trackbar_value)
         {
+            Funciones funciones = new Funciones();
             if (modo_luz == "Independiente")
             {
                 switch (perfil_seleccionado)
@@ -485,15 +746,21 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 colores_arriba_perfil1[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil1[0] = "";
+                                values_angulo_perfil1[0] = "independiente";
+                                funciones.escribir_datos(mod_1a, "independiente");
+                                funciones.escribir_colores(lin_1a, colores_arriba_perfil1);
                                 return;
                             case 1:
                                 colores_izq_perfil1[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil1[1] = "";
+                                values_angulo_perfil1[1] = "independiente";
+                                funciones.escribir_datos(mod_1i, "independiente");
+                                funciones.escribir_colores(lin_1i, colores_izq_perfil1);
                                 return;
                             case 2:
                                 colores_der_perfil1[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil1[2] = "";
+                                values_angulo_perfil1[2] = "independiente";
+                                funciones.escribir_datos(mod_1d, "independiente");
+                                funciones.escribir_colores(lin_1d, colores_der_perfil1);
                                 return;
                         }
                         return;
@@ -502,15 +769,21 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 colores_arriba_perfil2[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil2[0] = "";
+                                values_angulo_perfil2[0] = "independiente";
+                                funciones.escribir_datos(mod_2a, "independiente");
+                                funciones.escribir_colores(lin_2a, colores_arriba_perfil2);
                                 return;
                             case 1:
                                 colores_izq_perfil2[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil2[1] = "";
+                                values_angulo_perfil2[1] = "independiente";
+                                funciones.escribir_datos(mod_2i, "independiente");
+                                funciones.escribir_colores(lin_2i, colores_izq_perfil2);
                                 return;
                             case 2:
                                 colores_der_perfil2[arriba, horizontalmente] = color.Color;
-                                values_angulo_perfil2[2] = "";
+                                values_angulo_perfil2[2] = "independiente";
+                                funciones.escribir_datos(mod_2d, "independiente");
+                                funciones.escribir_colores(lin_2d, colores_der_perfil2);
                                 return;
                         }
                         return;
@@ -525,12 +798,15 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 values_angulo_perfil1[0] = "apagado";
+                                funciones.escribir_datos(mod_1a, "Apagado");
                                 return;
                             case 1:
                                 values_angulo_perfil1[1] = "apagado";
+                                funciones.escribir_datos(mod_1i, "Apagado");
                                 return;
                             case 2:
                                 values_angulo_perfil1[2] = "apagado";
+                                funciones.escribir_datos(mod_1d, "Apagado");
                                 return;
                         }
                         return;
@@ -539,12 +815,15 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 values_angulo_perfil2[0] = "apagado";
+                                funciones.escribir_datos(mod_2a, "Apagado");
                                 return;
                             case 1:
                                 values_angulo_perfil2[1] = "apagado";
+                                funciones.escribir_datos(mod_2i, "Apagado");
                                 return;
                             case 2:
                                 values_angulo_perfil2[2] = "apagado";
+                                funciones.escribir_datos(mod_2d, "Apagado");
                                 return;
                         }
                         return;
@@ -560,12 +839,15 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 values_angulo_perfil1[0] = valor_final;
+                                funciones.escribir_datos(mod_1a, $"{modo_luz} {valor_final}");
                                 return;
                             case 1:
                                 values_angulo_perfil1[1] = valor_final;
+                                funciones.escribir_datos(mod_1i, $"{modo_luz} {valor_final}");
                                 return;
                             case 2:
                                 values_angulo_perfil1[2] = valor_final;
+                                funciones.escribir_datos(mod_1d, $"{modo_luz} {valor_final}");
                                 return;
                         }
                         return;
@@ -574,19 +856,22 @@ namespace Proyecto_Final___Wingo
                         {
                             case 0:
                                 values_angulo_perfil2[0] = valor_final;
+                                funciones.escribir_datos(mod_2a, $"{modo_luz} {valor_final}");
                                 return;
                             case 1:
                                 values_angulo_perfil2[1] = valor_final;
+                                funciones.escribir_datos(mod_2i, $"{modo_luz} {valor_final}");
                                 return;
                             case 2:
                                 values_angulo_perfil2[2] = valor_final;
+                                funciones.escribir_datos(mod_2d, $"{modo_luz} {valor_final}");
                                 return;
                         }
                         return;
                 }
             }
         }
-
+        
         //Eventos panel arriba
 
         Graphics graphs_arriba;
@@ -747,6 +1032,7 @@ namespace Proyecto_Final___Wingo
         }
         private void bt_enviar_configuraciones_Click(object sender, EventArgs e)
         {
+            Funciones funciones = new Funciones();
             List<string> msgs_angulo_arr1 = new List<string>();
             List<string> msgs_angulo_izq1 = new List<string>();
             List<string> msgs_angulo_der1 = new List<string>();
@@ -771,51 +1057,50 @@ namespace Proyecto_Final___Wingo
                         break;
                 }
             }
-            string[] nombres_puertos = SerialPort.GetPortNames();
-            if (nombres_puertos.Length == 0)
+            string[] port_names= SerialPort.GetPortNames();
+            bool portIncluded = false;
+            for (int i=0; i < port_names.Length; i++)
             {
-                MessageBox.Show("Por favor, conectar el auto a la computadora.", "Error");
+                if (port_names[i]== funciones.leer_datos(1))
+                {
+                    portIncluded = true;
+                    break;
+                }
+            }
+            if (portIncluded)
+            {
+                SerialPort arduino = new SerialPort();
+                arduino.PortName = funciones.leer_datos(1);
+                arduino.BaudRate = 9600;
+                try
+                {
+                    //List<string>[] todos_msgs = new List<string>[6] { msgs_angulo_arr1, msgs_angulo_arr2, msgs_angulo_izq1, msgs_angulo_izq2, msgs_angulo_der1, msgs_angulo_der2 };
+                    arduino.Open();
+                    //foreach (List<string> parte in todos_msgs)
+                    {
+                        foreach (string mensaje in msgs_angulo_arr1)
+                        {
+                            arduino.WriteLine(mensaje + '\n');
+                            Thread.Sleep(100);
+                        }
+                    }
+                    arduino.WriteLine("end" + '\n');
+                    arduino.Close();
+                    MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
+                }
+                catch
+                {
+                    MessageBox.Show("Error", "Error");
+                    throw;
+                }
             }
             else
             {
-                foreach (string nom_puerto in nombres_puertos)
-                {
-                    serialPort_arduino.PortName = nom_puerto;
-                    serialPort_arduino.BaudRate = 9600;
-                    try
-                    {
-                        List<string>[] todos_msgs = new List<string>[6];
-                        todos_msgs[0] = msgs_angulo_arr1;
-                        todos_msgs[1] = msgs_angulo_arr2;
-                        todos_msgs[2] = msgs_angulo_izq1;
-                        todos_msgs[3] = msgs_angulo_izq2;
-                        todos_msgs[4] = msgs_angulo_der1;
-                        todos_msgs[5] = msgs_angulo_der2;
-                        serialPort_arduino.Open();
-                        foreach (List<string> parte in todos_msgs)
-                        {
-                            foreach (string mensaje in parte)
-                            {
-                                serialPort_arduino.WriteLine(mensaje + '\n');
-                                Thread.Sleep(10);
-                            }
-                        }
-                        serialPort_arduino.WriteLine("end" + '\n');
-                        serialPort_arduino.Close();
-                        MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
-                        break;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Error", "Error");
-                        throw;
-                    }
-                }
+                MessageBox.Show("Error al seleccionar el puerto del auto. Ir a configuración y seleccionar el puerto correcto.", "Error");
             }
         }
 
         //Num modalidad en funciones
-        //Base de datos
         //Diseño
     }
 }

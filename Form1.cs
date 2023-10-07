@@ -12,7 +12,6 @@ namespace Proyecto_Final___Wingo
 {
     public partial class Pantalla_principal : Form
     {
-        public int ult_puerto_selec = -1;
         public Pantalla_principal()
         {
             InitializeComponent();

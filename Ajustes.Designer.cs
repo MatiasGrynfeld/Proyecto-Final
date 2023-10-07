@@ -29,9 +29,12 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_puerto_com = new System.Windows.Forms.Label();
             this.Comb_puertos = new System.Windows.Forms.ComboBox();
             this.bt_aceptar = new System.Windows.Forms.Button();
+            this.er_puerto = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.er_puerto)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_puerto_com
@@ -61,6 +64,10 @@ namespace Proyecto_Final___Wingo
             this.bt_aceptar.UseVisualStyleBackColor = true;
             this.bt_aceptar.Click += new System.EventHandler(this.bt_aceptar_Click);
             // 
+            // er_puerto
+            // 
+            this.er_puerto.ContainerControl = this;
+            // 
             // Ajustes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -71,8 +78,9 @@ namespace Proyecto_Final___Wingo
             this.Controls.Add(this.lbl_puerto_com);
             this.Name = "Ajustes";
             this.Text = "Ajustes";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Ajustes_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ajustes_FormClosed);
             this.Load += new System.EventHandler(this.Ajustes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.er_puerto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,5 +91,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_puerto_com;
         private System.Windows.Forms.Button bt_aceptar;
         public System.Windows.Forms.ComboBox Comb_puertos;
+        private System.Windows.Forms.ErrorProvider er_puerto;
     }
 }

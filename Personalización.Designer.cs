@@ -477,6 +477,7 @@ namespace Proyecto_Final___Wingo
             this.Name = "Personalización";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personalización";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Personalización_FormClosing);
             this.Load += new System.EventHandler(this.Personalización_Load);
             this.panel_nom.ResumeLayout(false);
             this.panel_nom.PerformLayout();

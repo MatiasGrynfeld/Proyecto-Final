@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
 
 namespace Proyecto_Final___Wingo
 {
     public partial class Ajustes : Form
     {
-        public string puerto_seleccionado = "";
-        
         public Ajustes()
         {
             InitializeComponent();
@@ -22,32 +21,59 @@ namespace Proyecto_Final___Wingo
 
         private void Ajustes_Load(object sender, EventArgs e)
         {
+            Proyecto_Final___Wingo.Properties.Settings.Default.pathConfig= Path.Combine(Application.StartupPath, "config.txt");
             string[] nombres_puertos = SerialPort.GetPortNames();
-            for (int i = 0; i < nombres_puertos.Length; i++)
+            if (nombres_puertos.Length == 0)
             {
-                Comb_puertos.Items.Add(nombres_puertos[i]);
+                er_puerto.SetError(Comb_puertos, "Ningún puerto detectado. Conectá el auto, cerrá y volve a entrar a configuraciones");
+                er_puerto.BlinkRate = 750;
+            }
+            else
+            {
+                er_puerto.BlinkRate = 0;
+                for (int i = 0; i < nombres_puertos.Length; i++)
+                {
+                    Comb_puertos.Items.Add(nombres_puertos[i]);
+                }
+            }
+            try
+            {
+                Comb_puertos.SelectedItem = Proyecto_Final___Wingo.Properties.Settings.Default.puertoCOM;
+            }
+            catch
+            {
+                throw;
             }
 
         }
 
-        void cerrar() 
+        void cerrar(bool close = false, bool shown=false) 
         {
             Pantalla_principal mostrar0 = new Pantalla_principal();
+            Funciones funciones = new Funciones();
             if (Comb_puertos.SelectedItem != null)
             {
-                //subir a base de datos -> Comb_puertos.SelectedItem.ToString();
+                Proyecto_Final___Wingo.Properties.Settings.Default.puertoCOM=Comb_puertos.SelectedItem.ToString();
+                funciones.escribir_datos(1, Comb_puertos.SelectedItem.ToString());
             }
-            mostrar0.Show();
-            this.Close();
+            if (!shown)
+            {
+                mostrar0.Show();
+            }
+            
+            if (close)
+            {
+                this.Close();
+            }
         }
         private void bt_aceptar_Click(object sender, EventArgs e)
         {
-            cerrar();
+            cerrar(true,false);
         }
 
-        private void Ajustes_FormClosing(object sender, FormClosingEventArgs e)
+        private void Ajustes_FormClosed(object sender, FormClosedEventArgs e)
         {
-            cerrar();
+            cerrar(false,true);
         }
     }
 }
