@@ -78,6 +78,12 @@
       <DependentUpon>Personalización.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressBar.Designer.cs">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ajustes.resx">
       <DependentUpon>Ajustes.cs</DependentUpon>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Personalización.resx">
       <DependentUpon>Personalización.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBar.resx">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

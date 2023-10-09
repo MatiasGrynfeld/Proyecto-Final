@@ -18,26 +18,27 @@ namespace Proyecto_Final___Wingo
             {
                 if (pers_modalidad == "independiente")
                 {
-                    mensaje_final = $"{columna}:{fila}:{color.R}:{color.G}:{color.B}";
+                    int led_num = columna + fila * 8;
+                    mensaje_final = $"i:{led_num}:{color.R}:{color.G}:{color.B}";
                 }
                 else if (pers_modalidad == "apagado") 
                 {
-                    mensaje_final = $"{pers_modalidad}:null:null:null:null";
+                    mensaje_final = $":{pers_modalidad}";
                 }
                 else
                 {
-                    mensaje_final = $"{pers_modalidad}:{delay}:null:null:null";
+                    mensaje_final = $":{pers_modalidad}:{delay}";
                 }
                 switch (pers_angulo)
                 {
                     case 0:
-                        mensaje_final = $"a:{mensaje_final}";
+                        mensaje_final = $"a{mensaje_final}";
                         break;
                     case 1:
-                        mensaje_final = $"i:{mensaje_final}";
+                        mensaje_final = $"i{mensaje_final}";
                         break;
                     case 2:
-                        mensaje_final = $"d:{mensaje_final}";
+                        mensaje_final = $"d{mensaje_final}";
                         break;
                 }
                 switch (pers_perfil)
@@ -49,7 +50,7 @@ namespace Proyecto_Final___Wingo
                         mensaje_final = $"2{mensaje_final}";
                         break;
                 }
-                mensaje_final = $"p:{mensaje_final}";
+                mensaje_final = $"p{mensaje_final}";
                 return mensaje_final;
             }
             else
@@ -68,7 +69,7 @@ namespace Proyecto_Final___Wingo
                 return mensaje_final;
             }
         }
-        string pathconfig = Proyecto_Final___Wingo.Properties.Settings.Default.pathConfig;
+        string pathconfig = Program.pathConfig;
         public void escribir_datos(int linea_a_modificar, string dato_a_modificar)
         {
             string[] lineas = File.ReadAllLines(pathconfig);
@@ -91,7 +92,7 @@ namespace Proyecto_Final___Wingo
             {
                 for (int y = 0; y < 8; y++)
                 {
-                    color = colores[y,x];
+                    color = colores[x,y];
                     string hex_color = ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B)).Name.Remove(0, 2);
                     string_compuesto = $"{string_compuesto}#{hex_color}";
                 }
@@ -104,7 +105,7 @@ namespace Proyecto_Final___Wingo
         {
             List<Color> rColores = new List<Color>();
             string[] lineas = File.ReadAllLines(pathconfig);
-            string colores = lineas[linea_a_leer-1];
+            string colores = lineas[linea_a_leer - 1];
 
             for (int i = 0; i < colores.Length; i += 7)
             {
@@ -113,11 +114,14 @@ namespace Proyecto_Final___Wingo
                 rColores.Add(color);
             }
             Color[,] rMColores = new Color[mx, my];
-            for (int x = 0; x < mx; x++)
+            if (rColores.Count > 0)
             {
-                for (int y = 0; y < my; y++)
+                for (int x = 0; x < mx; x++)
                 {
-                    rMColores[x, y] = rColores[y + x * 8];
+                    for (int y = 0; y < my; y++)
+                    {
+                        rMColores[y,x] = rColores[y + x * 8];
+                    }
                 }
             }
 

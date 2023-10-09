@@ -21,7 +21,6 @@ namespace Proyecto_Final___Wingo
 
         private void Ajustes_Load(object sender, EventArgs e)
         {
-            Proyecto_Final___Wingo.Properties.Settings.Default.pathConfig= Path.Combine(Application.StartupPath, "config.txt");
             string[] nombres_puertos = SerialPort.GetPortNames();
             if (nombres_puertos.Length == 0)
             {

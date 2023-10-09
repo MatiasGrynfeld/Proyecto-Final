@@ -1,0 +1,20 @@
+COM3
+Personalización_perf1{
+asd
+Independiente
+#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54#1e32eb#1e32eb#1e32eb#1e32eb#3fea54#3fea54#3fea54#3fea54
+A 746
+
+Apagado
+
+}
+
+Personalización_perf2{
+234
+Independiente
+#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25#2ced1a#2ced1a#2ced1a#2ced1a#e80d25#e80d25#e80d25#e80d25
+A 1
+
+Apagado
+
+}

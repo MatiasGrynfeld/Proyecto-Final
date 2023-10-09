@@ -11,12 +11,12 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Proyecto_Final___Wingo
 {
     public partial class Personalización : Form
     {
-        string pathconfig = Path.Combine(Application.StartupPath, "config.txt");
         
         // Variables
 
@@ -25,6 +25,7 @@ namespace Proyecto_Final___Wingo
         int angulo_seleccionado;
         bool Modo_dibujo = false;
         bool Dibujando = false;
+        bool isNaming = false;
         Color color_pincel_inicial;
         Personalización___perfil color_wheel;
         Rectangle[,] ellipses = new Rectangle[8, 8];
@@ -51,7 +52,6 @@ namespace Proyecto_Final___Wingo
         public Personalización()
         {
             InitializeComponent();
-            Proyecto_Final___Wingo.Properties.Settings.Default.pathConfig = pathconfig;
             WindowState = FormWindowState.Maximized;
             //TopMost = true;
             color_wheel = new Personalización___perfil() { TopLevel = false, Dock = DockStyle.Fill };
@@ -184,6 +184,7 @@ namespace Proyecto_Final___Wingo
                 panel_perfil.Visible = false;
                 panel_nom.Location = new Point(x, y);
                 panel_nom.Visible = true;
+                isNaming = true;
                 bt_pincel.Visible = false;
                 bt_mouse.Visible = false;
                 panel_wheel.Visible = false;
@@ -304,6 +305,48 @@ namespace Proyecto_Final___Wingo
             }
         }
 
+        void bt_enviar()
+        {
+            isNaming = false;
+            Funciones funciones = new Funciones();
+            var (validado, nombre) = validar_nombre(txt_nombre.Text);
+            if (validado)
+            {
+                switch (perfil_seleccionado)
+                {
+                    case 1:
+                        nombre_perfil_1 = nombre;
+                        bt_perfil_1.Text = nombre;
+                        funciones.escribir_datos(linea_nom_perf1, nombre);
+                        if (validado_seguido || cambia_nombre)
+                        {
+                            validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
+                        }
+                        cambia_nombre = false;
+                        return;
+                    case 2:
+                        nombre_perfil_2 = nombre;
+                        bt_perfil_2.Text = nombre;
+                        funciones.escribir_datos(linea_nom_perf2, nombre);
+                        if (validado_seguido || cambia_nombre)
+                        {
+                            validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
+                        }
+                        cambia_nombre = false;
+                        return;
+
+                }
+            }
+        }
+
+        void enter(bool tecla_enter)
+        {
+            if (tecla_enter && isNaming)
+            {
+                bt_enviar();
+            }
+        }
+
         //Perfil 1
 
         string nombre_perfil_1 = "";
@@ -360,38 +403,11 @@ namespace Proyecto_Final___Wingo
 
         private void bt_enviar_nombre_Click(object sender, EventArgs e)
         {
-            Funciones funciones = new Funciones();
-            var (validado, nombre) = validar_nombre(txt_nombre.Text);
-            if (validado)
-            {
-                switch (perfil_seleccionado)
-                {
-                    case 1:
-                        nombre_perfil_1 = nombre;
-                        bt_perfil_1.Text = nombre;
-                        funciones.escribir_datos(linea_nom_perf1, nombre);
-                        if (validado_seguido || cambia_nombre)
-                        {
-                            validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
-                        }
-                        cambia_nombre = false;
-                        return;
-                    case 2:
-                        nombre_perfil_2 = nombre;
-                        bt_perfil_2.Text = nombre;
-                        funciones.escribir_datos(linea_nom_perf2, nombre);
-                        if (validado_seguido || cambia_nombre)
-                        {
-                            validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
-                        }
-                        cambia_nombre = false;
-                        return;
-
-                }
-            }
+            bt_enviar();
         }
         private void bt_cambiar_nombre_Click_1(object sender, EventArgs e)
         {
+            isNaming = true;
             panel_perfil.Visible = false;
             panel_wheel.Visible = false;
             bt_mouse.Visible = false;
@@ -415,6 +431,10 @@ namespace Proyecto_Final___Wingo
             Manejo manejo = new Manejo();
             manejo.Show();
             this.Close();
+        }
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            enter(e.KeyChar == (char)Keys.Enter);
         }
 
         //Eventos modos
@@ -1030,6 +1050,7 @@ namespace Proyecto_Final___Wingo
             mensajes.Add(mensaje);
             return mensajes;
         }
+
         private void bt_enviar_configuraciones_Click(object sender, EventArgs e)
         {
             Funciones funciones = new Funciones();
@@ -1058,40 +1079,47 @@ namespace Proyecto_Final___Wingo
                 }
             }
             string[] port_names= SerialPort.GetPortNames();
-            bool portIncluded = false;
-            for (int i=0; i < port_names.Length; i++)
-            {
-                if (port_names[i]== funciones.leer_datos(1))
-                {
-                    portIncluded = true;
-                    break;
-                }
-            }
-            if (portIncluded)
+            if (port_names.Contains(funciones.leer_datos(1)))
             {
                 SerialPort arduino = new SerialPort();
                 arduino.PortName = funciones.leer_datos(1);
-                arduino.BaudRate = 9600;
+                arduino.BaudRate = 115200;
+                arduino.Parity=Parity.None;
                 try
                 {
-                    //List<string>[] todos_msgs = new List<string>[6] { msgs_angulo_arr1, msgs_angulo_arr2, msgs_angulo_izq1, msgs_angulo_izq2, msgs_angulo_der1, msgs_angulo_der2 };
+                    List<string>[] todos_msgs = new List<string>[6] { msgs_angulo_arr1, msgs_angulo_arr2, msgs_angulo_izq1, msgs_angulo_izq2, msgs_angulo_der1, msgs_angulo_der2 };
                     arduino.Open();
-                    //foreach (List<string> parte in todos_msgs)
+                    ProgressBar progressBar = new ProgressBar();
+                    progressBar.cant_msgs = msgs_angulo_arr1.Count + msgs_angulo_arr2.Count + msgs_angulo_der1.Count + msgs_angulo_der2.Count + msgs_angulo_izq1.Count + msgs_angulo_izq1.Count + msgs_angulo_izq2.Count;
+                    progressBar.Show();
+                    int num_mensaje = 0;
+                    foreach (List<string> parte in todos_msgs)
                     {
-                        foreach (string mensaje in msgs_angulo_arr1)
+                        foreach (string mensaje in parte)
                         {
                             arduino.WriteLine(mensaje + '\n');
+                            if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
+                            {
+                                progressBar.progressBar_subiendo.Value++;
+                                if (progressBar.progressBar_subiendo.Value > 99)
+                                {
+                                    progressBar.progressBar_subiendo.Value = 100;
+                                }
+                            }
+                            num_mensaje++;
+                            progressBar.lbl_progress.Text = $"Cargando configuraciones: {progressBar.progressBar_subiendo.Value}%";
                             Thread.Sleep(100);
                         }
                     }
-                    arduino.WriteLine("end" + '\n');
+                    progressBar.Close();
+                    arduino.WriteLine("end");
                     arduino.Close();
                     MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error", "Error");
-                    throw;
+                    MessageBox.Show($"Error, vuelva a intentarlo. {ex.Message}", "Error");
+                    arduino.Close();
                 }
             }
             else
