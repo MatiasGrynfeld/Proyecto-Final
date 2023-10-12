@@ -23,6 +23,11 @@ namespace Proyecto_Final___Wingo
         bool nuevo_necesitar_cant;
         bool validado_seguido = false;
         bool cambia_nombre = false;
+
+        int nomR1 = 23;
+        int nomR2 = -1;
+        int nomR3 = -1;
+
         // Funciones
 
         bool comprobar_si_es_num(string texto_a_analizar)
@@ -163,9 +168,32 @@ namespace Proyecto_Final___Wingo
         }
         private void Manejo_Load(object sender, EventArgs e)
         {
+            Funciones funciones = new Funciones();
             gb_nom.Visible = false;
             gb_pasos.Visible = false;
             gb_modificar_paso.Visible = false;
+            (paso_recor_1, cant_paso_recor_1) = funciones.leer_recor(nomR1);
+            if (paso_recor_1.Count == 0)
+            {
+                nomR2 = nomR1 + 1 + 3;
+            }
+            else
+            {
+                nomR2 = nomR1 + paso_recor_1.Count + 3;
+            }
+            (paso_recor_2, cant_paso_recor_2) = funciones.leer_recor(nomR2);
+            if (paso_recor_2.Count == 0)
+            {
+                nomR3 = nomR2 + 1 + 3;
+            }
+            else
+            {
+                nomR3 = nomR2 + paso_recor_2.Count + 3;
+            }
+            (paso_recor_3, cant_paso_recor_3) = funciones.leer_recor(nomR3);
+            nombre_recor1 = funciones.leer_datos(nomR1);
+            nombre_recor2 = funciones.leer_datos(nomR2);
+            nombre_recor3 = funciones.leer_datos(nomR3);
         }
 
         private void bt_volver_Click(object sender, EventArgs e)
@@ -329,6 +357,7 @@ namespace Proyecto_Final___Wingo
 
         private void bt_enviar_paso_recor1_Click(object sender, EventArgs e)
         {
+            Funciones funciones = new Funciones();
             var (verificado, tipo_paso, cant_paso, paso_hecho) = enviar_y_verificar_paso(comb_tipo_paso.Text, txt_cant_paso.Text, nececitar_cant);
             if (verificado)
             {
@@ -349,6 +378,7 @@ namespace Proyecto_Final___Wingo
                         txt_cant_paso.Text = "";
                         comb_pasos_hechos_recor1.Visible = true;
                         lbl_pasos_hechos.Visible = true;
+                        funciones.escribir_recor(nomR1 + 1, paso_recor_1,cant_paso_recor_1);
                         return;
                     case 2:
                         paso_recor_2.Add(tipo_paso);
@@ -365,6 +395,7 @@ namespace Proyecto_Final___Wingo
                         txt_cant_paso.Text = "";
                         comb_pasos_hechos_recor2.Visible = true;
                         lbl_pasos_hechos.Visible = true;
+                        funciones.escribir_recor(nomR2 + 1, paso_recor_2, cant_paso_recor_2);
                         return;
                     case 3:
                         paso_recor_3.Add(tipo_paso);
@@ -381,6 +412,7 @@ namespace Proyecto_Final___Wingo
                         txt_cant_paso.Text = "";
                         comb_pasos_hechos_recor3.Visible = true;
                         lbl_pasos_hechos.Visible = true;
+                        funciones.escribir_recor(nomR3 + 1, paso_recor_3, cant_paso_recor_3);
                         return;
                 }
 
@@ -506,6 +538,7 @@ namespace Proyecto_Final___Wingo
             bt_modificar_paso.Visible = true;
             bt_eliminar_paso.Visible = true;
         }
+
         //Enviar
 
         private void bt_enviar_Click(object sender, EventArgs e)

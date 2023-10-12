@@ -40,6 +40,7 @@ namespace Proyecto_Final___Wingo
             this.gb_nom = new System.Windows.Forms.GroupBox();
             this.bt_enviar_nom = new System.Windows.Forms.Button();
             this.gb_pasos = new System.Windows.Forms.GroupBox();
+            this.bt_eliminar_paso = new System.Windows.Forms.Button();
             this.gb_modificar_paso = new System.Windows.Forms.GroupBox();
             this.comb_nuevo_tipo_paso = new System.Windows.Forms.ComboBox();
             this.txt_nuevo_cant_paso = new System.Windows.Forms.TextBox();
@@ -62,7 +63,8 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.serialPortArduino = new System.IO.Ports.SerialPort(this.components);
             this.bt_personalizacion = new System.Windows.Forms.Button();
-            this.bt_eliminar_paso = new System.Windows.Forms.Button();
+            this.txt_delay_carga = new System.Windows.Forms.TextBox();
+            this.lbl_delay_carga = new System.Windows.Forms.Label();
             this.gb_nom.SuspendLayout();
             this.gb_pasos.SuspendLayout();
             this.gb_modificar_paso.SuspendLayout();
@@ -156,6 +158,8 @@ namespace Proyecto_Final___Wingo
             // 
             // gb_pasos
             // 
+            this.gb_pasos.Controls.Add(this.lbl_delay_carga);
+            this.gb_pasos.Controls.Add(this.txt_delay_carga);
             this.gb_pasos.Controls.Add(this.bt_eliminar_paso);
             this.gb_pasos.Controls.Add(this.gb_modificar_paso);
             this.gb_pasos.Controls.Add(this.bt_modificar_paso);
@@ -177,6 +181,16 @@ namespace Proyecto_Final___Wingo
             this.gb_pasos.Size = new System.Drawing.Size(471, 374);
             this.gb_pasos.TabIndex = 9;
             this.gb_pasos.TabStop = false;
+            // 
+            // bt_eliminar_paso
+            // 
+            this.bt_eliminar_paso.Location = new System.Drawing.Point(258, 165);
+            this.bt_eliminar_paso.Name = "bt_eliminar_paso";
+            this.bt_eliminar_paso.Size = new System.Drawing.Size(92, 23);
+            this.bt_eliminar_paso.TabIndex = 16;
+            this.bt_eliminar_paso.Text = "Eliminar paso";
+            this.bt_eliminar_paso.UseVisualStyleBackColor = true;
+            this.bt_eliminar_paso.Click += new System.EventHandler(this.bt_eliminar_paso_Click);
             // 
             // gb_modificar_paso
             // 
@@ -390,15 +404,21 @@ namespace Proyecto_Final___Wingo
             this.bt_personalizacion.UseVisualStyleBackColor = true;
             this.bt_personalizacion.Click += new System.EventHandler(this.bt_personalizacion_Click);
             // 
-            // bt_eliminar_paso
+            // txt_delay_carga
             // 
-            this.bt_eliminar_paso.Location = new System.Drawing.Point(258, 165);
-            this.bt_eliminar_paso.Name = "bt_eliminar_paso";
-            this.bt_eliminar_paso.Size = new System.Drawing.Size(92, 23);
-            this.bt_eliminar_paso.TabIndex = 16;
-            this.bt_eliminar_paso.Text = "Eliminar paso";
-            this.bt_eliminar_paso.UseVisualStyleBackColor = true;
-            this.bt_eliminar_paso.Click += new System.EventHandler(this.bt_eliminar_paso_Click);
+            this.txt_delay_carga.Location = new System.Drawing.Point(220, 336);
+            this.txt_delay_carga.Name = "txt_delay_carga";
+            this.txt_delay_carga.Size = new System.Drawing.Size(100, 20);
+            this.txt_delay_carga.TabIndex = 17;
+            // 
+            // lbl_delay_carga
+            // 
+            this.lbl_delay_carga.AutoSize = true;
+            this.lbl_delay_carga.Location = new System.Drawing.Point(40, 330);
+            this.lbl_delay_carga.Name = "lbl_delay_carga";
+            this.lbl_delay_carga.Size = new System.Drawing.Size(150, 26);
+            this.lbl_delay_carga.TabIndex = 18;
+            this.lbl_delay_carga.Text = "Seleccionar el delay de carga \r\ndespués de subir los mensajes";
             // 
             // Manejo
             // 
@@ -462,5 +482,7 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_nuevo_tipo_paso;
         private System.Windows.Forms.Button bt_personalizacion;
         private System.Windows.Forms.Button bt_eliminar_paso;
+        private System.Windows.Forms.Label lbl_delay_carga;
+        private System.Windows.Forms.TextBox txt_delay_carga;
     }
 }

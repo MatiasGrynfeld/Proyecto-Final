@@ -12,34 +12,43 @@ namespace Proyecto_Final___Wingo
     {
         public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int fila, int columna, int man_perf, int man_pasonum, string man_tipo_paso, int man_cant_paso)
         {
-            int num_modalidad = -100;
             string mensaje_final = null;
             if (tipo_modalidad == "personalizacion")
             {
                 if (pers_modalidad == "independiente")
                 {
-                    int led_num = columna + fila * 8;
-                    mensaje_final = $"i:{led_num}:{color.R}:{color.G}:{color.B}";
-                }
-                else if (pers_modalidad == "apagado") 
-                {
-                    mensaje_final = $":{pers_modalidad}";
+                    int led_num = columna + fila * 8 + 64*pers_angulo;
+                    if (color.R != 0 && color.G != 0 && color.B != 0)
+                    {
+                        mensaje_final = $":{led_num}:{color.R}:{color.G}:{color.B}";
+                    }
+                    else
+                    {
+                        return "::";
+                    }
                 }
                 else
                 {
-                    mensaje_final = $":{pers_modalidad}:{delay}";
-                }
-                switch (pers_angulo)
-                {
-                    case 0:
-                        mensaje_final = $"a{mensaje_final}";
-                        break;
-                    case 1:
-                        mensaje_final = $"i{mensaje_final}";
-                        break;
-                    case 2:
-                        mensaje_final = $"d{mensaje_final}";
-                        break;
+                    if (pers_modalidad == "apagado")
+                    {
+                        mensaje_final = $"{pers_modalidad}";
+                    }
+                    else
+                    {
+                        mensaje_final = $"{pers_modalidad}:{delay}";
+                    }
+                    switch (pers_angulo)
+                    {
+                        case 0:
+                            mensaje_final = $"s:0:{mensaje_final}";
+                            break;
+                        case 1:
+                            mensaje_final = $"s:1:{mensaje_final}";
+                            break;
+                        case 2:
+                            mensaje_final = $"s:2:{mensaje_final}";
+                            break;
+                    }
                 }
                 switch (pers_perfil)
                 {
@@ -85,19 +94,20 @@ namespace Proyecto_Final___Wingo
 
         public void escribir_colores(int linea_a_modificar, Color[,] colores)
         {
-            string string_compuesto="";
+            string string_compuesto = "";
             string[] lineas = File.ReadAllLines(pathconfig);
-            Color color;
+
             for (int x = 0; x < 8; x++)
             {
                 for (int y = 0; y < 8; y++)
                 {
-                    color = colores[x,y];
-                    string hex_color = ColorTranslator.FromHtml(String.Format("#{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B)).Name.Remove(0, 2);
-                    string_compuesto = $"{string_compuesto}#{hex_color}";
+                    Color color = colores[y, x];
+                    string rgb_color = $"{color.R}:{color.G}:{color.B}";
+                    string_compuesto = $"{string_compuesto}{rgb_color},";
                 }
             }
-            lineas[linea_a_modificar - 1] = string_compuesto;
+
+            lineas[linea_a_modificar - 1] = string_compuesto.TrimEnd(',');
             File.WriteAllLines(pathconfig, lineas);
         }
 
@@ -106,12 +116,16 @@ namespace Proyecto_Final___Wingo
             List<Color> rColores = new List<Color>();
             string[] lineas = File.ReadAllLines(pathconfig);
             string colores = lineas[linea_a_leer - 1];
+            string[] rgbColors = colores.Split(',');
 
-            for (int i = 0; i < colores.Length; i += 7)
+            for (int i = 0; i < rgbColors.Length; i++)
             {
-                string colorHex = colores.Substring(i, 7);
-                Color color = ColorTranslator.FromHtml(colorHex);
-                rColores.Add(color);
+                string[] rgb = rgbColors[i].Split(':');
+                if (rgb.Length == 3 && int.TryParse(rgb[0], out int r) && int.TryParse(rgb[1], out int g) && int.TryParse(rgb[2], out int b))
+                {
+                    Color color = Color.FromArgb(r, g, b);
+                    rColores.Add(color);
+                }
             }
             Color[,] rMColores = new Color[mx, my];
             if (rColores.Count > 0)
@@ -120,14 +134,13 @@ namespace Proyecto_Final___Wingo
                 {
                     for (int y = 0; y < my; y++)
                     {
-                        rMColores[y,x] = rColores[y + x * 8];
+                        rMColores[y, x] = rColores[y + x * 8];
                     }
                 }
             }
 
-            return (rColores,rMColores);
+            return (rColores, rMColores);
         }
-
         public string[] leer_valores(int linea_a_leer)
         {
             string[] lineas = File.ReadAllLines(pathconfig);
@@ -149,5 +162,34 @@ namespace Proyecto_Final___Wingo
             File.WriteAllLines(pathconfig, lineas);
         }
 
+        public (List<string>, List<int>) leer_recor(int linea_a_leer)
+        {
+            linea_a_leer--;
+            string[] lineas = File.ReadAllLines(pathconfig);
+            int linea_index = linea_a_leer;
+            List<string> rTipo = new List<string>();
+            List<int> rCant = new List<int>();
+
+            while (lineas[linea_index]!="}")
+            {
+                if (lineas[linea_index] != "")
+                {
+                    string[] partes = lineas[linea_a_leer].Split(' ');
+                    rTipo.Add(partes[0]);
+                    rCant.Add(Convert.ToInt32(partes[1]));
+                }
+                linea_index++;
+            }
+            return (rTipo, rCant);
+        }
+        public void escribir_recor(int linea_a_escribir, List<string> tipo, List<int> cant)
+        {
+            List<string> lineas= File.ReadAllLines(pathconfig).ToList();
+            for (int i = 0; i < tipo.Count; i++)
+            {
+                lineas.Insert(linea_a_escribir-1+i, $"{tipo[i]} {cant[i]}");
+            }
+            File.WriteAllLines(pathconfig, lineas);
+        }
     }
 }

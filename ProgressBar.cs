@@ -21,7 +21,7 @@ namespace Proyecto_Final___Wingo
 
         private void ProgressBar_Load(object sender, EventArgs e)
         {
-            progressBar_subiendo.Value= 2;
+            progressBar_subiendo.Value= 0;
             onePercent = cant_msgs / 100.0f;
         }
     }
