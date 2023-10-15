@@ -66,6 +66,7 @@ namespace Proyecto_Final___Wingo
             this.bt_enviar_configuraciones = new System.Windows.Forms.Button();
             this.serialPort_arduino = new System.IO.Ports.SerialPort(this.components);
             this.bt_manejo = new System.Windows.Forms.Button();
+            this.bt_reset_colores = new System.Windows.Forms.Button();
             this.panel_nom.SuspendLayout();
             this.panel_perfil.SuspendLayout();
             this.panel_derecha.SuspendLayout();
@@ -182,6 +183,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_perfil
             // 
+            this.panel_perfil.Controls.Add(this.bt_reset_colores);
             this.panel_perfil.Controls.Add(this.panel_derecha);
             this.panel_perfil.Controls.Add(this.panel_izquierda);
             this.panel_perfil.Controls.Add(this.comb_angulo);
@@ -456,6 +458,16 @@ namespace Proyecto_Final___Wingo
             this.bt_manejo.UseVisualStyleBackColor = true;
             this.bt_manejo.Click += new System.EventHandler(this.bt_manejo_Click);
             // 
+            // bt_reset_colores
+            // 
+            this.bt_reset_colores.Location = new System.Drawing.Point(801, 15);
+            this.bt_reset_colores.Name = "bt_reset_colores";
+            this.bt_reset_colores.Size = new System.Drawing.Size(73, 34);
+            this.bt_reset_colores.TabIndex = 7;
+            this.bt_reset_colores.Text = "Resetear colores";
+            this.bt_reset_colores.UseVisualStyleBackColor = true;
+            this.bt_reset_colores.Click += new System.EventHandler(this.bt_reset_colores_Click);
+            // 
             // Personalización
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,5 +543,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_med_arr;
         private System.Windows.Forms.Label lbl_rap_arr;
         private System.Windows.Forms.Button bt_manejo;
+        private System.Windows.Forms.Button bt_reset_colores;
     }
 }

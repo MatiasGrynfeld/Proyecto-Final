@@ -32,6 +32,7 @@ namespace Proyecto_Final___Wingo
         Pen pen = new Pen(Color.Black);
         bool validado_seguido = false;
         bool cambia_nombre = false;
+        bool reseteando = false;
         int linea_nom_perf1 = 3;
         int linea_nom_perf2 = 13;
         int mod_1a = 4;
@@ -84,6 +85,7 @@ namespace Proyecto_Final___Wingo
         }
         private void Personalización_Load(object sender, EventArgs e)
         {
+            bt_reset_colores.Visible= false;
             panel_nom.Visible = false;
             panel_perfil.Visible = false;
             panel_wheel.Visible = false;
@@ -500,6 +502,7 @@ namespace Proyecto_Final___Wingo
             Modo_dibujo = false;
             bt_mouse.Visible = false;
             bt_pincel.Visible = false;
+            bt_reset_colores.Visible = false;
         }
 
         void comb_angulo_change()
@@ -513,6 +516,7 @@ namespace Proyecto_Final___Wingo
             bt_mouse.Visible = false;
             bt_pincel.Visible = false;
             bt_mouse.Enabled = false;
+            bt_reset_colores.Visible=false;
             bt_pincel.Enabled = true;
             Modo_dibujo = false;
             angulo_seleccionado = comb_angulo.SelectedIndex;
@@ -584,19 +588,50 @@ namespace Proyecto_Final___Wingo
         }
 
         //Funciones paneles
-        Color[,] dibujar_colorear_ellipses(Funciones funciones, int linea_leer, Graphics graph, string modo_luz, int x, int y)
+        private void bt_reset_colores_Click(object sender, EventArgs e)
         {
-            var (colores_ellipses, rColores)=funciones.leer_colores(linea_leer,x,y);
+            reseteando = true;
+            switch(angulo_seleccionado)
+            {
+                case 0:
+                    panel_arriba.Invalidate();
+                    break;
+                case 1:
+                    panel_izquierda.Invalidate();
+                    break;
+                case 2:
+                    panel_derecha.Invalidate();
+                    break;
+            }
+        }
+        Color[,] dibujar_colorear_ellipses(Funciones funciones, int linea_leer, Graphics graph, int x, int y)
+        {
+            var (colores_ellipses, rColores) = funciones.leer_colores(linea_leer, x, y);
             int color_index = 0;
             foreach (Rectangle rectangle in ellipses)
             {
                 graph.DrawEllipse(pen, rectangle);
-                if (colores_ellipses.Count > 0)
+                if (colores_ellipses.Count > 0 && !reseteando)
                 {
                     SolidBrush color = new SolidBrush(colores_ellipses[color_index]);
-                    graph.FillEllipse(color, rectangle);
+                    if (color.Color != Color.FromArgb(0, 0, 0))
+                    {
+                        graph.FillEllipse(color, rectangle);
+                    }
                 }
                 color_index++;
+            }
+            if (reseteando)
+            {
+                reseteando = false;
+                for (int i = 0; i < x; i++)
+                {
+                    for (int j = 0; j < y; j++)
+                    {
+                        rColores[i,j] = Color.FromArgb(0, 0, 0);
+                    }
+                }
+                funciones.escribir_colores(linea_leer, rColores);
             }
             return rColores;
         }
@@ -615,13 +650,13 @@ namespace Proyecto_Final___Wingo
                     switch (angulo_seleccionado)
                     {
                         case 0:
-                            colores_arriba_perfil1 = dibujar_colorear_ellipses(funciones, lin_1a, graph, modo_de_luz,columnas_arr,filas_arr);
+                            colores_arriba_perfil1 = dibujar_colorear_ellipses(funciones, lin_1a, graph,columnas_arr,filas_arr);
                             break;
                         case 1:
-                            colores_izq_perfil1=dibujar_colorear_ellipses(funciones, lin_1i, graph, modo_de_luz, columnas_izq, filas_izq);
+                            colores_izq_perfil1=dibujar_colorear_ellipses(funciones, lin_1i, graph, columnas_izq, filas_izq);
                             break;
                         case 2:
-                            colores_der_perfil1=dibujar_colorear_ellipses(funciones, lin_1d, graph, modo_de_luz, columnas_der, filas_der);
+                            colores_der_perfil1=dibujar_colorear_ellipses(funciones, lin_1d, graph, columnas_der, filas_der);
                             break;
                     }
                 }
@@ -630,16 +665,17 @@ namespace Proyecto_Final___Wingo
                     switch (angulo_seleccionado)
                     {
                         case 0:
-                            colores_arriba_perfil2=dibujar_colorear_ellipses(funciones, lin_2a, graph, modo_de_luz, columnas_arr, filas_arr);
+                            colores_arriba_perfil2=dibujar_colorear_ellipses(funciones, lin_2a, graph, columnas_arr, filas_arr);
                             break;
                         case 1:
-                            colores_izq_perfil2=dibujar_colorear_ellipses(funciones, lin_2i, graph, modo_de_luz, columnas_izq, filas_izq);
+                            colores_izq_perfil2=dibujar_colorear_ellipses(funciones, lin_2i, graph, columnas_izq, filas_izq);
                             break;
                         case 2:
-                            colores_der_perfil2=dibujar_colorear_ellipses(funciones, lin_2d, graph, modo_de_luz, columnas_der, filas_der);
+                            colores_der_perfil2=dibujar_colorear_ellipses(funciones, lin_2d, graph, columnas_der, filas_der);
                             break;
                     }
                 }
+                bt_reset_colores.Visible = true;
             }
             else if (modo_de_luz=="Apagado"){
                 asignar_valores(modo_de_luz, -1, -1, a, -1);
@@ -1157,7 +1193,6 @@ namespace Proyecto_Final___Wingo
             }
         }
 
-        //Si esta el rgb en 000 que no exista el mensjae
         //Reset de colores en independiente
         //Diseño
     }
