@@ -164,30 +164,52 @@ namespace Proyecto_Final___Wingo
 
         public (List<string>, List<int>) leer_recor(int linea_a_leer)
         {
-            linea_a_leer--;
             string[] lineas = File.ReadAllLines(pathconfig);
-            int linea_index = linea_a_leer;
             List<string> rTipo = new List<string>();
             List<int> rCant = new List<int>();
-
-            while (lineas[linea_index]!="}")
+            if (lineas[linea_a_leer - 1] != "")
             {
-                if (lineas[linea_index] != "")
+                string[] partes = lineas[linea_a_leer - 1].Split('-');
+                foreach (string paso in partes)
                 {
-                    string[] partes = lineas[linea_a_leer].Split(' ');
-                    rTipo.Add(partes[0]);
-                    rCant.Add(Convert.ToInt32(partes[1]));
+                    string[] tipoCant = paso.Split(' ');
+                    string tipo = tipoCant[0];
+                    if (tipo == "GI")
+                    {
+                        tipo = "Girar hacia la izquierda";
+                    }
+                    else if(tipo == "GD")
+                    {
+                        tipo = "Girar hacia la derecha";
+                    }
+                    rTipo.Add(tipo);
+                    rCant.Add(Convert.ToInt32(tipoCant[1]));
                 }
-                linea_index++;
             }
             return (rTipo, rCant);
         }
         public void escribir_recor(int linea_a_escribir, List<string> tipo, List<int> cant)
         {
             List<string> lineas= File.ReadAllLines(pathconfig).ToList();
-            for (int i = 0; i < tipo.Count; i++)
+            for (int i=0;i<tipo.Count; i++)
             {
-                lineas.Insert(linea_a_escribir-1+i, $"{tipo[i]} {cant[i]}");
+                string tipo_paso = tipo[i];
+                if (tipo_paso == "Girar hacia la izquierda")
+                {
+                    tipo_paso = "GI";
+                }
+                else if (tipo_paso == "Girar hacia la derecha")
+                {
+                    tipo_paso = "GD";
+                }
+                if (i == 0)
+                {
+                    lineas[linea_a_escribir - 1] = $"{tipo_paso} {cant[i]}";
+                }
+                else
+                {
+                    lineas[linea_a_escribir - 1] = $"{lineas[linea_a_escribir - 1]}-{tipo_paso} {cant[i]}";
+                }
             }
             File.WriteAllLines(pathconfig, lineas);
         }

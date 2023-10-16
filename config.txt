@@ -20,12 +20,16 @@ Independiente
 }
 
 Recorrido 1{
-
+asd
+Esperar 1
 }
-Recorrido 2{
 
+Recorrido 2{
+soy un recorrido
+Avanzar 12
 }
 
 Recorrido 3{
-
+u
+Avanzar 12
 }
