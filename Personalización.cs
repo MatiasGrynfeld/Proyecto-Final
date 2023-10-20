@@ -20,7 +20,7 @@ namespace Proyecto_Final___Wingo
 
         // Variables
 
-        int x = 60;
+        int x = 151;
         int perfil_seleccionado;
         int angulo_seleccionado;
         bool Modo_dibujo = false;
@@ -53,8 +53,7 @@ namespace Proyecto_Final___Wingo
         public Personalización()
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
-            //TopMost = true;
+            lbl_pers.Font = Program.titles;
             color_wheel = new Personalización___perfil() { TopLevel = false, Dock = DockStyle.Fill };
             Funciones funciones = new Funciones();
             nombre_perfil_1 = funciones.leer_datos(linea_nom_perf1);
@@ -85,14 +84,16 @@ namespace Proyecto_Final___Wingo
         }
         private void Personalización_Load(object sender, EventArgs e)
         {
+            Point panel_location = new System.Drawing.Point(0, 67);
             bt_reset_colores.Visible = false;
             panel_nom.Visible = false;
             panel_perfil.Visible = false;
             panel_wheel.Visible = false;
             bt_pincel.Visible = false;
             bt_mouse.Visible = false;
-            panel_derecha.Location = panel_arriba.Location;
-            panel_izquierda.Location = panel_arriba.Location;
+            panel_arriba.Location = panel_location;
+            panel_izquierda.Location = panel_location;
+            panel_derecha.Location = panel_location;
             bt_enviar_configuraciones.Visible = false;
             int lastAngulo = Proyecto_Final___Wingo.Properties.Settings.Default.lastAngulo;
             int lastPerf = Proyecto_Final___Wingo.Properties.Settings.Default.lastPerf;
@@ -352,7 +353,7 @@ namespace Proyecto_Final___Wingo
         //Perfil 1
 
         string nombre_perfil_1 = "";
-        int y1 = 88;
+        int y1 = 102;
         string[] modalidad_angulos_perfil1 = new string[3];
         string[] values_angulo_perfil1 = new string[3];
         Color[,] colores_arriba_perfil1 = new Color[8, 8];
@@ -381,7 +382,7 @@ namespace Proyecto_Final___Wingo
         //Perfil 2
 
         string nombre_perfil_2 = "";
-        int y2 = 264;
+        int y2 = 173;
         string[] modalidad_angulos_perfil2 = new string[3];
         string[] values_angulo_perfil2 = new string[3];
         Color[,] colores_arriba_perfil2 = new Color[8, 8];
@@ -1062,7 +1063,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila, columna], fila, columna, -1, -1, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila, columna], fila, columna, "", -1);
                                 if (comprobar_msg(mensaje))
                                 {
                                     mensajes.Add(mensaje);
@@ -1075,7 +1076,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila, columna], fila, columna, -1, -1, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila, columna], fila, columna, "", -1);
                                 if (comprobar_msg(mensaje))
                                 {
                                     mensajes.Add(mensaje);
@@ -1090,14 +1091,14 @@ namespace Proyecto_Final___Wingo
                 switch (perfil)
                 {
                     case 1:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White, -1, -1, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White, -1, -1, "", -1);
                         if (comprobar_msg(mensaje))
                         {
                             mensajes.Add(mensaje);
                         }
                         return mensajes;
                     case 2:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White, -1, -1, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White, -1, -1, "", -1);
                         if (comprobar_msg(mensaje))
                         {
                             mensajes.Add(mensaje);

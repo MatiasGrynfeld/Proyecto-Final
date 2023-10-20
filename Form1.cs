@@ -42,5 +42,10 @@ namespace Proyecto_Final___Wingo
             ajustes.Show();
             this.Hide();
         }
+
+        private void Pantalla_principal_Load(object sender, EventArgs e)
+        {
+            label1.Font = Program.titles;
+        }
     }
 }

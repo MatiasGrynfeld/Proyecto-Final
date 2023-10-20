@@ -10,22 +10,25 @@ namespace Proyecto_Final___Wingo
 {
     class Funciones
     {
-        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int fila, int columna, int man_perf, int man_pasonum, string man_tipo_paso, int man_cant_paso)
+        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int fila, int columna, string man_tipo_paso, int man_cant_paso)
         {
             string mensaje_final = null;
+            string perf="0";
+            switch (pers_perfil)
+            {
+                case 1:
+                    perf = "1";
+                    break;
+                case 2:
+                    perf = "2";
+                    break;
+            }
             if (tipo_modalidad == "personalizacion")
             {
                 if (pers_modalidad == "independiente")
                 {
                     int led_num = columna + fila * 8 + 64*pers_angulo;
-                    if (color.R != 0 && color.G != 0 && color.B != 0)
-                    {
-                        mensaje_final = $":{led_num}:{color.R}:{color.G}:{color.B}";
-                    }
-                    else
-                    {
-                        return "::";
-                    }
+                    mensaje_final = $":{led_num}:{color.R}:{color.G}:{color.B}";
                 }
                 else
                 {
@@ -40,13 +43,13 @@ namespace Proyecto_Final___Wingo
                     switch (pers_angulo)
                     {
                         case 0:
-                            mensaje_final = $"s:0:{mensaje_final}";
+                            mensaje_final = $"s:{perf}:0:{mensaje_final}";
                             break;
                         case 1:
-                            mensaje_final = $"s:1:{mensaje_final}";
+                            mensaje_final = $"s:{perf}:1:{mensaje_final}";
                             break;
                         case 2:
-                            mensaje_final = $"s:2:{mensaje_final}";
+                            mensaje_final = $"s:{perf}:2:{mensaje_final}";
                             break;
                     }
                 }
@@ -64,17 +67,31 @@ namespace Proyecto_Final___Wingo
             }
             else
             {
-                mensaje_final = $"{man_pasonum}:{man_tipo_paso}:{man_cant_paso}:null:null";
-                switch (man_perf)
+                int pasotipo = -1;
+                if (man_tipo_paso == "Avanzar")
                 {
-                    case 1:
-                        mensaje_final = $"1:{mensaje_final}"; break;
-                    case 2:
-                        mensaje_final = $"2:{mensaje_final}"; break;
-                    case 3:
-                        mensaje_final = $"3:{mensaje_final}"; break;
+                    pasotipo = 0;
+                    man_cant_paso *= 1000;
                 }
-                mensaje_final = $"m:{mensaje_final}";
+                else if(man_tipo_paso == "Retroceder")
+                {
+                    pasotipo = 1;
+                    man_cant_paso *= 1000;
+                }
+                else if (man_tipo_paso == "Girar hacia la izquierda")
+                {
+                    pasotipo = 2;
+                }
+                else if (man_tipo_paso == "Girar hacia la derecha")
+                {
+                    pasotipo = 3;
+                }
+                else if (man_tipo_paso == "Esperar")
+                {
+                    pasotipo = 4;
+                    man_cant_paso *= 1000;
+                }
+                mensaje_final = $"{pasotipo}:{man_cant_paso}";
                 return mensaje_final;
             }
         }
@@ -212,6 +229,20 @@ namespace Proyecto_Final___Wingo
                 }
             }
             File.WriteAllLines(pathconfig, lineas);
+        }
+
+        public string[] reset(int split_index)
+        {
+            string[] lineas = File.ReadAllLines(pathconfig);
+            string[] newTxt = lineas.Skip(split_index).ToArray();
+            return newTxt;
+        }
+
+        public void escribir_vacio(string[] reemplazo, int split_index)
+        {
+            string[] lineas = File.ReadAllLines(pathconfig);
+            string[] array2 = lineas.Skip(split_index).ToArray();
+            File.WriteAllLines(pathconfig, reemplazo.Concat(array2));
         }
     }
 }

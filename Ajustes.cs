@@ -74,5 +74,16 @@ namespace Proyecto_Final___Wingo
         {
             cerrar(false,true);
         }
+
+        private void bt_reset_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro que queres resetear las configuraciones?", "Aviso", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Funciones funciones = new Funciones();
+                string[] emptyTxt=funciones.reset(35);
+                funciones.escribir_vacio(emptyTxt, 35);
+            }
+        }
     }
 }

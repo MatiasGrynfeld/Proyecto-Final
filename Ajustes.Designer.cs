@@ -34,6 +34,7 @@ namespace Proyecto_Final___Wingo
             this.Comb_puertos = new System.Windows.Forms.ComboBox();
             this.bt_aceptar = new System.Windows.Forms.Button();
             this.er_puerto = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bt_reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.er_puerto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +69,22 @@ namespace Proyecto_Final___Wingo
             // 
             this.er_puerto.ContainerControl = this;
             // 
+            // bt_reset
+            // 
+            this.bt_reset.Location = new System.Drawing.Point(47, 372);
+            this.bt_reset.Name = "bt_reset";
+            this.bt_reset.Size = new System.Drawing.Size(146, 55);
+            this.bt_reset.TabIndex = 3;
+            this.bt_reset.Text = "Reset configuraciones";
+            this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
+            // 
             // Ajustes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bt_reset);
             this.Controls.Add(this.bt_aceptar);
             this.Controls.Add(this.Comb_puertos);
             this.Controls.Add(this.lbl_puerto_com);
@@ -92,5 +104,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_aceptar;
         public System.Windows.Forms.ComboBox Comb_puertos;
         private System.Windows.Forms.ErrorProvider er_puerto;
+        private System.Windows.Forms.Button bt_reset;
     }
 }

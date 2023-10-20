@@ -33,6 +33,7 @@ namespace Proyecto_Final___Wingo
             this.bt_manejo = new System.Windows.Forms.Button();
             this.bt_cerrar_app = new System.Windows.Forms.Button();
             this.bt_ajustes = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bt_personalización
@@ -76,19 +77,32 @@ namespace Proyecto_Final___Wingo
             this.bt_ajustes.UseVisualStyleBackColor = true;
             this.bt_ajustes.Click += new System.EventHandler(this.bt_ajustes_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(355, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Sally";
+            // 
             // Pantalla_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bt_ajustes);
             this.Controls.Add(this.bt_cerrar_app);
             this.Controls.Add(this.bt_manejo);
             this.Controls.Add(this.bt_personalización);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Pantalla_principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.Pantalla_principal_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,6 +112,7 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_manejo;
         private System.Windows.Forms.Button bt_cerrar_app;
         private System.Windows.Forms.Button bt_ajustes;
+        private System.Windows.Forms.Label label1;
     }
 }
 

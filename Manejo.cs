@@ -53,15 +53,15 @@ namespace Proyecto_Final___Wingo
             bool abrir_seguido = false;
             if (string.IsNullOrEmpty(nombre_previo))
             {
-                gb_nom.Location = new Point(x, y);
-                gb_nom.Visible = true;
+                panel_nom.Location = new Point(x, y);
+                panel_nom.Visible = true;
                 isNaming = true;
                 abrir_seguido = true;
                 return abrir_seguido;
             }
             else
             {
-                gb_pasos.Visible = true;
+                panel_pasos.Visible = true;
                 lbl_tipo_de_paso.Visible = false;
                 lbl_cant_paso.Visible = false;
                 comb_tipo_paso.Visible = false;
@@ -120,7 +120,7 @@ namespace Proyecto_Final___Wingo
                 }
                 bt_modificar_paso.Visible = false;
                 bt_eliminar_paso.Visible = false;
-                gb_modificar_paso.Visible = false;
+                panel_modificar_paso.Visible = false;
                 abrir_seguido = false;
                 return abrir_seguido;
             }
@@ -135,7 +135,7 @@ namespace Proyecto_Final___Wingo
             }
             else
             {
-                gb_nom.Visible = false;
+                panel_nom.Visible = false;
                 txt_nom.Text = "";
                 return (true, nombre);
             }
@@ -154,7 +154,7 @@ namespace Proyecto_Final___Wingo
             }
             else if ((tipo_paso_ingresado== "Girar hacia la izquierda" || tipo_paso_ingresado=="Girar hacia la derecha") && Convert.ToInt32(cant_paso_ingresado) > 90)
             {
-                MessageBox.Show("Por favor, no ingresar una cantidad menor de 90 grados.", "Error");
+                MessageBox.Show("Por favor, no ingresar una cantidad mayor de 90 grados.", "Error");
                 return (false, "", "", "");
             }
             else
@@ -193,7 +193,7 @@ namespace Proyecto_Final___Wingo
             }
             else if ((tipo_paso_modificado == "Girar hacia la izquierda" || cant_paso_modificado == "Girar hacia la derecha") && Convert.ToInt32(cant_paso_modificado) > 90)
             {
-                MessageBox.Show("Por favor, no ingresar una cantidad menor de 90 grados.", "Error");
+                MessageBox.Show("Por favor, no ingresar una cantidad mayor de 90 grados.", "Error");
                 return (false, "", "", "");
             }
             else
@@ -207,7 +207,7 @@ namespace Proyecto_Final___Wingo
                 }
                 else
                 {
-                    gb_modificar_paso.Visible = false;
+                    panel_modificar_paso.Visible = false;
                     comb_nuevo_tipo_paso.Text = "";
                     string new_paso_hecho = tipo_paso_modificado + ", " + cant_paso_modificado;
                     return (true, tipo_paso_modificado, cant_paso_modificado, new_paso_hecho);
@@ -281,18 +281,21 @@ namespace Proyecto_Final___Wingo
         public Manejo()
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
-            Point punto_combo = new Point(258, 128);
+            Point punto_combo = new Point(760, 71);
             comb_pasos_hechos_recor1.Location = punto_combo;
             comb_pasos_hechos_recor2.Location = punto_combo;
             comb_pasos_hechos_recor3.Location = punto_combo;
+            lbl_crear_recor.Font = Program.titles;
+            lbl_tipo_de_paso.Font = Program.labels;
+            lbl_cant_paso.Font = Program.labels;
+
         }
         private void Manejo_Load(object sender, EventArgs e)
         {
             Funciones funciones = new Funciones();
-            gb_nom.Visible = false;
-            gb_pasos.Visible = false;
-            gb_modificar_paso.Visible = false;
+            panel_nom.Visible = false;
+            panel_pasos.Visible = false;
+            panel_modificar_paso.Visible = false;
             (paso_recor_1, cant_paso_recor_1) = funciones.leer_recor(R1);
             (paso_recor_2, cant_paso_recor_2) = funciones.leer_recor(R3);
             (paso_recor_3, cant_paso_recor_3) = funciones.leer_recor(R3);
@@ -356,15 +359,15 @@ namespace Proyecto_Final___Wingo
         // Recor 1
 
         string nombre_recor1;
-        int y1 = 30;
+        int y1 = 94;
         List<string> paso_recor_1 = new List<string>();
         List<int> cant_paso_recor_1 = new List<int>();
 
         private void bt_recorrido1_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 1;
-            gb_nom.Visible = false;
-            gb_pasos.Visible = false;
+            panel_nom.Visible = false;
+            panel_pasos.Visible = false;
             comb_tipo_paso.Text = "";
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
@@ -378,15 +381,15 @@ namespace Proyecto_Final___Wingo
         // Recor 2
 
         string nombre_recor2;
-        int y2 = 75;
+        int y2 = 170;
         List<string> paso_recor_2 = new List<string>();
         List<int> cant_paso_recor_2 = new List<int>();
 
         private void bt_recorrido2_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 2;
-            gb_nom.Visible = false;
-            gb_pasos.Visible = false;
+            panel_nom.Visible = false;
+            panel_pasos.Visible = false;
             comb_tipo_paso.Text = "";
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
@@ -400,15 +403,15 @@ namespace Proyecto_Final___Wingo
         // Recor 3
 
         string nombre_recor3;
-        int y3 = 110;
+        int y3 = 258;
         List<string> paso_recor_3 = new List<string>();
         List<int> cant_paso_recor_3 = new List<int>();
 
         private void bt_recorrido3_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 3;
-            gb_nom.Visible = false;
-            gb_pasos.Visible = false;
+            panel_nom.Visible = false;
+            panel_pasos.Visible = false;
             comb_tipo_paso.Text = "";
             txt_cant_paso.Text = "";
             txt_nom.Text = "";
@@ -427,8 +430,8 @@ namespace Proyecto_Final___Wingo
 
         private void bt_cambiar_nombre_recor1_Click(object sender, EventArgs e)
         {
-            gb_pasos.Visible = false;
-            gb_nom.Visible = true;
+            panel_pasos.Visible = false;
+            panel_nom.Visible = true;
             cambia_nombre = true;
             isNaming = true;
         }
@@ -510,7 +513,7 @@ namespace Proyecto_Final___Wingo
         {
             if (comb_pasos_hechos_recor1.SelectedIndex != -1 || comb_pasos_hechos_recor2.SelectedIndex != -1 || comb_pasos_hechos_recor3.SelectedIndex != -1)
             {
-                gb_modificar_paso.Visible = true;
+                panel_modificar_paso.Visible = true;
                 bt_enviar_nuevo_paso.Visible = false;
                 lbl_nuevo_cant_paso.Visible = false;
                 txt_nuevo_cant_paso.Visible = false;
@@ -634,80 +637,99 @@ namespace Proyecto_Final___Wingo
 
         private void bt_enviar_Click(object sender, EventArgs e)
         {
-            Funciones funciones = new Funciones();
-            List<string> mensajes = new List<string>();
-            for (int i = 0; i < paso_recor_1.Count; i++)
+            if (string.IsNullOrEmpty(txt_delay_carga.Text))
             {
-                mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 1, i, paso_recor_1[i], cant_paso_recor_1[i]));
+                MessageBox.Show("Por favor, ingresar un delay para empezar el recorrido.", "Error");
             }
-            for (int i = 0; i < paso_recor_2.Count; i++)
+            else if (!int.TryParse(txt_delay_carga.Text, out int num))
             {
-                mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 2, i, paso_recor_2[i], cant_paso_recor_2[i]));
-            }
-            for (int i = 0; i < paso_recor_3.Count; i++)
-            {
-                mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, 3, i, paso_recor_3[i], cant_paso_recor_3[i]));
-            }
-            string[] port_names = SerialPort.GetPortNames();
-            if (port_names.Contains(funciones.leer_datos(1)))
-            {
-                SerialPort arduino = new SerialPort();
-                arduino.PortName = funciones.leer_datos(1);
-                arduino.BaudRate = 9600;
-                arduino.Parity = Parity.None;
-                try
-                {
-                    DialogResult result = MessageBox.Show("¿Desea enviar todos los recorridos desde cero? NOTA: puede tardar más tiempo", "Enviando", MessageBoxButtons.YesNoCancel);
-                    if (result == DialogResult.Cancel)
-                    {
-                        ultimos_msgs = mensajes;
-                        arduino.Open();
-                        ProgressBar progressBar = new ProgressBar();
-                        progressBar.cant_msgs = 0;
-                        progressBar.cant_msgs = mensajes.Count;
-                        progressBar.Show();
-                        int num_mensaje = 0;
-                        foreach (string mensaje in mensajes)
-                        {
-                            bool distinto = false;
-                            if (result == DialogResult.Yes)
-                            {
-                                arduino.WriteLine(mensaje + '\n');
-                            }
-                            else
-                            {
-                                if (mensaje != ultimos_msgs[num_mensaje])
-                                {
-                                    arduino.WriteLine(mensaje + '\n');
-                                    distinto = true;
-                                }
-                            }
-                            if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
-                            {
-                                progressBar.progressBar_subiendo.Value++;
-                            }
-                            num_mensaje++;
-                            if (distinto || result==DialogResult.Yes)
-                            {
-                                Thread.Sleep(100);
-                            }
-                        }
-
-                        progressBar.Close();
-                        arduino.WriteLine("end");
-                        arduino.Close();
-                        MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show($"Error, vuelva a intentarlo.", "Error");
-                    arduino.Close();
-                }
+                MessageBox.Show("El delay tiene que ser un número y no puede incluir ninguna letra o símbolo.", "Error");
             }
             else
             {
-                MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
+                Funciones funciones = new Funciones();
+                List<string> mensajes = new List<string>();
+                switch (recor_seleccionado)
+                {
+                    case 1:
+                        for (int i = 0; i < paso_recor_1.Count; i++)
+                        {
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_1[i], cant_paso_recor_1[i]));
+                        }
+                        break;
+                    case 2:
+                        for (int i = 0; i < paso_recor_2.Count; i++)
+                        {
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_2[i], cant_paso_recor_2[i]));
+                        }
+                        break;
+                    case 3:
+                        for (int i = 0; i < paso_recor_3.Count; i++)
+                        {
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_3[i], cant_paso_recor_3[i]));
+                        }
+                        break;
+                }
+                string[] port_names = SerialPort.GetPortNames();
+                if (port_names.Contains(funciones.leer_datos(1)))
+                {
+                    SerialPort arduino = new SerialPort();
+                    arduino.PortName = funciones.leer_datos(1);
+                    arduino.BaudRate = 9600;
+                    arduino.Parity = Parity.None;
+                    try
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea enviar todos los recorridos desde cero? NOTA: puede tardar más tiempo", "Enviando", MessageBoxButtons.YesNoCancel);
+                        if (result != DialogResult.Cancel)
+                        {
+                            ultimos_msgs = mensajes;
+                            arduino.Open();
+                            ProgressBar progressBar = new ProgressBar();
+                            progressBar.cant_msgs = 0;
+                            progressBar.cant_msgs = mensajes.Count;
+                            progressBar.Show();
+                            int num_mensaje = 0;
+                            arduino.WriteLine($"m:{mensajes.Count}:{Convert.ToInt16(txt_delay_carga.Text)*1000}" + '\n');
+                            foreach (string mensaje in mensajes)
+                            {
+                                bool distinto = false;
+                                if (result == DialogResult.Yes)
+                                {
+                                    arduino.WriteLine(mensaje + '\n');
+                                }
+                                else
+                                {
+                                    if (mensaje != ultimos_msgs[num_mensaje])
+                                    {
+                                        arduino.WriteLine(mensaje + '\n');
+                                        distinto = true;
+                                    }
+                                }
+                                if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
+                                {
+                                    progressBar.progressBar_subiendo.Value++;
+                                }
+                                num_mensaje++;
+                                if (distinto || result == DialogResult.Yes)
+                                {
+                                    Thread.Sleep(100);
+                                }
+                            }
+                            progressBar.Close();
+                            arduino.Close();
+                            MessageBox.Show("Mensajes enviados exitosamente, el recorrido debería estarse ejecutando", "Enviado");
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Error, vuelva a intentarlo.", "Error");
+                        arduino.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
+                }
             }
         }
     }
