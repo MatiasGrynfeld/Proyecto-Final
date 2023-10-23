@@ -63,20 +63,20 @@ namespace Proyecto_Final___Wingo
             this.panel_recors = new System.Windows.Forms.Panel();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.panel_pasos = new System.Windows.Forms.Panel();
-            this.panel_envio = new System.Windows.Forms.Panel();
             this.panel_modificar_paso = new System.Windows.Forms.Panel();
+            this.panel_envio = new System.Windows.Forms.Panel();
             this.panel_recors.SuspendLayout();
             this.panel_nom.SuspendLayout();
             this.panel_pasos.SuspendLayout();
-            this.panel_envio.SuspendLayout();
             this.panel_modificar_paso.SuspendLayout();
+            this.panel_envio.SuspendLayout();
             this.SuspendLayout();
             // 
             // bt_volver
             // 
             this.bt_volver.Location = new System.Drawing.Point(0, 566);
             this.bt_volver.Name = "bt_volver";
-            this.bt_volver.Size = new System.Drawing.Size(221, 60);
+            this.bt_volver.Size = new System.Drawing.Size(213, 60);
             this.bt_volver.TabIndex = 1;
             this.bt_volver.Text = "Cerrar";
             this.bt_volver.UseVisualStyleBackColor = true;
@@ -95,7 +95,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_recorrido1.Location = new System.Drawing.Point(0, 94);
             this.bt_recorrido1.Name = "bt_recorrido1";
-            this.bt_recorrido1.Size = new System.Drawing.Size(221, 60);
+            this.bt_recorrido1.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido1.TabIndex = 3;
             this.bt_recorrido1.Text = "Nuevo recorrido";
             this.bt_recorrido1.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_recorrido2.Location = new System.Drawing.Point(0, 170);
             this.bt_recorrido2.Name = "bt_recorrido2";
-            this.bt_recorrido2.Size = new System.Drawing.Size(221, 60);
+            this.bt_recorrido2.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido2.TabIndex = 4;
             this.bt_recorrido2.Text = "Nuevo recorrido";
             this.bt_recorrido2.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_recorrido3.Location = new System.Drawing.Point(0, 258);
             this.bt_recorrido3.Name = "bt_recorrido3";
-            this.bt_recorrido3.Size = new System.Drawing.Size(221, 60);
+            this.bt_recorrido3.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido3.TabIndex = 5;
             this.bt_recorrido3.Text = "Nuevo recorrido";
             this.bt_recorrido3.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@ namespace Proyecto_Final___Wingo
             // 
             // txt_delay_carga
             // 
-            this.txt_delay_carga.Location = new System.Drawing.Point(78, 83);
+            this.txt_delay_carga.Location = new System.Drawing.Point(78, 112);
             this.txt_delay_carga.Name = "txt_delay_carga";
             this.txt_delay_carga.Size = new System.Drawing.Size(190, 20);
             this.txt_delay_carga.TabIndex = 17;
@@ -183,7 +183,7 @@ namespace Proyecto_Final___Wingo
             "Girar hacia la izquierda",
             "Girar hacia la derecha",
             "Esperar"});
-            this.comb_nuevo_tipo_paso.Location = new System.Drawing.Point(11, 57);
+            this.comb_nuevo_tipo_paso.Location = new System.Drawing.Point(23, 56);
             this.comb_nuevo_tipo_paso.Name = "comb_nuevo_tipo_paso";
             this.comb_nuevo_tipo_paso.Size = new System.Drawing.Size(122, 21);
             this.comb_nuevo_tipo_paso.TabIndex = 16;
@@ -191,16 +191,16 @@ namespace Proyecto_Final___Wingo
             // 
             // txt_nuevo_cant_paso
             // 
-            this.txt_nuevo_cant_paso.Location = new System.Drawing.Point(155, 57);
+            this.txt_nuevo_cant_paso.Location = new System.Drawing.Point(24, 168);
             this.txt_nuevo_cant_paso.Name = "txt_nuevo_cant_paso";
             this.txt_nuevo_cant_paso.Size = new System.Drawing.Size(100, 20);
             this.txt_nuevo_cant_paso.TabIndex = 17;
             // 
             // bt_enviar_nuevo_paso
             // 
-            this.bt_enviar_nuevo_paso.Location = new System.Drawing.Point(283, 18);
+            this.bt_enviar_nuevo_paso.Location = new System.Drawing.Point(219, 66);
             this.bt_enviar_nuevo_paso.Name = "bt_enviar_nuevo_paso";
-            this.bt_enviar_nuevo_paso.Size = new System.Drawing.Size(120, 59);
+            this.bt_enviar_nuevo_paso.Size = new System.Drawing.Size(168, 78);
             this.bt_enviar_nuevo_paso.TabIndex = 16;
             this.bt_enviar_nuevo_paso.Text = "Enviar";
             this.bt_enviar_nuevo_paso.UseVisualStyleBackColor = true;
@@ -209,7 +209,7 @@ namespace Proyecto_Final___Wingo
             // lbl_nuevo_cant_paso
             // 
             this.lbl_nuevo_cant_paso.AutoSize = true;
-            this.lbl_nuevo_cant_paso.Location = new System.Drawing.Point(152, 13);
+            this.lbl_nuevo_cant_paso.Location = new System.Drawing.Point(21, 121);
             this.lbl_nuevo_cant_paso.Name = "lbl_nuevo_cant_paso";
             this.lbl_nuevo_cant_paso.Size = new System.Drawing.Size(124, 13);
             this.lbl_nuevo_cant_paso.TabIndex = 1;
@@ -272,7 +272,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar
             // 
-            this.bt_enviar.Location = new System.Drawing.Point(313, 24);
+            this.bt_enviar.Location = new System.Drawing.Point(414, 24);
             this.bt_enviar.Margin = new System.Windows.Forms.Padding(2);
             this.bt_enviar.Name = "bt_enviar";
             this.bt_enviar.Size = new System.Drawing.Size(187, 98);
@@ -361,7 +361,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_personalizacion
             // 
-            this.bt_personalizacion.Location = new System.Drawing.Point(0, 473);
+            this.bt_personalizacion.Location = new System.Drawing.Point(-8, 461);
             this.bt_personalizacion.Name = "bt_personalizacion";
             this.bt_personalizacion.Size = new System.Drawing.Size(221, 60);
             this.bt_personalizacion.TabIndex = 10;
@@ -415,16 +415,6 @@ namespace Proyecto_Final___Wingo
             this.panel_pasos.Size = new System.Drawing.Size(1047, 685);
             this.panel_pasos.TabIndex = 13;
             // 
-            // panel_envio
-            // 
-            this.panel_envio.Controls.Add(this.lbl_delay_carga);
-            this.panel_envio.Controls.Add(this.bt_enviar);
-            this.panel_envio.Controls.Add(this.txt_delay_carga);
-            this.panel_envio.Location = new System.Drawing.Point(520, 507);
-            this.panel_envio.Name = "panel_envio";
-            this.panel_envio.Size = new System.Drawing.Size(513, 162);
-            this.panel_envio.TabIndex = 19;
-            // 
             // panel_modificar_paso
             // 
             this.panel_modificar_paso.Controls.Add(this.bt_enviar_nuevo_paso);
@@ -434,8 +424,18 @@ namespace Proyecto_Final___Wingo
             this.panel_modificar_paso.Controls.Add(this.lbl_nuevo_cant_paso);
             this.panel_modificar_paso.Location = new System.Drawing.Point(602, 204);
             this.panel_modificar_paso.Name = "panel_modificar_paso";
-            this.panel_modificar_paso.Size = new System.Drawing.Size(421, 96);
+            this.panel_modificar_paso.Size = new System.Drawing.Size(421, 210);
             this.panel_modificar_paso.TabIndex = 20;
+            // 
+            // panel_envio
+            // 
+            this.panel_envio.Controls.Add(this.lbl_delay_carga);
+            this.panel_envio.Controls.Add(this.bt_enviar);
+            this.panel_envio.Controls.Add(this.txt_delay_carga);
+            this.panel_envio.Location = new System.Drawing.Point(407, 507);
+            this.panel_envio.Name = "panel_envio";
+            this.panel_envio.Size = new System.Drawing.Size(626, 162);
+            this.panel_envio.TabIndex = 19;
             // 
             // Manejo
             // 
@@ -456,10 +456,10 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.PerformLayout();
             this.panel_pasos.ResumeLayout(false);
             this.panel_pasos.PerformLayout();
-            this.panel_envio.ResumeLayout(false);
-            this.panel_envio.PerformLayout();
             this.panel_modificar_paso.ResumeLayout(false);
             this.panel_modificar_paso.PerformLayout();
+            this.panel_envio.ResumeLayout(false);
+            this.panel_envio.PerformLayout();
             this.ResumeLayout(false);
 
         }

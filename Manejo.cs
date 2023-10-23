@@ -277,6 +277,7 @@ namespace Proyecto_Final___Wingo
                 return "segundos";
             }
         }
+
         // Form
         public Manejo()
         {
@@ -286,8 +287,31 @@ namespace Proyecto_Final___Wingo
             comb_pasos_hechos_recor2.Location = punto_combo;
             comb_pasos_hechos_recor3.Location = punto_combo;
             lbl_crear_recor.Font = Program.titles;
-            lbl_tipo_de_paso.Font = Program.labels;
-            lbl_cant_paso.Font = Program.labels;
+            //lbl_tipo_de_paso.Font = Program.labels;
+            //lbl_cant_paso.Font = Program.labels;
+
+            foreach (Control panel in this.Controls) {
+                if (panel is Panel)
+                {
+                    foreach (Control control in panel.Controls)
+                    {
+                        if (control is Panel)
+                        {
+                            foreach (Control control2 in control.Controls)
+                            {
+                                if (control2 is Label)
+                                {
+                                    control2.Font = Program.labels;
+                                }
+                            }
+                        }
+                        if (control is Label && control.Name != "lbl_crear_recor")
+                        {
+                            control.Font = Program.labels;
+                        }
+                    }
+                }
+            }
 
         }
         private void Manejo_Load(object sender, EventArgs e)

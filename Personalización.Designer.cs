@@ -82,7 +82,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_volver.Location = new System.Drawing.Point(0, 459);
             this.bt_volver.Name = "bt_volver";
-            this.bt_volver.Size = new System.Drawing.Size(151, 60);
+            this.bt_volver.Size = new System.Drawing.Size(144, 60);
             this.bt_volver.TabIndex = 0;
             this.bt_volver.Text = "Cerrar";
             this.bt_volver.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_perfil_1.Location = new System.Drawing.Point(0, 0);
             this.bt_perfil_1.Name = "bt_perfil_1";
-            this.bt_perfil_1.Size = new System.Drawing.Size(151, 60);
+            this.bt_perfil_1.Size = new System.Drawing.Size(144, 60);
             this.bt_perfil_1.TabIndex = 1;
             this.bt_perfil_1.Text = "Nuevo\r\nPerfil\r\n";
             this.bt_perfil_1.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_perfil_2.Location = new System.Drawing.Point(0, 71);
             this.bt_perfil_2.Name = "bt_perfil_2";
-            this.bt_perfil_2.Size = new System.Drawing.Size(151, 60);
+            this.bt_perfil_2.Size = new System.Drawing.Size(144, 60);
             this.bt_perfil_2.TabIndex = 4;
             this.bt_perfil_2.Text = "Nuevo\r\nPerfil\r\n";
             this.bt_perfil_2.UseVisualStyleBackColor = true;
@@ -453,7 +453,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_enviar_configuraciones.Location = new System.Drawing.Point(0, 539);
             this.bt_enviar_configuraciones.Name = "bt_enviar_configuraciones";
-            this.bt_enviar_configuraciones.Size = new System.Drawing.Size(151, 60);
+            this.bt_enviar_configuraciones.Size = new System.Drawing.Size(144, 60);
             this.bt_enviar_configuraciones.TabIndex = 8;
             this.bt_enviar_configuraciones.Text = "Enviar configuraciones";
             this.bt_enviar_configuraciones.UseVisualStyleBackColor = true;
@@ -463,7 +463,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_manejo.Location = new System.Drawing.Point(0, 386);
             this.bt_manejo.Name = "bt_manejo";
-            this.bt_manejo.Size = new System.Drawing.Size(151, 60);
+            this.bt_manejo.Size = new System.Drawing.Size(144, 60);
             this.bt_manejo.TabIndex = 9;
             this.bt_manejo.Text = "Ir a manejo";
             this.bt_manejo.UseVisualStyleBackColor = true;
