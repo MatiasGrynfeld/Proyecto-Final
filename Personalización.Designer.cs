@@ -29,7 +29,6 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
-            this.bt_volver = new System.Windows.Forms.Button();
             this.bt_perfil_1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel_nom = new System.Windows.Forms.Panel();
@@ -41,6 +40,8 @@ namespace Proyecto_Final___Wingo
             this.bt_mouse = new System.Windows.Forms.Button();
             this.bt_pincel = new System.Windows.Forms.Button();
             this.panel_perfil = new System.Windows.Forms.Panel();
+            this.lbl_mod = new System.Windows.Forms.Label();
+            this.lbl_ang = new System.Windows.Forms.Label();
             this.bt_reset_colores = new System.Windows.Forms.Button();
             this.panel_derecha = new System.Windows.Forms.Panel();
             this.lbl_len_der = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@ namespace Proyecto_Final___Wingo
             this.bt_manejo = new System.Windows.Forms.Button();
             this.panel_perfs = new System.Windows.Forms.Panel();
             this.lbl_pers = new System.Windows.Forms.Label();
+            this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_nom.SuspendLayout();
             this.panel_perfil.SuspendLayout();
             this.panel_derecha.SuspendLayout();
@@ -77,16 +79,6 @@ namespace Proyecto_Final___Wingo
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_arr)).BeginInit();
             this.panel_perfs.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bt_volver
-            // 
-            this.bt_volver.Location = new System.Drawing.Point(0, 459);
-            this.bt_volver.Name = "bt_volver";
-            this.bt_volver.Size = new System.Drawing.Size(144, 60);
-            this.bt_volver.TabIndex = 0;
-            this.bt_volver.Text = "Cerrar";
-            this.bt_volver.UseVisualStyleBackColor = true;
-            this.bt_volver.Click += new System.EventHandler(this.bt_volver_Click);
             // 
             // bt_perfil_1
             // 
@@ -184,6 +176,8 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_perfil
             // 
+            this.panel_perfil.Controls.Add(this.lbl_mod);
+            this.panel_perfil.Controls.Add(this.lbl_ang);
             this.panel_perfil.Controls.Add(this.bt_reset_colores);
             this.panel_perfil.Controls.Add(this.panel_derecha);
             this.panel_perfil.Controls.Add(this.panel_izquierda);
@@ -195,6 +189,24 @@ namespace Proyecto_Final___Wingo
             this.panel_perfil.Name = "panel_perfil";
             this.panel_perfil.Size = new System.Drawing.Size(700, 666);
             this.panel_perfil.TabIndex = 3;
+            // 
+            // lbl_mod
+            // 
+            this.lbl_mod.AutoSize = true;
+            this.lbl_mod.Location = new System.Drawing.Point(38, 35);
+            this.lbl_mod.Name = "lbl_mod";
+            this.lbl_mod.Size = new System.Drawing.Size(114, 13);
+            this.lbl_mod.TabIndex = 9;
+            this.lbl_mod.Text = "Seleccionar modalidad";
+            // 
+            // lbl_ang
+            // 
+            this.lbl_ang.AutoSize = true;
+            this.lbl_ang.Location = new System.Drawing.Point(38, 9);
+            this.lbl_ang.Name = "lbl_ang";
+            this.lbl_ang.Size = new System.Drawing.Size(98, 13);
+            this.lbl_ang.TabIndex = 8;
+            this.lbl_ang.Text = "Seleccionar ángulo";
             // 
             // bt_reset_colores
             // 
@@ -208,7 +220,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_derecha
             // 
-            this.panel_derecha.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_derecha.BackColor = System.Drawing.Color.Transparent;
             this.panel_derecha.Controls.Add(this.lbl_len_der);
             this.panel_derecha.Controls.Add(this.trackBar_der);
             this.panel_derecha.Controls.Add(this.lbl_med_der);
@@ -277,7 +289,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_izquierda
             // 
-            this.panel_izquierda.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_izquierda.BackColor = System.Drawing.Color.Transparent;
             this.panel_izquierda.Controls.Add(this.lbl_len_izq);
             this.panel_izquierda.Controls.Add(this.trackBar_izq);
             this.panel_izquierda.Controls.Add(this.lbl_med_izq);
@@ -372,7 +384,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_arriba
             // 
-            this.panel_arriba.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_arriba.BackColor = System.Drawing.Color.Transparent;
             this.panel_arriba.Controls.Add(this.lbl_len_arr);
             this.panel_arriba.Controls.Add(this.trackBar_arr);
             this.panel_arriba.Controls.Add(this.lbl_med_arr);
@@ -471,11 +483,11 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_perfs
             // 
+            this.panel_perfs.Controls.Add(this.bt_cerrar);
             this.panel_perfs.Controls.Add(this.bt_perfil_1);
             this.panel_perfs.Controls.Add(this.bt_enviar_configuraciones);
             this.panel_perfs.Controls.Add(this.bt_manejo);
             this.panel_perfs.Controls.Add(this.bt_perfil_2);
-            this.panel_perfs.Controls.Add(this.bt_volver);
             this.panel_perfs.Location = new System.Drawing.Point(0, 67);
             this.panel_perfs.Name = "panel_perfs";
             this.panel_perfs.Size = new System.Drawing.Size(151, 621);
@@ -492,10 +504,23 @@ namespace Proyecto_Final___Wingo
             this.lbl_pers.TabIndex = 10;
             this.lbl_pers.Text = "Luces\r\n  RGB";
             // 
+            // bt_cerrar
+            // 
+            this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
+            this.bt_cerrar.IconColor = System.Drawing.Color.Blue;
+            this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_cerrar.Location = new System.Drawing.Point(0, 452);
+            this.bt_cerrar.Name = "bt_cerrar";
+            this.bt_cerrar.Size = new System.Drawing.Size(144, 60);
+            this.bt_cerrar.TabIndex = 12;
+            this.bt_cerrar.UseVisualStyleBackColor = true;
+            this.bt_cerrar.Click += new System.EventHandler(this.bt_cerrar_Click);
+            // 
             // Personalización
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.lbl_pers);
             this.Controls.Add(this.panel_perfs);
@@ -514,6 +539,7 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.ResumeLayout(false);
             this.panel_nom.PerformLayout();
             this.panel_perfil.ResumeLayout(false);
+            this.panel_perfil.PerformLayout();
             this.panel_derecha.ResumeLayout(false);
             this.panel_derecha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_der)).EndInit();
@@ -530,8 +556,6 @@ namespace Proyecto_Final___Wingo
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bt_volver;
         private System.Windows.Forms.Button bt_perfil_1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button bt_perfil_2;
@@ -569,5 +593,8 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_reset_colores;
         private System.Windows.Forms.Panel panel_perfs;
         private System.Windows.Forms.Label lbl_pers;
+        private System.Windows.Forms.Label lbl_mod;
+        private System.Windows.Forms.Label lbl_ang;
+        private FontAwesome.Sharp.IconButton bt_cerrar;
     }
 }

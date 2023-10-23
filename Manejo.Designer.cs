@@ -29,7 +29,6 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
-            this.bt_volver = new System.Windows.Forms.Button();
             this.lbl_crear_recor = new System.Windows.Forms.Label();
             this.bt_recorrido1 = new System.Windows.Forms.Button();
             this.bt_recorrido2 = new System.Windows.Forms.Button();
@@ -65,22 +64,13 @@ namespace Proyecto_Final___Wingo
             this.panel_pasos = new System.Windows.Forms.Panel();
             this.panel_modificar_paso = new System.Windows.Forms.Panel();
             this.panel_envio = new System.Windows.Forms.Panel();
+            this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_recors.SuspendLayout();
             this.panel_nom.SuspendLayout();
             this.panel_pasos.SuspendLayout();
             this.panel_modificar_paso.SuspendLayout();
             this.panel_envio.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bt_volver
-            // 
-            this.bt_volver.Location = new System.Drawing.Point(0, 566);
-            this.bt_volver.Name = "bt_volver";
-            this.bt_volver.Size = new System.Drawing.Size(213, 60);
-            this.bt_volver.TabIndex = 1;
-            this.bt_volver.Text = "Cerrar";
-            this.bt_volver.UseVisualStyleBackColor = true;
-            this.bt_volver.Click += new System.EventHandler(this.bt_volver_Click);
             // 
             // lbl_crear_recor
             // 
@@ -93,7 +83,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_recorrido1
             // 
-            this.bt_recorrido1.Location = new System.Drawing.Point(0, 94);
+            this.bt_recorrido1.Location = new System.Drawing.Point(0, 72);
             this.bt_recorrido1.Name = "bt_recorrido1";
             this.bt_recorrido1.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido1.TabIndex = 3;
@@ -103,7 +93,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_recorrido2
             // 
-            this.bt_recorrido2.Location = new System.Drawing.Point(0, 170);
+            this.bt_recorrido2.Location = new System.Drawing.Point(0, 154);
             this.bt_recorrido2.Name = "bt_recorrido2";
             this.bt_recorrido2.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido2.TabIndex = 4;
@@ -113,7 +103,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_recorrido3
             // 
-            this.bt_recorrido3.Location = new System.Drawing.Point(0, 258);
+            this.bt_recorrido3.Location = new System.Drawing.Point(0, 233);
             this.bt_recorrido3.Name = "bt_recorrido3";
             this.bt_recorrido3.Size = new System.Drawing.Size(213, 60);
             this.bt_recorrido3.TabIndex = 5;
@@ -123,9 +113,9 @@ namespace Proyecto_Final___Wingo
             // 
             // txt_nom
             // 
-            this.txt_nom.Location = new System.Drawing.Point(10, 26);
+            this.txt_nom.Location = new System.Drawing.Point(9, 52);
             this.txt_nom.Name = "txt_nom";
-            this.txt_nom.Size = new System.Drawing.Size(100, 20);
+            this.txt_nom.Size = new System.Drawing.Size(171, 20);
             this.txt_nom.TabIndex = 6;
             this.txt_nom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nom_KeyPress);
             // 
@@ -140,9 +130,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar_nom
             // 
-            this.bt_enviar_nom.Location = new System.Drawing.Point(116, 26);
+            this.bt_enviar_nom.Location = new System.Drawing.Point(194, 37);
             this.bt_enviar_nom.Name = "bt_enviar_nom";
-            this.bt_enviar_nom.Size = new System.Drawing.Size(75, 23);
+            this.bt_enviar_nom.Size = new System.Drawing.Size(87, 52);
             this.bt_enviar_nom.TabIndex = 8;
             this.bt_enviar_nom.Text = "Enviar";
             this.bt_enviar_nom.UseVisualStyleBackColor = true;
@@ -361,9 +351,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_personalizacion
             // 
-            this.bt_personalizacion.Location = new System.Drawing.Point(-8, 461);
+            this.bt_personalizacion.Location = new System.Drawing.Point(0, 461);
             this.bt_personalizacion.Name = "bt_personalizacion";
-            this.bt_personalizacion.Size = new System.Drawing.Size(221, 60);
+            this.bt_personalizacion.Size = new System.Drawing.Size(213, 60);
             this.bt_personalizacion.TabIndex = 10;
             this.bt_personalizacion.Text = "Ir a personalización";
             this.bt_personalizacion.UseVisualStyleBackColor = true;
@@ -371,10 +361,10 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_recors
             // 
+            this.panel_recors.Controls.Add(this.bt_cerrar);
             this.panel_recors.Controls.Add(this.lbl_crear_recor);
             this.panel_recors.Controls.Add(this.bt_personalizacion);
             this.panel_recors.Controls.Add(this.bt_recorrido1);
-            this.panel_recors.Controls.Add(this.bt_volver);
             this.panel_recors.Controls.Add(this.bt_recorrido2);
             this.panel_recors.Controls.Add(this.bt_recorrido3);
             this.panel_recors.Location = new System.Drawing.Point(0, 0);
@@ -384,12 +374,13 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_nom
             // 
+            this.panel_nom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(63)))), ((int)(((byte)(191)))));
             this.panel_nom.Controls.Add(this.bt_enviar_nom);
             this.panel_nom.Controls.Add(this.lbl_nombre);
             this.panel_nom.Controls.Add(this.txt_nom);
-            this.panel_nom.Location = new System.Drawing.Point(6, 656);
+            this.panel_nom.Location = new System.Drawing.Point(57, 658);
             this.panel_nom.Name = "panel_nom";
-            this.panel_nom.Size = new System.Drawing.Size(194, 62);
+            this.panel_nom.Size = new System.Drawing.Size(297, 91);
             this.panel_nom.TabIndex = 12;
             // 
             // panel_pasos
@@ -437,10 +428,23 @@ namespace Proyecto_Final___Wingo
             this.panel_envio.Size = new System.Drawing.Size(626, 162);
             this.panel_envio.TabIndex = 19;
             // 
+            // bt_cerrar
+            // 
+            this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
+            this.bt_cerrar.IconColor = System.Drawing.Color.Blue;
+            this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_cerrar.Location = new System.Drawing.Point(0, 547);
+            this.bt_cerrar.Name = "bt_cerrar";
+            this.bt_cerrar.Size = new System.Drawing.Size(213, 60);
+            this.bt_cerrar.TabIndex = 11;
+            this.bt_cerrar.UseVisualStyleBackColor = true;
+            this.bt_cerrar.Click += new System.EventHandler(this.bt_cerrar_Click);
+            // 
             // Manejo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.fondo_auto_2_;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel_pasos);
             this.Controls.Add(this.panel_nom);
@@ -465,8 +469,6 @@ namespace Proyecto_Final___Wingo
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bt_volver;
         private System.Windows.Forms.Label lbl_crear_recor;
         private System.Windows.Forms.Button bt_recorrido1;
         private System.Windows.Forms.Button bt_recorrido2;
@@ -502,5 +504,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Panel panel_pasos;
         private System.Windows.Forms.Panel panel_modificar_paso;
         private System.Windows.Forms.Panel panel_envio;
+        private FontAwesome.Sharp.IconButton bt_cerrar;
     }
 }
