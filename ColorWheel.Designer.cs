@@ -108,9 +108,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_resetear
             // 
-            this.bt_resetear.Location = new System.Drawing.Point(15, 12);
+            this.bt_resetear.Location = new System.Drawing.Point(15, 7);
             this.bt_resetear.Name = "bt_resetear";
-            this.bt_resetear.Size = new System.Drawing.Size(75, 23);
+            this.bt_resetear.Size = new System.Drawing.Size(73, 34);
             this.bt_resetear.TabIndex = 7;
             this.bt_resetear.Text = "Reset";
             this.bt_resetear.UseVisualStyleBackColor = true;
@@ -118,9 +118,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_apagado
             // 
-            this.bt_apagado.Location = new System.Drawing.Point(146, 12);
+            this.bt_apagado.Location = new System.Drawing.Point(146, 7);
             this.bt_apagado.Name = "bt_apagado";
-            this.bt_apagado.Size = new System.Drawing.Size(75, 23);
+            this.bt_apagado.Size = new System.Drawing.Size(73, 34);
             this.bt_apagado.TabIndex = 8;
             this.bt_apagado.Text = "Apagado";
             this.bt_apagado.UseVisualStyleBackColor = true;

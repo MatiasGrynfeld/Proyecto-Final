@@ -29,6 +29,7 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pantalla_principal));
             this.bt_personalización = new System.Windows.Forms.Button();
             this.bt_manejo = new System.Windows.Forms.Button();
             this.bt_cerrar_app = new System.Windows.Forms.Button();
@@ -91,7 +92,6 @@ namespace Proyecto_Final___Wingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.Fondo_principal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
@@ -101,6 +101,7 @@ namespace Proyecto_Final___Wingo
             this.Controls.Add(this.bt_personalización);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pantalla_principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
