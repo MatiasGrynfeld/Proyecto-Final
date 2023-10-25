@@ -42,6 +42,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_wheel
             // 
+            this.panel_wheel.BackColor = System.Drawing.Color.Transparent;
             this.panel_wheel.Location = new System.Drawing.Point(0, 122);
             this.panel_wheel.Name = "panel_wheel";
             this.panel_wheel.Size = new System.Drawing.Size(375, 375);
@@ -55,7 +56,7 @@ namespace Proyecto_Final___Wingo
             // lbl_selec_color
             // 
             this.lbl_selec_color.AutoSize = true;
-            this.lbl_selec_color.Location = new System.Drawing.Point(12, 57);
+            this.lbl_selec_color.Location = new System.Drawing.Point(12, 85);
             this.lbl_selec_color.Name = "lbl_selec_color";
             this.lbl_selec_color.Size = new System.Drawing.Size(92, 13);
             this.lbl_selec_color.TabIndex = 1;
@@ -64,7 +65,7 @@ namespace Proyecto_Final___Wingo
             // lbl_color_seleccionado
             // 
             this.lbl_color_seleccionado.AutoSize = true;
-            this.lbl_color_seleccionado.Location = new System.Drawing.Point(131, 57);
+            this.lbl_color_seleccionado.Location = new System.Drawing.Point(98, 54);
             this.lbl_color_seleccionado.Name = "lbl_color_seleccionado";
             this.lbl_color_seleccionado.Size = new System.Drawing.Size(100, 13);
             this.lbl_color_seleccionado.TabIndex = 2;
@@ -72,6 +73,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_muestra
             // 
+            this.panel_muestra.BackColor = System.Drawing.Color.Transparent;
             this.panel_muestra.Location = new System.Drawing.Point(254, 1);
             this.panel_muestra.Name = "panel_muestra";
             this.panel_muestra.Size = new System.Drawing.Size(121, 121);
@@ -89,7 +91,7 @@ namespace Proyecto_Final___Wingo
             // lbl_green
             // 
             this.lbl_green.AutoSize = true;
-            this.lbl_green.Location = new System.Drawing.Point(143, 516);
+            this.lbl_green.Location = new System.Drawing.Point(125, 516);
             this.lbl_green.Name = "lbl_green";
             this.lbl_green.Size = new System.Drawing.Size(39, 13);
             this.lbl_green.TabIndex = 5;
@@ -98,7 +100,7 @@ namespace Proyecto_Final___Wingo
             // lbl_blue
             // 
             this.lbl_blue.AutoSize = true;
-            this.lbl_blue.Location = new System.Drawing.Point(284, 516);
+            this.lbl_blue.Location = new System.Drawing.Point(277, 516);
             this.lbl_blue.Name = "lbl_blue";
             this.lbl_blue.Size = new System.Drawing.Size(31, 13);
             this.lbl_blue.TabIndex = 6;
@@ -106,9 +108,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_resetear
             // 
-            this.bt_resetear.Location = new System.Drawing.Point(15, 12);
+            this.bt_resetear.Location = new System.Drawing.Point(15, 7);
             this.bt_resetear.Name = "bt_resetear";
-            this.bt_resetear.Size = new System.Drawing.Size(75, 23);
+            this.bt_resetear.Size = new System.Drawing.Size(73, 34);
             this.bt_resetear.TabIndex = 7;
             this.bt_resetear.Text = "Reset";
             this.bt_resetear.UseVisualStyleBackColor = true;
@@ -116,9 +118,9 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_apagado
             // 
-            this.bt_apagado.Location = new System.Drawing.Point(146, 12);
+            this.bt_apagado.Location = new System.Drawing.Point(146, 7);
             this.bt_apagado.Name = "bt_apagado";
-            this.bt_apagado.Size = new System.Drawing.Size(75, 23);
+            this.bt_apagado.Size = new System.Drawing.Size(73, 34);
             this.bt_apagado.TabIndex = 8;
             this.bt_apagado.Text = "Apagado";
             this.bt_apagado.UseVisualStyleBackColor = true;

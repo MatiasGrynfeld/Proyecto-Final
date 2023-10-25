@@ -74,13 +74,38 @@ namespace Proyecto_Final___Wingo
             {
                 bt_perfil_2.Text = "Nuevo Perfil";
             }
+            foreach (Control panel in this.Controls)
+            {
+                if (!(panel is Button))
+                {
+                    panel.BackColor = Color.Transparent;
+                }
+                if (panel is Panel)
+                {
+                    foreach (Control control in panel.Controls)
+                    {
+                        if (control is Label)
+                        {
+                            control.Font = Program.labels;
+                        }
+                        if (control is Panel)
+                        {
+                            foreach(Control control2 in control.Controls)
+                            {
+                                if (control2 is Label)
+                                {
+                                    control2.Font = Program.labels;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
         }
         private void bt_volver_Click(object sender, EventArgs e)
         {
-            Pantalla_principal mostrar0 = new Pantalla_principal();
-            mostrar0.Show();
-            this.Close();
+
         }
         private void Personalización_Load(object sender, EventArgs e)
         {
@@ -206,6 +231,9 @@ namespace Proyecto_Final___Wingo
                 panel_izquierda.Visible = false;
                 panel_derecha.Visible = false;
                 Comb_tipos_personalizados.Visible = false;
+                lbl_mod.Visible = false;
+                lbl_mod.Visible = false;
+                lbl_mod.Visible = false;
                 bt_mouse.Visible = false;
                 bt_pincel.Visible = false;
                 bt_mouse.Enabled = false;
@@ -466,10 +494,10 @@ namespace Proyecto_Final___Wingo
             lbl_selec_velocidad_arr.Visible = false;
             lbl_selec_velocidad_izq.Visible = false;
             lbl_selec_velocidad_der.Visible = false;
-            lbl_selec_velocidad_arr.Location = new Point(100, 50);
-            lbl_selec_velocidad_izq.Location = new Point(100, 50);
-            lbl_selec_velocidad_der.Location = new Point(100, 50);
-            int x_velocidades = 150;
+            lbl_selec_velocidad_arr.Location = new Point(110, 30);
+            lbl_selec_velocidad_izq.Location = new Point(110, 30);
+            lbl_selec_velocidad_der.Location = new Point(110, 30);
+            int x_velocidades = 160;
             int y_rap = 75;
             int y_len = 414;
             int y_med = 217;
@@ -513,6 +541,7 @@ namespace Proyecto_Final___Wingo
             panel_izquierda.Visible = false;
             panel_wheel.Visible = false;
             Comb_tipos_personalizados.Visible = true;
+            lbl_mod.Visible = true;
             bt_enviar_configuraciones.Visible = false;
             bt_mouse.Visible = false;
             bt_pincel.Visible = false;
@@ -1202,6 +1231,13 @@ namespace Proyecto_Final___Wingo
             {
                 MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
             }
+        }
+
+        private void bt_cerrar_Click(object sender, EventArgs e)
+        {
+            Pantalla_principal mostrar0 = new Pantalla_principal();
+            mostrar0.Show();
+            this.Close();
         }
         //Diseño
     }

@@ -18,7 +18,7 @@ namespace Proyecto_Final___Wingo
 
         string unidad;
         string nueva_unidad;
-        int x = 150;
+        int x = 220;
         int recor_seleccionado;
         bool validado_seguido = false;
         bool cambia_nombre = false;
@@ -287,10 +287,12 @@ namespace Proyecto_Final___Wingo
             comb_pasos_hechos_recor2.Location = punto_combo;
             comb_pasos_hechos_recor3.Location = punto_combo;
             lbl_crear_recor.Font = Program.titles;
-            //lbl_tipo_de_paso.Font = Program.labels;
-            //lbl_cant_paso.Font = Program.labels;
 
             foreach (Control panel in this.Controls) {
+                if (!(panel is Button) && panel.Name!="panel_nom")
+                {
+                    panel.BackColor = Color.Transparent;
+                }
                 if (panel is Panel)
                 {
                     foreach (Control control in panel.Controls)
@@ -373,17 +375,10 @@ namespace Proyecto_Final___Wingo
             }
         }
 
-        private void bt_volver_Click(object sender, EventArgs e)
-        {
-            Pantalla_principal mostrar0 = new Pantalla_principal();
-            mostrar0.Show();
-            this.Close();
-        }
-
         // Recor 1
 
         string nombre_recor1;
-        int y1 = 94;
+        int y1 = 72;
         List<string> paso_recor_1 = new List<string>();
         List<int> cant_paso_recor_1 = new List<int>();
 
@@ -405,7 +400,7 @@ namespace Proyecto_Final___Wingo
         // Recor 2
 
         string nombre_recor2;
-        int y2 = 170;
+        int y2 = 154;
         List<string> paso_recor_2 = new List<string>();
         List<int> cant_paso_recor_2 = new List<int>();
 
@@ -427,7 +422,7 @@ namespace Proyecto_Final___Wingo
         // Recor 3
 
         string nombre_recor3;
-        int y3 = 258;
+        int y3 = 233;
         List<string> paso_recor_3 = new List<string>();
         List<int> cant_paso_recor_3 = new List<int>();
 
@@ -454,6 +449,18 @@ namespace Proyecto_Final___Wingo
 
         private void bt_cambiar_nombre_recor1_Click(object sender, EventArgs e)
         {
+            switch (recor_seleccionado)
+            {
+                case 1:
+                    panel_nom.Location = new System.Drawing.Point(x, y1);
+                    break;
+                case 2:
+                    panel_nom.Location = new System.Drawing.Point(x, y2);
+                    break;
+                case 3:
+                    panel_nom.Location = new System.Drawing.Point(x, y3);
+                    break;
+            }
             panel_pasos.Visible = false;
             panel_nom.Visible = true;
             cambia_nombre = true;
@@ -755,6 +762,12 @@ namespace Proyecto_Final___Wingo
                     MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
                 }
             }
+        }
+        private void bt_cerrar_Click(object sender, EventArgs e)
+        {
+            Pantalla_principal mostrar0 = new Pantalla_principal();
+            mostrar0.Show();
+            this.Close();
         }
     }
 }

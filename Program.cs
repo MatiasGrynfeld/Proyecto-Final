@@ -15,7 +15,7 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         /// 
         //C:\Users\matia\OneDrive\Escritorio\d\bin\Debug
-        static string[] partsPath = AppDomain.CurrentDomain.BaseDirectory.Split(System.IO.Path.DirectorySeparatorChar);
+        static string[] partsPath = AppDomain.CurrentDomain.BaseDirectory.Split(Path.DirectorySeparatorChar);
         static List<string> projectPath = new List<string>(partsPath);
         static public string pathConfig;
         static public PrivateFontCollection pfc = new PrivateFontCollection();
@@ -37,7 +37,7 @@ namespace Proyecto_Final___Wingo
                 {
                     if (!string.IsNullOrEmpty(pathConfig))
                     {
-                        pathConfig += System.IO.Path.DirectorySeparatorChar;
+                        pathConfig += Path.DirectorySeparatorChar;
                     }
 
                     pathConfig += folder;
@@ -47,15 +47,14 @@ namespace Proyecto_Final___Wingo
             pathConfig += "config.txt";
             pfc.AddFontFile(pathFont + "SFSportsNight.ttf");
             pfc.AddFontFile(pathFont + "SpeedAttackDemoRegular.ttf");
-            pfc.AddFontFile(pathFont + "Readfaster.ttf");
+            pfc.AddFontFile(pathFont + "ShadowsIntoLight-Regular.ttf");
             pfc.AddFontFile(pathFont + "Better-Faster.ttf");
             List<string> fontFamilies = pfc.Families.Select(f => f.Name).ToList();
             fontFamilies.Sort();
             titles = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("SF Sports Night")], 25f);
-            enviarConfig = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Speed Attack Demo")],13f);
-            labels = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Readfaster")], 18f);
-            buttons = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Better Faster")], 13f);
-
+            enviarConfig = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Speed Attack Demo")],14f);
+            labels = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Shadows Into Light")], 14f);
+            buttons = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Better Faster")], 14f);
             Application.Run(new Pantalla_principal());
         }
     }
