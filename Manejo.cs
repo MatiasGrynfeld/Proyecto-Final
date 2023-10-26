@@ -763,7 +763,8 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-        private void bt_cerrar_Click(object sender, EventArgs e)
+
+        private void iconButton1_Click(object sender, EventArgs e)
         {
             Pantalla_principal mostrar0 = new Pantalla_principal();
             mostrar0.Show();

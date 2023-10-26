@@ -37,8 +37,6 @@ namespace Proyecto_Final___Wingo
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.bt_perfil_2 = new System.Windows.Forms.Button();
             this.panel_wheel = new System.Windows.Forms.Panel();
-            this.bt_mouse = new System.Windows.Forms.Button();
-            this.bt_pincel = new System.Windows.Forms.Button();
             this.panel_perfil = new System.Windows.Forms.Panel();
             this.lbl_mod = new System.Windows.Forms.Label();
             this.lbl_ang = new System.Windows.Forms.Label();
@@ -67,8 +65,10 @@ namespace Proyecto_Final___Wingo
             this.bt_enviar_configuraciones = new System.Windows.Forms.Button();
             this.bt_manejo = new System.Windows.Forms.Button();
             this.panel_perfs = new System.Windows.Forms.Panel();
-            this.lbl_pers = new System.Windows.Forms.Label();
             this.bt_cerrar = new FontAwesome.Sharp.IconButton();
+            this.lbl_pers = new System.Windows.Forms.Label();
+            this.bt_mouse = new FontAwesome.Sharp.IconButton();
+            this.bt_paint = new FontAwesome.Sharp.IconButton();
             this.panel_nom.SuspendLayout();
             this.panel_perfil.SuspendLayout();
             this.panel_derecha.SuspendLayout();
@@ -104,7 +104,7 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.Controls.Add(this.bt_enviar_nombre);
             this.panel_nom.Controls.Add(this.txt_nombre);
             this.panel_nom.Controls.Add(this.lbl_nombre);
-            this.panel_nom.Location = new System.Drawing.Point(12, 675);
+            this.panel_nom.Location = new System.Drawing.Point(18, 672);
             this.panel_nom.Name = "panel_nom";
             this.panel_nom.Size = new System.Drawing.Size(240, 65);
             this.panel_nom.TabIndex = 0;
@@ -130,7 +130,7 @@ namespace Proyecto_Final___Wingo
             // lbl_nombre
             // 
             this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(3, 16);
+            this.lbl_nombre.Location = new System.Drawing.Point(3, 10);
             this.lbl_nombre.Name = "lbl_nombre";
             this.lbl_nombre.Size = new System.Drawing.Size(89, 13);
             this.lbl_nombre.TabIndex = 0;
@@ -152,27 +152,6 @@ namespace Proyecto_Final___Wingo
             this.panel_wheel.Name = "panel_wheel";
             this.panel_wheel.Size = new System.Drawing.Size(380, 551);
             this.panel_wheel.TabIndex = 5;
-            // 
-            // bt_mouse
-            // 
-            this.bt_mouse.Enabled = false;
-            this.bt_mouse.Location = new System.Drawing.Point(905, 12);
-            this.bt_mouse.Name = "bt_mouse";
-            this.bt_mouse.Size = new System.Drawing.Size(39, 36);
-            this.bt_mouse.TabIndex = 6;
-            this.bt_mouse.Text = "m";
-            this.bt_mouse.UseVisualStyleBackColor = true;
-            this.bt_mouse.Click += new System.EventHandler(this.bt_mouse_Click);
-            // 
-            // bt_pincel
-            // 
-            this.bt_pincel.Location = new System.Drawing.Point(968, 12);
-            this.bt_pincel.Name = "bt_pincel";
-            this.bt_pincel.Size = new System.Drawing.Size(39, 36);
-            this.bt_pincel.TabIndex = 7;
-            this.bt_pincel.Text = "p";
-            this.bt_pincel.UseVisualStyleBackColor = true;
-            this.bt_pincel.Click += new System.EventHandler(this.bt_pincel_Click);
             // 
             // panel_perfil
             // 
@@ -490,19 +469,8 @@ namespace Proyecto_Final___Wingo
             this.panel_perfs.Controls.Add(this.bt_perfil_2);
             this.panel_perfs.Location = new System.Drawing.Point(0, 67);
             this.panel_perfs.Name = "panel_perfs";
-            this.panel_perfs.Size = new System.Drawing.Size(151, 621);
+            this.panel_perfs.Size = new System.Drawing.Size(151, 602);
             this.panel_perfs.TabIndex = 10;
-            // 
-            // lbl_pers
-            // 
-            this.lbl_pers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_pers.AutoEllipsis = true;
-            this.lbl_pers.AutoSize = true;
-            this.lbl_pers.Location = new System.Drawing.Point(15, 9);
-            this.lbl_pers.Name = "lbl_pers";
-            this.lbl_pers.Size = new System.Drawing.Size(36, 26);
-            this.lbl_pers.TabIndex = 10;
-            this.lbl_pers.Text = "Luces\r\n  RGB";
             // 
             // bt_cerrar
             // 
@@ -516,16 +484,52 @@ namespace Proyecto_Final___Wingo
             this.bt_cerrar.UseVisualStyleBackColor = true;
             this.bt_cerrar.Click += new System.EventHandler(this.bt_cerrar_Click);
             // 
+            // lbl_pers
+            // 
+            this.lbl_pers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_pers.AutoEllipsis = true;
+            this.lbl_pers.AutoSize = true;
+            this.lbl_pers.Location = new System.Drawing.Point(15, 9);
+            this.lbl_pers.Name = "lbl_pers";
+            this.lbl_pers.Size = new System.Drawing.Size(36, 26);
+            this.lbl_pers.TabIndex = 10;
+            this.lbl_pers.Text = "Luces\r\n  RGB";
+            // 
+            // bt_mouse
+            // 
+            this.bt_mouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_mouse.IconChar = FontAwesome.Sharp.IconChar.ArrowPointer;
+            this.bt_mouse.IconColor = System.Drawing.Color.Black;
+            this.bt_mouse.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_mouse.Location = new System.Drawing.Point(897, 8);
+            this.bt_mouse.Name = "bt_mouse";
+            this.bt_mouse.Size = new System.Drawing.Size(50, 50);
+            this.bt_mouse.TabIndex = 11;
+            this.bt_mouse.UseVisualStyleBackColor = true;
+            this.bt_mouse.Click += new System.EventHandler(this.bt_mousr_Click);
+            // 
+            // bt_paint
+            // 
+            this.bt_paint.IconChar = FontAwesome.Sharp.IconChar.PaintRoller;
+            this.bt_paint.IconColor = System.Drawing.Color.Black;
+            this.bt_paint.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_paint.Location = new System.Drawing.Point(981, 8);
+            this.bt_paint.Name = "bt_paint";
+            this.bt_paint.Size = new System.Drawing.Size(50, 50);
+            this.bt_paint.TabIndex = 12;
+            this.bt_paint.UseVisualStyleBackColor = true;
+            this.bt_paint.Click += new System.EventHandler(this.bt_paint_Click);
+            // 
             // Personalización
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.bt_paint);
+            this.Controls.Add(this.bt_mouse);
             this.Controls.Add(this.lbl_pers);
             this.Controls.Add(this.panel_perfs);
-            this.Controls.Add(this.bt_pincel);
-            this.Controls.Add(this.bt_mouse);
             this.Controls.Add(this.panel_wheel);
             this.Controls.Add(this.panel_nom);
             this.Controls.Add(this.panel_perfil);
@@ -564,8 +568,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.Panel panel_wheel;
-        private System.Windows.Forms.Button bt_mouse;
-        private System.Windows.Forms.Button bt_pincel;
         private System.Windows.Forms.Panel panel_perfil;
         private System.Windows.Forms.Button bt_cambiar_nombre;
         private System.Windows.Forms.Panel panel_arriba;
@@ -596,5 +598,7 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_mod;
         private System.Windows.Forms.Label lbl_ang;
         private FontAwesome.Sharp.IconButton bt_cerrar;
+        private FontAwesome.Sharp.IconButton bt_mouse;
+        private FontAwesome.Sharp.IconButton bt_paint;
     }
 }

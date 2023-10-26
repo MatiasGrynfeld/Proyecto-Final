@@ -61,11 +61,11 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.bt_personalizacion = new System.Windows.Forms.Button();
             this.panel_recors = new System.Windows.Forms.Panel();
-            this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.panel_pasos = new System.Windows.Forms.Panel();
             this.panel_modificar_paso = new System.Windows.Forms.Panel();
             this.panel_envio = new System.Windows.Forms.Panel();
+            this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_recors.SuspendLayout();
             this.panel_nom.SuspendLayout();
             this.panel_pasos.SuspendLayout();
@@ -157,7 +157,7 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_eliminar_paso
             // 
-            this.bt_eliminar_paso.Location = new System.Drawing.Point(733, 103);
+            this.bt_eliminar_paso.Location = new System.Drawing.Point(733, 104);
             this.bt_eliminar_paso.Name = "bt_eliminar_paso";
             this.bt_eliminar_paso.Size = new System.Drawing.Size(111, 41);
             this.bt_eliminar_paso.TabIndex = 16;
@@ -246,7 +246,7 @@ namespace Proyecto_Final___Wingo
             // lbl_pasos_hechos
             // 
             this.lbl_pasos_hechos.AutoSize = true;
-            this.lbl_pasos_hechos.Location = new System.Drawing.Point(780, 9);
+            this.lbl_pasos_hechos.Location = new System.Drawing.Point(818, 28);
             this.lbl_pasos_hechos.Name = "lbl_pasos_hechos";
             this.lbl_pasos_hechos.Size = new System.Drawing.Size(77, 13);
             this.lbl_pasos_hechos.TabIndex = 11;
@@ -334,7 +334,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_agregar_paso.Location = new System.Drawing.Point(180, 12);
             this.bt_agregar_paso.Name = "bt_agregar_paso";
-            this.bt_agregar_paso.Size = new System.Drawing.Size(146, 58);
+            this.bt_agregar_paso.Size = new System.Drawing.Size(146, 69);
             this.bt_agregar_paso.TabIndex = 1;
             this.bt_agregar_paso.Text = "Agregar Paso";
             this.bt_agregar_paso.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_cambiar_nombre.Location = new System.Drawing.Point(19, 12);
             this.bt_cambiar_nombre.Name = "bt_cambiar_nombre";
-            this.bt_cambiar_nombre.Size = new System.Drawing.Size(147, 58);
+            this.bt_cambiar_nombre.Size = new System.Drawing.Size(137, 69);
             this.bt_cambiar_nombre.TabIndex = 0;
             this.bt_cambiar_nombre.Text = "Cambiar nombre del recorrido";
             this.bt_cambiar_nombre.UseVisualStyleBackColor = true;
@@ -372,18 +372,6 @@ namespace Proyecto_Final___Wingo
             this.panel_recors.Name = "panel_recors";
             this.panel_recors.Size = new System.Drawing.Size(221, 639);
             this.panel_recors.TabIndex = 11;
-            // 
-            // bt_cerrar
-            // 
-            this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
-            this.bt_cerrar.IconColor = System.Drawing.Color.Blue;
-            this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_cerrar.Location = new System.Drawing.Point(0, 547);
-            this.bt_cerrar.Name = "bt_cerrar";
-            this.bt_cerrar.Size = new System.Drawing.Size(213, 60);
-            this.bt_cerrar.TabIndex = 11;
-            this.bt_cerrar.UseVisualStyleBackColor = true;
-            this.bt_cerrar.Click += new System.EventHandler(this.bt_cerrar_Click);
             // 
             // panel_nom
             // 
@@ -441,11 +429,22 @@ namespace Proyecto_Final___Wingo
             this.panel_envio.Size = new System.Drawing.Size(626, 162);
             this.panel_envio.TabIndex = 19;
             // 
+            // bt_cerrar
+            // 
+            this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
+            this.bt_cerrar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(63)))), ((int)(((byte)(191)))));
+            this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_cerrar.Location = new System.Drawing.Point(0, 550);
+            this.bt_cerrar.Name = "bt_cerrar";
+            this.bt_cerrar.Size = new System.Drawing.Size(213, 60);
+            this.bt_cerrar.TabIndex = 11;
+            this.bt_cerrar.UseVisualStyleBackColor = true;
+            this.bt_cerrar.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // Manejo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.fondo_auto_2_;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel_pasos);
             this.Controls.Add(this.panel_nom);

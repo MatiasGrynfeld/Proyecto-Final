@@ -15,7 +15,7 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         /// 
         //C:\Users\matia\OneDrive\Escritorio\d\bin\Debug
-        static string[] partsPath = AppDomain.CurrentDomain.BaseDirectory.Split(Path.DirectorySeparatorChar);
+        static string[] partsPath = AppDomain.CurrentDomain.BaseDirectory.Split(System.IO.Path.DirectorySeparatorChar);
         static List<string> projectPath = new List<string>(partsPath);
         static public string pathConfig;
         static public PrivateFontCollection pfc = new PrivateFontCollection();
@@ -37,7 +37,7 @@ namespace Proyecto_Final___Wingo
                 {
                     if (!string.IsNullOrEmpty(pathConfig))
                     {
-                        pathConfig += Path.DirectorySeparatorChar;
+                        pathConfig += System.IO.Path.DirectorySeparatorChar;
                     }
 
                     pathConfig += folder;
@@ -52,9 +52,10 @@ namespace Proyecto_Final___Wingo
             List<string> fontFamilies = pfc.Families.Select(f => f.Name).ToList();
             fontFamilies.Sort();
             titles = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("SF Sports Night")], 25f);
-            enviarConfig = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Speed Attack Demo")],14f);
-            labels = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Shadows Into Light")], 14f);
-            buttons = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Better Faster")], 14f);
+            enviarConfig = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Speed Attack Demo")],13f);
+            labels = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Shadows Into Light")], 15f);
+            buttons = new System.Drawing.Font(pfc.Families[fontFamilies.IndexOf("Better Faster")], 13f);
+
             Application.Run(new Pantalla_principal());
         }
     }
