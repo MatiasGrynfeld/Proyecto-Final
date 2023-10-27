@@ -91,6 +91,36 @@ namespace Proyecto_Final___Wingo.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fondo_principal1 {
+            get {
+                object obj = ResourceManager.GetObject("Fondo principal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondo_recorrido {
+            get {
+                object obj = ResourceManager.GetObject("fondo recorrido", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondo_recorrido1 {
+            get {
+                object obj = ResourceManager.GetObject("fondo recorrido1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
         internal static byte[] SpeedAttackDemoRegular {
