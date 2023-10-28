@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Proyecto_Final___Wingo
 {
@@ -243,6 +244,63 @@ namespace Proyecto_Final___Wingo
             string[] lineas = File.ReadAllLines(pathconfig);
             string[] array2 = lineas.Skip(split_index).ToArray();
             File.WriteAllLines(pathconfig, reemplazo.Concat(array2));
+        }
+        public void initializeButtons(Control form, params Control[] exceptions)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if (control is Button button)
+                {
+                    if (!exceptions.Contains(button))
+                    {
+                        button.BackColor = Color.Transparent;
+                        button.FlatAppearance.BorderSize = 0;
+                        button.FlatAppearance.MouseOverBackColor = button.BackColor;
+                        button.FlatAppearance.MouseDownBackColor = button.BackColor;
+                        button.Cursor = Cursors.Hand;
+                    }
+                }
+                else if (control is Panel)
+                {
+                    initializeButtons(control, exceptions);
+                }
+            }
+        }
+
+        public void initializeLabels(Control form, params Control[] exceptions)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if (control is Label label)
+                {
+                    if (!exceptions.Contains(label))
+                    {
+                        label.BackColor = Color.Transparent;
+                        label.Font = Program.labels;
+                    }
+                }
+                else if (control is Panel)
+                {
+                    initializeLabels(control,exceptions);
+                }
+            }
+        }
+        public void initializePanels(Control form, params Control[] exceptions)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    if (!exceptions.Contains(panel))
+                    {
+                        panel.BackColor = Color.Transparent;
+                    }
+                    if (panel.Controls.Count > 0)
+                    {
+                        initializePanels(panel, exceptions);
+                    }
+                }
+            }
         }
     }
 }

@@ -34,18 +34,22 @@ namespace Proyecto_Final___Wingo
             this.bt_manejo = new System.Windows.Forms.Button();
             this.bt_cerrar_app = new System.Windows.Forms.Button();
             this.bt_ajustes = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Sally = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bt_personalización
             // 
             this.bt_personalización.AutoEllipsis = true;
+            this.bt_personalización.BackColor = System.Drawing.Color.Transparent;
+            this.bt_personalización.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.button_prueba;
+            this.bt_personalización.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_personalización.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_personalización.Location = new System.Drawing.Point(319, 95);
             this.bt_personalización.Name = "bt_personalización";
             this.bt_personalización.Size = new System.Drawing.Size(163, 61);
             this.bt_personalización.TabIndex = 0;
             this.bt_personalización.Text = "Ir a personalización";
-            this.bt_personalización.UseVisualStyleBackColor = true;
+            this.bt_personalización.UseVisualStyleBackColor = false;
             this.bt_personalización.Click += new System.EventHandler(this.bt_personalización_Click);
             // 
             // bt_manejo
@@ -78,15 +82,15 @@ namespace Proyecto_Final___Wingo
             this.bt_ajustes.UseVisualStyleBackColor = true;
             this.bt_ajustes.Click += new System.EventHandler(this.bt_ajustes_Click);
             // 
-            // label1
+            // lbl_Sally
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(343, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Sally";
+            this.lbl_Sally.AutoSize = true;
+            this.lbl_Sally.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Sally.Location = new System.Drawing.Point(343, 29);
+            this.lbl_Sally.Name = "lbl_Sally";
+            this.lbl_Sally.Size = new System.Drawing.Size(29, 13);
+            this.lbl_Sally.TabIndex = 4;
+            this.lbl_Sally.Text = "Sally";
             // 
             // Pantalla_principal
             // 
@@ -95,12 +99,13 @@ namespace Proyecto_Final___Wingo
             this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.Fondo_principal1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_Sally);
             this.Controls.Add(this.bt_ajustes);
             this.Controls.Add(this.bt_cerrar_app);
             this.Controls.Add(this.bt_manejo);
             this.Controls.Add(this.bt_personalización);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pantalla_principal";
@@ -118,7 +123,7 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_manejo;
         private System.Windows.Forms.Button bt_cerrar_app;
         private System.Windows.Forms.Button bt_ajustes;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Sally;
     }
 }
 

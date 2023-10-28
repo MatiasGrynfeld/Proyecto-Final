@@ -287,34 +287,10 @@ namespace Proyecto_Final___Wingo
             comb_pasos_hechos_recor2.Location = punto_combo;
             comb_pasos_hechos_recor3.Location = punto_combo;
             lbl_crear_recor.Font = Program.titles;
-
-            foreach (Control panel in this.Controls) {
-                if (!(panel is Button) && panel.Name!="panel_nom")
-                {
-                    panel.BackColor = Color.Transparent;
-                }
-                if (panel is Panel)
-                {
-                    foreach (Control control in panel.Controls)
-                    {
-                        if (control is Panel)
-                        {
-                            foreach (Control control2 in control.Controls)
-                            {
-                                if (control2 is Label)
-                                {
-                                    control2.Font = Program.labels;
-                                }
-                            }
-                        }
-                        if (control is Label && control.Name != "lbl_crear_recor")
-                        {
-                            control.Font = Program.labels;
-                        }
-                    }
-                }
-            }
-
+            Funciones funciones = new Funciones();
+            funciones.initializeLabels(this, lbl_crear_recor);
+            funciones.initializePanels(this, panel_nom);
+            funciones.initializeButtons(this);
         }
         private void Manejo_Load(object sender, EventArgs e)
         {

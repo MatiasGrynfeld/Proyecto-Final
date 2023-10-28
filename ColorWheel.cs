@@ -139,37 +139,10 @@ namespace Proyecto_Final___Wingo
             bt_resetear.Visible = false;
             lbl_color_seleccionado.Visible = false;
             color_default = panel_muestra.BackColor;
-            foreach (Control panel in this.Controls)
-            {
-                if (!(panel is Button))
-                {
-                    panel.BackColor = Color.Transparent;
-                }
-                if (panel is Panel)
-                {
-                    foreach (Control control in panel.Controls)
-                    {
-                        if (control is Panel)
-                        {
-                            foreach (Control control2 in control.Controls)
-                            {
-                                if (control2 is Label)
-                                {
-                                    control2.Font = Program.labels;
-                                }
-                            }
-                        }
-                        if (control is Label && control.Name != "lbl_crear_recor")
-                        {
-                            control.Font = Program.labels;
-                        }
-                    }
-                }
-                if (panel is Label)
-                {
-                    panel.Font = Program.labels;
-                }
-            }
+            Funciones funciones = new Funciones();
+            funciones.initializePanels(this);
+            funciones.initializeLabels(this);
+            funciones.initializeButtons(this);
         }
 
         //Events

@@ -74,37 +74,9 @@ namespace Proyecto_Final___Wingo
             {
                 bt_perfil_2.Text = "Nuevo Perfil";
             }
-            foreach (Control panel in this.Controls)
-            {
-                if (!(panel is Button))
-                {
-                    panel.BackColor = Color.Transparent;
-                }
-                if (panel is Panel)
-                {
-                    foreach (Control control in panel.Controls)
-                    {
-                        if (control is Label)
-                        {
-                            control.Font = Program.labels;
-                        }
-                        if (control is Panel)
-                        {
-                            foreach(Control control2 in control.Controls)
-                            {
-                                if (control2 is Label)
-                                {
-                                    control2.Font = Program.labels;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-        private void bt_volver_Click(object sender, EventArgs e)
-        {
+            funciones.initializeLabels(this,lbl_pers);
+            funciones.initializeButtons(this);
+            funciones.initializePanels(this, panel_nom);
 
         }
         private void Personalización_Load(object sender, EventArgs e)

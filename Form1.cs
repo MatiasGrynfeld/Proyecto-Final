@@ -15,6 +15,9 @@ namespace Proyecto_Final___Wingo
         public Pantalla_principal()
         {
             InitializeComponent();
+            Funciones funciones = new Funciones();
+            funciones.initializeButtons(this);
+            funciones.initializeLabels(this, lbl_Sally);
         }
 
         private void bt_personalización_Click(object sender, EventArgs e)
@@ -45,7 +48,7 @@ namespace Proyecto_Final___Wingo
 
         private void Pantalla_principal_Load(object sender, EventArgs e)
         {
-            label1.Font = Program.titles;
+            lbl_Sally.Font = Program.titles;
         }
     }
 }
