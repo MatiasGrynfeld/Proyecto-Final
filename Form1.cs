@@ -19,15 +19,13 @@ namespace Proyecto_Final___Wingo
             funciones.initializeButtons(this);
             funciones.initializeLabels(this, lbl_Sally);
         }
-
-        private void bt_personalización_Click(object sender, EventArgs e)
+        private void bt_ir_pers_Click(object sender, EventArgs e)
         {
             Personalización mostrar1 = new Personalización();
             mostrar1.Show();
             this.Hide();
         }
-
-        private void bt_manejo_Click(object sender, EventArgs e)
+        private void bt_ir_manejo_Click(object sender, EventArgs e)
         {
             Manejo mostrar2 = new Manejo();
             mostrar2.Show();

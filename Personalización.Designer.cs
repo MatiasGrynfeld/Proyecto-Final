@@ -29,18 +29,16 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
-            this.bt_perfil_1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.bt_enviar_nombre = new System.Windows.Forms.Button();
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
-            this.bt_perfil_2 = new System.Windows.Forms.Button();
             this.panel_wheel = new System.Windows.Forms.Panel();
             this.panel_perfil = new System.Windows.Forms.Panel();
+            this.bt_reset_cols = new FontAwesome.Sharp.IconButton();
             this.lbl_mod = new System.Windows.Forms.Label();
             this.lbl_ang = new System.Windows.Forms.Label();
-            this.bt_reset_colores = new System.Windows.Forms.Button();
             this.panel_derecha = new System.Windows.Forms.Panel();
             this.lbl_len_der = new System.Windows.Forms.Label();
             this.trackBar_der = new System.Windows.Forms.TrackBar();
@@ -65,6 +63,8 @@ namespace Proyecto_Final___Wingo
             this.bt_enviar_configuraciones = new System.Windows.Forms.Button();
             this.bt_manejo = new System.Windows.Forms.Button();
             this.panel_perfs = new System.Windows.Forms.Panel();
+            this.bt_perfil2 = new FontAwesome.Sharp.IconButton();
+            this.bt_perfil1 = new FontAwesome.Sharp.IconButton();
             this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.lbl_pers = new System.Windows.Forms.Label();
             this.bt_mouse = new FontAwesome.Sharp.IconButton();
@@ -79,16 +79,6 @@ namespace Proyecto_Final___Wingo
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_arr)).BeginInit();
             this.panel_perfs.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bt_perfil_1
-            // 
-            this.bt_perfil_1.Location = new System.Drawing.Point(0, 0);
-            this.bt_perfil_1.Name = "bt_perfil_1";
-            this.bt_perfil_1.Size = new System.Drawing.Size(144, 60);
-            this.bt_perfil_1.TabIndex = 1;
-            this.bt_perfil_1.Text = "Nuevo\r\nPerfil\r\n";
-            this.bt_perfil_1.UseVisualStyleBackColor = true;
-            this.bt_perfil_1.Click += new System.EventHandler(this.bt_perfil_1_Click);
             // 
             // button2
             // 
@@ -136,28 +126,18 @@ namespace Proyecto_Final___Wingo
             this.lbl_nombre.TabIndex = 0;
             this.lbl_nombre.Text = "Nombre del perfil:\r\n";
             // 
-            // bt_perfil_2
-            // 
-            this.bt_perfil_2.Location = new System.Drawing.Point(0, 71);
-            this.bt_perfil_2.Name = "bt_perfil_2";
-            this.bt_perfil_2.Size = new System.Drawing.Size(144, 60);
-            this.bt_perfil_2.TabIndex = 4;
-            this.bt_perfil_2.Text = "Nuevo\r\nPerfil\r\n";
-            this.bt_perfil_2.UseVisualStyleBackColor = true;
-            this.bt_perfil_2.Click += new System.EventHandler(this.bt_perfil_2_Click);
-            // 
             // panel_wheel
             // 
-            this.panel_wheel.Location = new System.Drawing.Point(888, 67);
+            this.panel_wheel.Location = new System.Drawing.Point(875, 67);
             this.panel_wheel.Name = "panel_wheel";
             this.panel_wheel.Size = new System.Drawing.Size(380, 551);
             this.panel_wheel.TabIndex = 5;
             // 
             // panel_perfil
             // 
+            this.panel_perfil.Controls.Add(this.bt_reset_cols);
             this.panel_perfil.Controls.Add(this.lbl_mod);
             this.panel_perfil.Controls.Add(this.lbl_ang);
-            this.panel_perfil.Controls.Add(this.bt_reset_colores);
             this.panel_perfil.Controls.Add(this.panel_derecha);
             this.panel_perfil.Controls.Add(this.panel_izquierda);
             this.panel_perfil.Controls.Add(this.comb_angulo);
@@ -168,6 +148,18 @@ namespace Proyecto_Final___Wingo
             this.panel_perfil.Name = "panel_perfil";
             this.panel_perfil.Size = new System.Drawing.Size(700, 666);
             this.panel_perfil.TabIndex = 3;
+            // 
+            // bt_reset_cols
+            // 
+            this.bt_reset_cols.IconChar = FontAwesome.Sharp.IconChar.Rotate;
+            this.bt_reset_cols.IconColor = System.Drawing.Color.Black;
+            this.bt_reset_cols.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_reset_cols.Location = new System.Drawing.Point(624, 4);
+            this.bt_reset_cols.Name = "bt_reset_cols";
+            this.bt_reset_cols.Size = new System.Drawing.Size(58, 58);
+            this.bt_reset_cols.TabIndex = 10;
+            this.bt_reset_cols.UseVisualStyleBackColor = true;
+            this.bt_reset_cols.Click += new System.EventHandler(this.bt_reset_cols_Click);
             // 
             // lbl_mod
             // 
@@ -186,16 +178,6 @@ namespace Proyecto_Final___Wingo
             this.lbl_ang.Size = new System.Drawing.Size(98, 13);
             this.lbl_ang.TabIndex = 8;
             this.lbl_ang.Text = "Seleccionar ángulo";
-            // 
-            // bt_reset_colores
-            // 
-            this.bt_reset_colores.Location = new System.Drawing.Point(606, 15);
-            this.bt_reset_colores.Name = "bt_reset_colores";
-            this.bt_reset_colores.Size = new System.Drawing.Size(73, 34);
-            this.bt_reset_colores.TabIndex = 7;
-            this.bt_reset_colores.Text = "Resetear colores";
-            this.bt_reset_colores.UseVisualStyleBackColor = true;
-            this.bt_reset_colores.Click += new System.EventHandler(this.bt_reset_colores_Click);
             // 
             // panel_derecha
             // 
@@ -462,15 +444,47 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_perfs
             // 
+            this.panel_perfs.Controls.Add(this.bt_perfil2);
+            this.panel_perfs.Controls.Add(this.bt_perfil1);
             this.panel_perfs.Controls.Add(this.bt_cerrar);
-            this.panel_perfs.Controls.Add(this.bt_perfil_1);
             this.panel_perfs.Controls.Add(this.bt_enviar_configuraciones);
             this.panel_perfs.Controls.Add(this.bt_manejo);
-            this.panel_perfs.Controls.Add(this.bt_perfil_2);
             this.panel_perfs.Location = new System.Drawing.Point(0, 67);
             this.panel_perfs.Name = "panel_perfs";
             this.panel_perfs.Size = new System.Drawing.Size(151, 602);
             this.panel_perfs.TabIndex = 10;
+            // 
+            // bt_perfil2
+            // 
+            this.bt_perfil2.IconChar = FontAwesome.Sharp.IconChar.Sliders;
+            this.bt_perfil2.IconColor = System.Drawing.Color.Black;
+            this.bt_perfil2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_perfil2.IconSize = 40;
+            this.bt_perfil2.Location = new System.Drawing.Point(0, 94);
+            this.bt_perfil2.Name = "bt_perfil2";
+            this.bt_perfil2.Size = new System.Drawing.Size(144, 60);
+            this.bt_perfil2.TabIndex = 14;
+            this.bt_perfil2.Text = "Nuevo Perfil";
+            this.bt_perfil2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_perfil2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_perfil2.UseVisualStyleBackColor = true;
+            this.bt_perfil2.Click += new System.EventHandler(this.bt_perf2_Click);
+            // 
+            // bt_perfil1
+            // 
+            this.bt_perfil1.IconChar = FontAwesome.Sharp.IconChar.Sliders;
+            this.bt_perfil1.IconColor = System.Drawing.Color.Black;
+            this.bt_perfil1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_perfil1.IconSize = 40;
+            this.bt_perfil1.Location = new System.Drawing.Point(0, 12);
+            this.bt_perfil1.Name = "bt_perfil1";
+            this.bt_perfil1.Size = new System.Drawing.Size(144, 60);
+            this.bt_perfil1.TabIndex = 13;
+            this.bt_perfil1.Text = "Nuevo Perfil";
+            this.bt_perfil1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_perfil1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_perfil1.UseVisualStyleBackColor = true;
+            this.bt_perfil1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // bt_cerrar
             // 
@@ -489,11 +503,13 @@ namespace Proyecto_Final___Wingo
             this.lbl_pers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_pers.AutoEllipsis = true;
             this.lbl_pers.AutoSize = true;
+            this.lbl_pers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_pers.Location = new System.Drawing.Point(15, 9);
             this.lbl_pers.Name = "lbl_pers";
             this.lbl_pers.Size = new System.Drawing.Size(36, 26);
             this.lbl_pers.TabIndex = 10;
             this.lbl_pers.Text = "Luces\r\n  RGB";
+            this.lbl_pers.Click += new System.EventHandler(this.lbl_pers_Click);
             // 
             // bt_mouse
             // 
@@ -501,6 +517,7 @@ namespace Proyecto_Final___Wingo
             this.bt_mouse.IconChar = FontAwesome.Sharp.IconChar.ArrowPointer;
             this.bt_mouse.IconColor = System.Drawing.Color.Black;
             this.bt_mouse.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_mouse.IconSize = 45;
             this.bt_mouse.Location = new System.Drawing.Point(897, 8);
             this.bt_mouse.Name = "bt_mouse";
             this.bt_mouse.Size = new System.Drawing.Size(50, 50);
@@ -560,9 +577,7 @@ namespace Proyecto_Final___Wingo
         }
 
         #endregion
-        private System.Windows.Forms.Button bt_perfil_1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button bt_perfil_2;
         private System.Windows.Forms.Panel panel_nom;
         private System.Windows.Forms.Button bt_enviar_nombre;
         private System.Windows.Forms.TextBox txt_nombre;
@@ -592,7 +607,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Label lbl_med_arr;
         private System.Windows.Forms.Label lbl_rap_arr;
         private System.Windows.Forms.Button bt_manejo;
-        private System.Windows.Forms.Button bt_reset_colores;
         private System.Windows.Forms.Panel panel_perfs;
         private System.Windows.Forms.Label lbl_pers;
         private System.Windows.Forms.Label lbl_mod;
@@ -600,5 +614,8 @@ namespace Proyecto_Final___Wingo
         private FontAwesome.Sharp.IconButton bt_cerrar;
         private FontAwesome.Sharp.IconButton bt_mouse;
         private FontAwesome.Sharp.IconButton bt_paint;
+        private FontAwesome.Sharp.IconButton bt_reset_cols;
+        private FontAwesome.Sharp.IconButton bt_perfil1;
+        private FontAwesome.Sharp.IconButton bt_perfil2;
     }
 }

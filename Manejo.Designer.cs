@@ -31,21 +31,16 @@ namespace Proyecto_Final___Wingo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manejo));
             this.lbl_crear_recor = new System.Windows.Forms.Label();
-            this.bt_recorrido1 = new System.Windows.Forms.Button();
-            this.bt_recorrido2 = new System.Windows.Forms.Button();
-            this.bt_recorrido3 = new System.Windows.Forms.Button();
             this.txt_nom = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.bt_enviar_nom = new System.Windows.Forms.Button();
             this.lbl_delay_carga = new System.Windows.Forms.Label();
             this.txt_delay_carga = new System.Windows.Forms.TextBox();
-            this.bt_eliminar_paso = new System.Windows.Forms.Button();
             this.comb_nuevo_tipo_paso = new System.Windows.Forms.ComboBox();
             this.txt_nuevo_cant_paso = new System.Windows.Forms.TextBox();
             this.bt_enviar_nuevo_paso = new System.Windows.Forms.Button();
             this.lbl_nuevo_cant_paso = new System.Windows.Forms.Label();
             this.lbl_nuevo_tipo_paso = new System.Windows.Forms.Label();
-            this.bt_modificar_paso = new System.Windows.Forms.Button();
             this.comb_pasos_hechos_recor3 = new System.Windows.Forms.ComboBox();
             this.comb_pasos_hechos_recor2 = new System.Windows.Forms.ComboBox();
             this.lbl_pasos_hechos = new System.Windows.Forms.Label();
@@ -57,15 +52,20 @@ namespace Proyecto_Final___Wingo
             this.comb_tipo_paso = new System.Windows.Forms.ComboBox();
             this.lbl_cant_paso = new System.Windows.Forms.Label();
             this.lbl_tipo_de_paso = new System.Windows.Forms.Label();
-            this.bt_agregar_paso = new System.Windows.Forms.Button();
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.bt_personalizacion = new System.Windows.Forms.Button();
             this.panel_recors = new System.Windows.Forms.Panel();
             this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.panel_pasos = new System.Windows.Forms.Panel();
+            this.bt_mod_paso = new FontAwesome.Sharp.IconButton();
+            this.bt_el_paso = new FontAwesome.Sharp.IconButton();
+            this.bt_nuevo_paso = new FontAwesome.Sharp.IconButton();
             this.panel_modificar_paso = new System.Windows.Forms.Panel();
             this.panel_envio = new System.Windows.Forms.Panel();
+            this.bt_recor1 = new FontAwesome.Sharp.IconButton();
+            this.bt_recor2 = new FontAwesome.Sharp.IconButton();
+            this.bt_recor3 = new FontAwesome.Sharp.IconButton();
             this.panel_recors.SuspendLayout();
             this.panel_nom.SuspendLayout();
             this.panel_pasos.SuspendLayout();
@@ -76,41 +76,13 @@ namespace Proyecto_Final___Wingo
             // lbl_crear_recor
             // 
             this.lbl_crear_recor.AutoSize = true;
+            this.lbl_crear_recor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_crear_recor.Location = new System.Drawing.Point(3, 9);
             this.lbl_crear_recor.Name = "lbl_crear_recor";
             this.lbl_crear_recor.Size = new System.Drawing.Size(53, 26);
             this.lbl_crear_recor.TabIndex = 2;
             this.lbl_crear_recor.Text = "    Crear\r\nrecorridos";
-            // 
-            // bt_recorrido1
-            // 
-            this.bt_recorrido1.Location = new System.Drawing.Point(0, 72);
-            this.bt_recorrido1.Name = "bt_recorrido1";
-            this.bt_recorrido1.Size = new System.Drawing.Size(213, 60);
-            this.bt_recorrido1.TabIndex = 3;
-            this.bt_recorrido1.Text = "Nuevo recorrido";
-            this.bt_recorrido1.UseVisualStyleBackColor = true;
-            this.bt_recorrido1.Click += new System.EventHandler(this.bt_recorrido1_Click);
-            // 
-            // bt_recorrido2
-            // 
-            this.bt_recorrido2.Location = new System.Drawing.Point(0, 154);
-            this.bt_recorrido2.Name = "bt_recorrido2";
-            this.bt_recorrido2.Size = new System.Drawing.Size(213, 60);
-            this.bt_recorrido2.TabIndex = 4;
-            this.bt_recorrido2.Text = "Nuevo recorrido";
-            this.bt_recorrido2.UseVisualStyleBackColor = true;
-            this.bt_recorrido2.Click += new System.EventHandler(this.bt_recorrido2_Click);
-            // 
-            // bt_recorrido3
-            // 
-            this.bt_recorrido3.Location = new System.Drawing.Point(0, 233);
-            this.bt_recorrido3.Name = "bt_recorrido3";
-            this.bt_recorrido3.Size = new System.Drawing.Size(213, 60);
-            this.bt_recorrido3.TabIndex = 5;
-            this.bt_recorrido3.Text = "Nuevo recorrido";
-            this.bt_recorrido3.UseVisualStyleBackColor = true;
-            this.bt_recorrido3.Click += new System.EventHandler(this.bt_recorrido3_Click);
+            this.lbl_crear_recor.Click += new System.EventHandler(this.lbl_crear_recor_Click);
             // 
             // txt_nom
             // 
@@ -154,16 +126,6 @@ namespace Proyecto_Final___Wingo
             this.txt_delay_carga.Name = "txt_delay_carga";
             this.txt_delay_carga.Size = new System.Drawing.Size(190, 20);
             this.txt_delay_carga.TabIndex = 17;
-            // 
-            // bt_eliminar_paso
-            // 
-            this.bt_eliminar_paso.Location = new System.Drawing.Point(733, 104);
-            this.bt_eliminar_paso.Name = "bt_eliminar_paso";
-            this.bt_eliminar_paso.Size = new System.Drawing.Size(111, 41);
-            this.bt_eliminar_paso.TabIndex = 16;
-            this.bt_eliminar_paso.Text = "Eliminar paso";
-            this.bt_eliminar_paso.UseVisualStyleBackColor = true;
-            this.bt_eliminar_paso.Click += new System.EventHandler(this.bt_eliminar_paso_Click);
             // 
             // comb_nuevo_tipo_paso
             // 
@@ -215,16 +177,6 @@ namespace Proyecto_Final___Wingo
             this.lbl_nuevo_tipo_paso.TabIndex = 0;
             this.lbl_nuevo_tipo_paso.Text = "Nuevo tipo de paso";
             // 
-            // bt_modificar_paso
-            // 
-            this.bt_modificar_paso.Location = new System.Drawing.Point(861, 104);
-            this.bt_modificar_paso.Name = "bt_modificar_paso";
-            this.bt_modificar_paso.Size = new System.Drawing.Size(116, 41);
-            this.bt_modificar_paso.TabIndex = 14;
-            this.bt_modificar_paso.Text = "Modificar paso";
-            this.bt_modificar_paso.UseVisualStyleBackColor = true;
-            this.bt_modificar_paso.Click += new System.EventHandler(this.bt_modificar_paso_Click);
-            // 
             // comb_pasos_hechos_recor3
             // 
             this.comb_pasos_hechos_recor3.FormattingEnabled = true;
@@ -246,7 +198,7 @@ namespace Proyecto_Final___Wingo
             // lbl_pasos_hechos
             // 
             this.lbl_pasos_hechos.AutoSize = true;
-            this.lbl_pasos_hechos.Location = new System.Drawing.Point(818, 28);
+            this.lbl_pasos_hechos.Location = new System.Drawing.Point(790, 28);
             this.lbl_pasos_hechos.Name = "lbl_pasos_hechos";
             this.lbl_pasos_hechos.Size = new System.Drawing.Size(77, 13);
             this.lbl_pasos_hechos.TabIndex = 11;
@@ -330,16 +282,6 @@ namespace Proyecto_Final___Wingo
             this.lbl_tipo_de_paso.TabIndex = 2;
             this.lbl_tipo_de_paso.Text = "Seleccionar el tipo de paso";
             // 
-            // bt_agregar_paso
-            // 
-            this.bt_agregar_paso.Location = new System.Drawing.Point(180, 12);
-            this.bt_agregar_paso.Name = "bt_agregar_paso";
-            this.bt_agregar_paso.Size = new System.Drawing.Size(146, 69);
-            this.bt_agregar_paso.TabIndex = 1;
-            this.bt_agregar_paso.Text = "Agregar Paso";
-            this.bt_agregar_paso.UseVisualStyleBackColor = true;
-            this.bt_agregar_paso.Click += new System.EventHandler(this.bt_agregar_paso_recor1_Click);
-            // 
             // bt_cambiar_nombre
             // 
             this.bt_cambiar_nombre.Location = new System.Drawing.Point(19, 12);
@@ -362,12 +304,12 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_recors
             // 
+            this.panel_recors.Controls.Add(this.bt_recor3);
+            this.panel_recors.Controls.Add(this.bt_recor2);
+            this.panel_recors.Controls.Add(this.bt_recor1);
             this.panel_recors.Controls.Add(this.bt_cerrar);
             this.panel_recors.Controls.Add(this.lbl_crear_recor);
             this.panel_recors.Controls.Add(this.bt_personalizacion);
-            this.panel_recors.Controls.Add(this.bt_recorrido1);
-            this.panel_recors.Controls.Add(this.bt_recorrido2);
-            this.panel_recors.Controls.Add(this.bt_recorrido3);
             this.panel_recors.Location = new System.Drawing.Point(0, 0);
             this.panel_recors.Name = "panel_recors";
             this.panel_recors.Size = new System.Drawing.Size(221, 639);
@@ -398,17 +340,17 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_pasos
             // 
+            this.panel_pasos.Controls.Add(this.bt_mod_paso);
+            this.panel_pasos.Controls.Add(this.bt_el_paso);
+            this.panel_pasos.Controls.Add(this.bt_nuevo_paso);
             this.panel_pasos.Controls.Add(this.panel_modificar_paso);
             this.panel_pasos.Controls.Add(this.panel_envio);
             this.panel_pasos.Controls.Add(this.comb_pasos_hechos_recor3);
             this.panel_pasos.Controls.Add(this.comb_pasos_hechos_recor2);
-            this.panel_pasos.Controls.Add(this.bt_agregar_paso);
             this.panel_pasos.Controls.Add(this.bt_cambiar_nombre);
             this.panel_pasos.Controls.Add(this.lbl_tipo_de_paso);
-            this.panel_pasos.Controls.Add(this.bt_eliminar_paso);
             this.panel_pasos.Controls.Add(this.lbl_cant_paso);
             this.panel_pasos.Controls.Add(this.comb_tipo_paso);
-            this.panel_pasos.Controls.Add(this.bt_modificar_paso);
             this.panel_pasos.Controls.Add(this.txt_cant_paso);
             this.panel_pasos.Controls.Add(this.bt_enviar_paso);
             this.panel_pasos.Controls.Add(this.lbl_pasos_hechos_recor1);
@@ -418,6 +360,54 @@ namespace Proyecto_Final___Wingo
             this.panel_pasos.Name = "panel_pasos";
             this.panel_pasos.Size = new System.Drawing.Size(1047, 685);
             this.panel_pasos.TabIndex = 13;
+            // 
+            // bt_mod_paso
+            // 
+            this.bt_mod_paso.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            this.bt_mod_paso.IconColor = System.Drawing.Color.Black;
+            this.bt_mod_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_mod_paso.IconSize = 40;
+            this.bt_mod_paso.Location = new System.Drawing.Point(861, 104);
+            this.bt_mod_paso.Name = "bt_mod_paso";
+            this.bt_mod_paso.Size = new System.Drawing.Size(128, 46);
+            this.bt_mod_paso.TabIndex = 23;
+            this.bt_mod_paso.Text = "Modificar Paso";
+            this.bt_mod_paso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_mod_paso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_mod_paso.UseVisualStyleBackColor = true;
+            this.bt_mod_paso.Click += new System.EventHandler(this.bt_mod_paso_Click);
+            // 
+            // bt_el_paso
+            // 
+            this.bt_el_paso.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.bt_el_paso.IconColor = System.Drawing.Color.Black;
+            this.bt_el_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_el_paso.IconSize = 40;
+            this.bt_el_paso.Location = new System.Drawing.Point(727, 104);
+            this.bt_el_paso.Name = "bt_el_paso";
+            this.bt_el_paso.Size = new System.Drawing.Size(128, 46);
+            this.bt_el_paso.TabIndex = 22;
+            this.bt_el_paso.Text = "Eliminar paso";
+            this.bt_el_paso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_el_paso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_el_paso.UseVisualStyleBackColor = true;
+            this.bt_el_paso.Click += new System.EventHandler(this.bt_el_paso_Click);
+            // 
+            // bt_nuevo_paso
+            // 
+            this.bt_nuevo_paso.IconChar = FontAwesome.Sharp.IconChar.Add;
+            this.bt_nuevo_paso.IconColor = System.Drawing.Color.Black;
+            this.bt_nuevo_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_nuevo_paso.IconSize = 42;
+            this.bt_nuevo_paso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_nuevo_paso.Location = new System.Drawing.Point(182, 14);
+            this.bt_nuevo_paso.Name = "bt_nuevo_paso";
+            this.bt_nuevo_paso.Size = new System.Drawing.Size(146, 69);
+            this.bt_nuevo_paso.TabIndex = 21;
+            this.bt_nuevo_paso.Text = "Agregar Paso";
+            this.bt_nuevo_paso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_nuevo_paso.UseVisualStyleBackColor = true;
+            this.bt_nuevo_paso.Click += new System.EventHandler(this.bt_nuevo_paso_Click);
             // 
             // panel_modificar_paso
             // 
@@ -440,6 +430,51 @@ namespace Proyecto_Final___Wingo
             this.panel_envio.Name = "panel_envio";
             this.panel_envio.Size = new System.Drawing.Size(626, 162);
             this.panel_envio.TabIndex = 19;
+            // 
+            // bt_recor1
+            // 
+            this.bt_recor1.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor1.IconColor = System.Drawing.Color.Black;
+            this.bt_recor1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor1.Location = new System.Drawing.Point(0, 73);
+            this.bt_recor1.Name = "bt_recor1";
+            this.bt_recor1.Size = new System.Drawing.Size(213, 60);
+            this.bt_recor1.TabIndex = 12;
+            this.bt_recor1.Text = "Nuevo Recorrido";
+            this.bt_recor1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor1.UseVisualStyleBackColor = true;
+            this.bt_recor1.Click += new System.EventHandler(this.bt_recor1_Click);
+            // 
+            // bt_recor2
+            // 
+            this.bt_recor2.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor2.IconColor = System.Drawing.Color.Black;
+            this.bt_recor2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor2.Location = new System.Drawing.Point(0, 142);
+            this.bt_recor2.Name = "bt_recor2";
+            this.bt_recor2.Size = new System.Drawing.Size(213, 60);
+            this.bt_recor2.TabIndex = 13;
+            this.bt_recor2.Text = "Nuevo Recorrido";
+            this.bt_recor2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor2.UseVisualStyleBackColor = true;
+            this.bt_recor2.Click += new System.EventHandler(this.bt_recor2_Click);
+            // 
+            // bt_recor3
+            // 
+            this.bt_recor3.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor3.IconColor = System.Drawing.Color.Black;
+            this.bt_recor3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor3.Location = new System.Drawing.Point(0, 218);
+            this.bt_recor3.Name = "bt_recor3";
+            this.bt_recor3.Size = new System.Drawing.Size(213, 60);
+            this.bt_recor3.TabIndex = 14;
+            this.bt_recor3.Text = "Nuevo Recorrido";
+            this.bt_recor3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor3.UseVisualStyleBackColor = true;
+            this.bt_recor3.Click += new System.EventHandler(this.bt_recor3_Click);
             // 
             // Manejo
             // 
@@ -474,9 +509,6 @@ namespace Proyecto_Final___Wingo
 
         #endregion
         private System.Windows.Forms.Label lbl_crear_recor;
-        private System.Windows.Forms.Button bt_recorrido1;
-        private System.Windows.Forms.Button bt_recorrido2;
-        private System.Windows.Forms.Button bt_recorrido3;
         private System.Windows.Forms.TextBox txt_nom;
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.Button bt_enviar_nom;
@@ -485,7 +517,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.ComboBox comb_tipo_paso;
         private System.Windows.Forms.Label lbl_cant_paso;
         private System.Windows.Forms.Label lbl_tipo_de_paso;
-        private System.Windows.Forms.Button bt_agregar_paso;
         private System.Windows.Forms.Button bt_cambiar_nombre;
         private System.Windows.Forms.Label lbl_pasos_hechos_recor1;
         private System.Windows.Forms.Button bt_enviar;
@@ -493,14 +524,12 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor1;
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor3;
         private System.Windows.Forms.ComboBox comb_pasos_hechos_recor2;
-        private System.Windows.Forms.Button bt_modificar_paso;
         private System.Windows.Forms.ComboBox comb_nuevo_tipo_paso;
         private System.Windows.Forms.TextBox txt_nuevo_cant_paso;
         private System.Windows.Forms.Button bt_enviar_nuevo_paso;
         private System.Windows.Forms.Label lbl_nuevo_cant_paso;
         private System.Windows.Forms.Label lbl_nuevo_tipo_paso;
         private System.Windows.Forms.Button bt_personalizacion;
-        private System.Windows.Forms.Button bt_eliminar_paso;
         private System.Windows.Forms.Label lbl_delay_carga;
         private System.Windows.Forms.TextBox txt_delay_carga;
         private System.Windows.Forms.Panel panel_recors;
@@ -509,5 +538,11 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Panel panel_modificar_paso;
         private System.Windows.Forms.Panel panel_envio;
         private FontAwesome.Sharp.IconButton bt_cerrar;
+        private FontAwesome.Sharp.IconButton bt_nuevo_paso;
+        private FontAwesome.Sharp.IconButton bt_el_paso;
+        private FontAwesome.Sharp.IconButton bt_mod_paso;
+        private FontAwesome.Sharp.IconButton bt_recor2;
+        private FontAwesome.Sharp.IconButton bt_recor1;
+        private FontAwesome.Sharp.IconButton bt_recor3;
     }
 }

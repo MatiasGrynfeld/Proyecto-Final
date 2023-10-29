@@ -34,30 +34,32 @@ namespace Proyecto_Final___Wingo
             this.Comb_puertos = new System.Windows.Forms.ComboBox();
             this.bt_aceptar = new System.Windows.Forms.Button();
             this.er_puerto = new System.Windows.Forms.ErrorProvider(this.components);
-            this.bt_reset = new System.Windows.Forms.Button();
+            this.bt_reset_config = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.er_puerto)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_puerto_com
             // 
             this.lbl_puerto_com.AutoSize = true;
-            this.lbl_puerto_com.Location = new System.Drawing.Point(25, 13);
+            this.er_puerto.SetIconAlignment(this.lbl_puerto_com, System.Windows.Forms.ErrorIconAlignment.TopRight);
+            this.lbl_puerto_com.Location = new System.Drawing.Point(62, 9);
             this.lbl_puerto_com.Name = "lbl_puerto_com";
-            this.lbl_puerto_com.Size = new System.Drawing.Size(255, 13);
+            this.lbl_puerto_com.Size = new System.Drawing.Size(140, 26);
             this.lbl_puerto_com.TabIndex = 0;
-            this.lbl_puerto_com.Text = "Seleccionar el puerto donde está conectado el auto:";
+            this.lbl_puerto_com.Text = "Seleccionar el puerto donde\r\nestá conectado el auto:";
+            this.lbl_puerto_com.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Comb_puertos
             // 
             this.Comb_puertos.FormattingEnabled = true;
-            this.Comb_puertos.Location = new System.Drawing.Point(28, 42);
+            this.Comb_puertos.Location = new System.Drawing.Point(36, 73);
             this.Comb_puertos.Name = "Comb_puertos";
             this.Comb_puertos.Size = new System.Drawing.Size(252, 21);
             this.Comb_puertos.TabIndex = 1;
             // 
             // bt_aceptar
             // 
-            this.bt_aceptar.Location = new System.Drawing.Point(688, 389);
+            this.bt_aceptar.Location = new System.Drawing.Point(113, 195);
             this.bt_aceptar.Name = "bt_aceptar";
             this.bt_aceptar.Size = new System.Drawing.Size(98, 49);
             this.bt_aceptar.TabIndex = 2;
@@ -69,26 +71,33 @@ namespace Proyecto_Final___Wingo
             // 
             this.er_puerto.ContainerControl = this;
             // 
-            // bt_reset
+            // bt_reset_config
             // 
-            this.bt_reset.Location = new System.Drawing.Point(47, 372);
-            this.bt_reset.Name = "bt_reset";
-            this.bt_reset.Size = new System.Drawing.Size(146, 55);
-            this.bt_reset.TabIndex = 3;
-            this.bt_reset.Text = "Reset configuraciones";
-            this.bt_reset.UseVisualStyleBackColor = true;
-            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
+            this.bt_reset_config.IconChar = FontAwesome.Sharp.IconChar.TrashRestore;
+            this.bt_reset_config.IconColor = System.Drawing.Color.Black;
+            this.bt_reset_config.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_reset_config.Location = new System.Drawing.Point(89, 123);
+            this.bt_reset_config.Name = "bt_reset_config";
+            this.bt_reset_config.Size = new System.Drawing.Size(146, 55);
+            this.bt_reset_config.TabIndex = 4;
+            this.bt_reset_config.Text = "Resetear Configuraciones";
+            this.bt_reset_config.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_reset_config.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_reset_config.UseVisualStyleBackColor = true;
+            this.bt_reset_config.Click += new System.EventHandler(this.bt_reset_config_Click);
             // 
             // Ajustes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.bt_reset);
+            this.ClientSize = new System.Drawing.Size(324, 290);
+            this.Controls.Add(this.bt_reset_config);
             this.Controls.Add(this.bt_aceptar);
             this.Controls.Add(this.Comb_puertos);
             this.Controls.Add(this.lbl_puerto_com);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Ajustes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajustes";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ajustes_FormClosed);
             this.Load += new System.EventHandler(this.Ajustes_Load);
@@ -104,6 +113,6 @@ namespace Proyecto_Final___Wingo
         private System.Windows.Forms.Button bt_aceptar;
         public System.Windows.Forms.ComboBox Comb_puertos;
         private System.Windows.Forms.ErrorProvider er_puerto;
-        private System.Windows.Forms.Button bt_reset;
+        private FontAwesome.Sharp.IconButton bt_reset_config;
     }
 }

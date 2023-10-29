@@ -118,8 +118,8 @@ namespace Proyecto_Final___Wingo
                         }
                         break;
                 }
-                bt_modificar_paso.Visible = false;
-                bt_eliminar_paso.Visible = false;
+                bt_mod_paso.Visible = false;
+                bt_el_paso.Visible = false;
                 panel_modificar_paso.Visible = false;
                 abrir_seguido = false;
                 return abrir_seguido;
@@ -214,7 +214,6 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-
         void bt_enviarR()
         {
             Funciones funciones = new Funciones();
@@ -226,7 +225,7 @@ namespace Proyecto_Final___Wingo
                 {
                     case 1:
                         nombre_recor1 = nombre;
-                        bt_recorrido1.Text = nombre_recor1;
+                        bt_recor1.Text = nombre_recor1;
                         funciones.escribir_datos(nomR1, nombre);
                         if (validado_seguido || cambia_nombre)
                         {
@@ -236,7 +235,7 @@ namespace Proyecto_Final___Wingo
                         return;
                     case 2:
                         nombre_recor2 = nombre;
-                        bt_recorrido2.Text = nombre_recor2;
+                        bt_recor2.Text = nombre_recor2;
                         funciones.escribir_datos(nomR2, nombre);
                         if (validado_seguido || cambia_nombre)
                         {
@@ -246,7 +245,7 @@ namespace Proyecto_Final___Wingo
                         return;
                     case 3:
                         nombre_recor3 = nombre;
-                        bt_recorrido3.Text = nombre_recor3;
+                        bt_recor3.Text = nombre_recor3;
                         funciones.escribir_datos(nomR3, nombre);
                         if (validado_seguido || cambia_nombre)
                         {
@@ -279,9 +278,17 @@ namespace Proyecto_Final___Wingo
         }
 
         // Form
+
+        Panel panel_borde;
         public Manejo()
         {
             InitializeComponent();
+            panel_borde = new Panel();
+            panel_borde.Size = new Size(7, bt_recor1.Height);
+            panel_recors.Controls.Add(panel_borde);
+            y1 = bt_recor1.Location.Y;
+            y2 = bt_recor2.Location.Y;
+            y3 = bt_recor3.Location.Y;
             Point punto_combo = new Point(760, 71);
             comb_pasos_hechos_recor1.Location = punto_combo;
             comb_pasos_hechos_recor2.Location = punto_combo;
@@ -296,6 +303,7 @@ namespace Proyecto_Final___Wingo
         {
             Funciones funciones = new Funciones();
             panel_nom.Visible = false;
+            panel_borde.Visible = false;
             panel_pasos.Visible = false;
             panel_modificar_paso.Visible = false;
             (paso_recor_1, cant_paso_recor_1) = funciones.leer_recor(R1);
@@ -306,27 +314,27 @@ namespace Proyecto_Final___Wingo
             nombre_recor3 = funciones.leer_datos(nomR3);
             if (nombre_recor1 != "")
             {
-                bt_recorrido1.Text = nombre_recor1;
+                bt_recor1.Text = nombre_recor1;
             }
             else
             {
-                bt_recorrido1.Text = "Nuevo Recorrido";
+                bt_recor1.Text = "Nuevo Recorrido";
             }
             if (nombre_recor2 != "")
             {
-                bt_recorrido2.Text = nombre_recor2;
+                bt_recor2.Text = nombre_recor2;
             }
             else
             {
-                bt_recorrido2.Text = "Nuevo Recorrido";
+                bt_recor2.Text = "Nuevo Recorrido";
             }
             if (nombre_recor3 != "")
             {
-                bt_recorrido3.Text = nombre_recor3;
+                bt_recor3.Text = nombre_recor3;
             }
             else
             {
-                bt_recorrido3.Text = "Nuevo Recorrido";
+                bt_recor3.Text = "Nuevo Recorrido";
             }
             if (paso_recor_1.Count > 0)
             {
@@ -357,8 +365,7 @@ namespace Proyecto_Final___Wingo
         int y1 = 72;
         List<string> paso_recor_1 = new List<string>();
         List<int> cant_paso_recor_1 = new List<int>();
-
-        private void bt_recorrido1_Click(object sender, EventArgs e)
+        private void bt_recor1_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 1;
             panel_nom.Visible = false;
@@ -368,9 +375,13 @@ namespace Proyecto_Final___Wingo
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
             validado_seguido = abrir_ventana(nombre_recor1, x, y1);
-            bt_recorrido1.Enabled = false;
-            bt_recorrido2.Enabled = true;
-            bt_recorrido3.Enabled = true;
+            bt_recor1.Enabled = false;
+            bt_recor2.Enabled = true;
+            bt_recor3.Enabled = true;
+            Funciones funciones = new Funciones();
+            funciones.btPressed(sender, Color.Red, bt_recor1, panel_borde, new Point(0, bt_recor1.Location.Y));
+            funciones.btNotPressed(bt_recor2);
+            funciones.btNotPressed(bt_recor3);
         }
 
         // Recor 2
@@ -379,8 +390,7 @@ namespace Proyecto_Final___Wingo
         int y2 = 154;
         List<string> paso_recor_2 = new List<string>();
         List<int> cant_paso_recor_2 = new List<int>();
-
-        private void bt_recorrido2_Click(object sender, EventArgs e)
+        private void bt_recor2_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 2;
             panel_nom.Visible = false;
@@ -390,9 +400,13 @@ namespace Proyecto_Final___Wingo
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
             validado_seguido = abrir_ventana(nombre_recor2, x, y2);
-            bt_recorrido1.Enabled = true;
-            bt_recorrido2.Enabled = false;
-            bt_recorrido3.Enabled = true;
+            bt_recor1.Enabled = true;
+            bt_recor2.Enabled = false;
+            bt_recor3.Enabled = true;
+            Funciones funciones = new Funciones();
+            funciones.btPressed(sender, Color.Red, bt_recor2, panel_borde, new Point(0, bt_recor2.Location.Y));
+            funciones.btNotPressed(bt_recor1);
+            funciones.btNotPressed(bt_recor3);
         }
 
         // Recor 3
@@ -401,8 +415,7 @@ namespace Proyecto_Final___Wingo
         int y3 = 233;
         List<string> paso_recor_3 = new List<string>();
         List<int> cant_paso_recor_3 = new List<int>();
-
-        private void bt_recorrido3_Click(object sender, EventArgs e)
+        private void bt_recor3_Click(object sender, EventArgs e)
         {
             recor_seleccionado = 3;
             panel_nom.Visible = false;
@@ -412,12 +425,16 @@ namespace Proyecto_Final___Wingo
             txt_nom.Text = "";
             lbl_pasos_hechos_recor1.Text = "";
             validado_seguido = abrir_ventana(nombre_recor3, x, y3);
-            bt_recorrido1.Enabled = true;
-            bt_recorrido2.Enabled = true;
-            bt_recorrido3.Enabled = false;
+            bt_recor1.Enabled = true;
+            bt_recor2.Enabled = true;
+            bt_recor3.Enabled = false;
+            Funciones funciones = new Funciones();
+            funciones.btPressed(sender, Color.Red, bt_recor3, panel_borde, new Point(0, bt_recor3.Location.Y));
+            funciones.btNotPressed(bt_recor1);
+            funciones.btNotPressed(bt_recor2);
         }
 
-        // Group boxes
+        // Eventos
         private void bt_enviar_nom_recor_1_Click(object sender, EventArgs e)
         {
             bt_enviarR();
@@ -443,7 +460,7 @@ namespace Proyecto_Final___Wingo
             isNaming = true;
         }
 
-        private void bt_agregar_paso_recor1_Click(object sender, EventArgs e)
+        private void bt_nuevo_paso_Click(object sender, EventArgs e)
         {
             lbl_tipo_de_paso.Visible = true;
             comb_tipo_paso.Visible = true;
@@ -512,11 +529,10 @@ namespace Proyecto_Final___Wingo
 
         private void comb_pasos_hechos_recor1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bt_modificar_paso.Visible = true;
-            bt_eliminar_paso.Visible = true;
+            bt_mod_paso.Visible = true;
+            bt_el_paso.Visible = true;
         }
-
-        private void bt_modificar_paso_Click(object sender, EventArgs e)
+        private void bt_mod_paso_Click(object sender, EventArgs e)
         {
             if (comb_pasos_hechos_recor1.SelectedIndex != -1 || comb_pasos_hechos_recor2.SelectedIndex != -1 || comb_pasos_hechos_recor3.SelectedIndex != -1)
             {
@@ -547,8 +563,6 @@ namespace Proyecto_Final___Wingo
             }
 
         }
-
-        //arreglar lo de unidades
         private void bt_enviar_nuevo_paso_Click(object sender, EventArgs e)
         {
             Funciones funciones = new Funciones();
@@ -589,7 +603,7 @@ namespace Proyecto_Final___Wingo
             this.Close();
         }
 
-        private void bt_eliminar_paso_Click(object sender, EventArgs e)
+        private void bt_el_paso_Click(object sender, EventArgs e)
         {
             Funciones funciones = new Funciones();
             if (comb_pasos_hechos_recor1.SelectedIndex != -1 || comb_pasos_hechos_recor2.SelectedIndex != -1 || comb_pasos_hechos_recor3.SelectedIndex != -1)
@@ -623,14 +637,14 @@ namespace Proyecto_Final___Wingo
 
         private void comb_pasos_hechos_recor3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bt_modificar_paso.Visible = true;
-            bt_eliminar_paso.Visible = true;
+            bt_mod_paso.Visible = true;
+            bt_el_paso.Visible = true;
         }
 
         private void comb_pasos_hechos_recor2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bt_modificar_paso.Visible = true;
-            bt_eliminar_paso.Visible = true;
+            bt_mod_paso.Visible = true;
+            bt_el_paso.Visible = true;
         }
 
         private void txt_nom_KeyPress(object sender, KeyPressEventArgs e)
@@ -745,6 +759,28 @@ namespace Proyecto_Final___Wingo
             Pantalla_principal mostrar0 = new Pantalla_principal();
             mostrar0.Show();
             this.Close();
+        }
+
+        private void lbl_crear_recor_Click(object sender, EventArgs e)
+        {
+            panel_pasos.Visible = false;
+            panel_borde.Visible = false;
+            panel_nom.Visible = false;
+            panel_modificar_paso.Visible = false;
+            Funciones funciones = new Funciones();
+            funciones.btNotPressed(bt_recor3);
+            funciones.btNotPressed(bt_recor2);
+            funciones.btNotPressed(bt_recor1);
+            bt_recor1.Enabled = true; 
+            bt_recor2.Enabled = true;
+            bt_recor3.Enabled = true;
+            comb_pasos_hechos_recor1.SelectedItem = null;
+            comb_pasos_hechos_recor2.SelectedItem = null;
+            comb_pasos_hechos_recor3.SelectedItem = null;
+            txt_delay_carga.Text = "";
+            txt_cant_paso.Text = "";
+            txt_nom.Text = "";
+            txt_nuevo_cant_paso.Text = "";
         }
     }
 }

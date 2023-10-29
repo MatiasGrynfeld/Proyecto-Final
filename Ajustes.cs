@@ -17,6 +17,9 @@ namespace Proyecto_Final___Wingo
         public Ajustes()
         {
             InitializeComponent();
+            Funciones funciones = new Funciones();
+            funciones.initializeLabels(this);
+            funciones.initializeButtons(this);
         }
 
         private void Ajustes_Load(object sender, EventArgs e)
@@ -74,14 +77,13 @@ namespace Proyecto_Final___Wingo
         {
             cerrar(false,true);
         }
-
-        private void bt_reset_Click(object sender, EventArgs e)
+        private void bt_reset_config_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Estás seguro que queres resetear las configuraciones?", "Aviso", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 Funciones funciones = new Funciones();
-                string[] emptyTxt=funciones.reset(35);
+                string[] emptyTxt = funciones.reset(35);
                 funciones.escribir_vacio(emptyTxt, 35);
             }
         }

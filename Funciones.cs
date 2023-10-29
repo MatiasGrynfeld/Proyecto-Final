@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace Proyecto_Final___Wingo
 {
@@ -302,5 +303,32 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
+
+        public void btPressed(object sender, Color color, IconButton button, Panel panel, Point panel_location)
+        {
+            if (sender != null)
+            {
+                button.TextAlign = ContentAlignment.MiddleCenter;
+                button.IconColor = color;
+                button.TextImageRelation = TextImageRelation.TextBeforeImage;
+                button.ImageAlign = ContentAlignment.MiddleRight;
+                panel.BackColor = color;
+                panel.Location = panel_location;
+                panel.Visible = true;
+                panel.BringToFront();
+            }
+        }
+
+        public void btNotPressed(IconButton button)
+        {
+            if (button != null)
+            {
+                button.TextAlign = ContentAlignment.MiddleLeft;
+                button.IconColor = Color.Black;
+                button.TextImageRelation = TextImageRelation.ImageBeforeText;
+                button.ImageAlign = ContentAlignment.MiddleCenter;
+            }
+        }
+
     }
 }

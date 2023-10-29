@@ -30,37 +30,12 @@ namespace Proyecto_Final___Wingo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pantalla_principal));
-            this.bt_personalización = new System.Windows.Forms.Button();
-            this.bt_manejo = new System.Windows.Forms.Button();
             this.bt_cerrar_app = new System.Windows.Forms.Button();
             this.bt_ajustes = new System.Windows.Forms.Button();
             this.lbl_Sally = new System.Windows.Forms.Label();
+            this.bt_ir_manejo = new FontAwesome.Sharp.IconButton();
+            this.bt_ir_pers = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
-            // 
-            // bt_personalización
-            // 
-            this.bt_personalización.AutoEllipsis = true;
-            this.bt_personalización.BackColor = System.Drawing.Color.Transparent;
-            this.bt_personalización.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.button_prueba;
-            this.bt_personalización.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_personalización.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_personalización.Location = new System.Drawing.Point(319, 95);
-            this.bt_personalización.Name = "bt_personalización";
-            this.bt_personalización.Size = new System.Drawing.Size(163, 61);
-            this.bt_personalización.TabIndex = 0;
-            this.bt_personalización.Text = "Ir a personalización";
-            this.bt_personalización.UseVisualStyleBackColor = false;
-            this.bt_personalización.Click += new System.EventHandler(this.bt_personalización_Click);
-            // 
-            // bt_manejo
-            // 
-            this.bt_manejo.Location = new System.Drawing.Point(319, 195);
-            this.bt_manejo.Name = "bt_manejo";
-            this.bt_manejo.Size = new System.Drawing.Size(163, 61);
-            this.bt_manejo.TabIndex = 1;
-            this.bt_manejo.Text = "Ir a manejo";
-            this.bt_manejo.UseVisualStyleBackColor = true;
-            this.bt_manejo.Click += new System.EventHandler(this.bt_manejo_Click);
             // 
             // bt_cerrar_app
             // 
@@ -92,6 +67,36 @@ namespace Proyecto_Final___Wingo
             this.lbl_Sally.TabIndex = 4;
             this.lbl_Sally.Text = "Sally";
             // 
+            // bt_ir_manejo
+            // 
+            this.bt_ir_manejo.IconChar = FontAwesome.Sharp.IconChar.TruckArrowRight;
+            this.bt_ir_manejo.IconColor = System.Drawing.Color.Black;
+            this.bt_ir_manejo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_ir_manejo.Location = new System.Drawing.Point(319, 195);
+            this.bt_ir_manejo.Name = "bt_ir_manejo";
+            this.bt_ir_manejo.Size = new System.Drawing.Size(163, 61);
+            this.bt_ir_manejo.TabIndex = 5;
+            this.bt_ir_manejo.Text = "Ir a Manejo";
+            this.bt_ir_manejo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_ir_manejo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_ir_manejo.UseVisualStyleBackColor = true;
+            this.bt_ir_manejo.Click += new System.EventHandler(this.bt_ir_manejo_Click);
+            // 
+            // bt_ir_pers
+            // 
+            this.bt_ir_pers.IconChar = FontAwesome.Sharp.IconChar.CarOn;
+            this.bt_ir_pers.IconColor = System.Drawing.Color.Black;
+            this.bt_ir_pers.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_ir_pers.Location = new System.Drawing.Point(319, 95);
+            this.bt_ir_pers.Name = "bt_ir_pers";
+            this.bt_ir_pers.Size = new System.Drawing.Size(163, 61);
+            this.bt_ir_pers.TabIndex = 6;
+            this.bt_ir_pers.Text = "Ir a Personalización";
+            this.bt_ir_pers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_ir_pers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_ir_pers.UseVisualStyleBackColor = true;
+            this.bt_ir_pers.Click += new System.EventHandler(this.bt_ir_pers_Click);
+            // 
             // Pantalla_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,11 +104,11 @@ namespace Proyecto_Final___Wingo
             this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.Fondo_principal1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bt_ir_pers);
+            this.Controls.Add(this.bt_ir_manejo);
             this.Controls.Add(this.lbl_Sally);
             this.Controls.Add(this.bt_ajustes);
             this.Controls.Add(this.bt_cerrar_app);
-            this.Controls.Add(this.bt_manejo);
-            this.Controls.Add(this.bt_personalización);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -118,12 +123,11 @@ namespace Proyecto_Final___Wingo
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bt_personalización;
-        private System.Windows.Forms.Button bt_manejo;
         private System.Windows.Forms.Button bt_cerrar_app;
         private System.Windows.Forms.Button bt_ajustes;
         private System.Windows.Forms.Label lbl_Sally;
+        private FontAwesome.Sharp.IconButton bt_ir_manejo;
+        private FontAwesome.Sharp.IconButton bt_ir_pers;
     }
 }
 
