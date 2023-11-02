@@ -55,6 +55,9 @@ namespace Proyecto_Final___Wingo
             this.bt_cambiar_nombre = new System.Windows.Forms.Button();
             this.bt_personalizacion = new System.Windows.Forms.Button();
             this.panel_recors = new System.Windows.Forms.Panel();
+            this.bt_recor3 = new FontAwesome.Sharp.IconButton();
+            this.bt_recor2 = new FontAwesome.Sharp.IconButton();
+            this.bt_recor1 = new FontAwesome.Sharp.IconButton();
             this.bt_cerrar = new FontAwesome.Sharp.IconButton();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.panel_pasos = new System.Windows.Forms.Panel();
@@ -63,9 +66,6 @@ namespace Proyecto_Final___Wingo
             this.bt_nuevo_paso = new FontAwesome.Sharp.IconButton();
             this.panel_modificar_paso = new System.Windows.Forms.Panel();
             this.panel_envio = new System.Windows.Forms.Panel();
-            this.bt_recor1 = new FontAwesome.Sharp.IconButton();
-            this.bt_recor2 = new FontAwesome.Sharp.IconButton();
-            this.bt_recor3 = new FontAwesome.Sharp.IconButton();
             this.panel_recors.SuspendLayout();
             this.panel_nom.SuspendLayout();
             this.panel_pasos.SuspendLayout();
@@ -103,6 +103,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar_nom
             // 
+            this.bt_enviar_nom.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_enviar_nom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_enviar_nom.Location = new System.Drawing.Point(194, 37);
             this.bt_enviar_nom.Name = "bt_enviar_nom";
             this.bt_enviar_nom.Size = new System.Drawing.Size(87, 52);
@@ -151,6 +153,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar_nuevo_paso
             // 
+            this.bt_enviar_nuevo_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_enviar_nuevo_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_enviar_nuevo_paso.Location = new System.Drawing.Point(219, 66);
             this.bt_enviar_nuevo_paso.Name = "bt_enviar_nuevo_paso";
             this.bt_enviar_nuevo_paso.Size = new System.Drawing.Size(168, 78);
@@ -215,6 +219,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar
             // 
+            this.bt_enviar.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_enviar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_enviar.Location = new System.Drawing.Point(414, 24);
             this.bt_enviar.Margin = new System.Windows.Forms.Padding(2);
             this.bt_enviar.Name = "bt_enviar";
@@ -234,6 +240,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar_paso
             // 
+            this.bt_enviar_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_enviar_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_enviar_paso.Location = new System.Drawing.Point(50, 325);
             this.bt_enviar_paso.Name = "bt_enviar_paso";
             this.bt_enviar_paso.Size = new System.Drawing.Size(168, 78);
@@ -284,6 +292,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_cambiar_nombre
             // 
+            this.bt_cambiar_nombre.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_cambiar_nombre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_cambiar_nombre.Location = new System.Drawing.Point(19, 12);
             this.bt_cambiar_nombre.Name = "bt_cambiar_nombre";
             this.bt_cambiar_nombre.Size = new System.Drawing.Size(137, 69);
@@ -294,9 +304,11 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_personalizacion
             // 
+            this.bt_personalizacion.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_personalizacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_personalizacion.Location = new System.Drawing.Point(0, 461);
             this.bt_personalizacion.Name = "bt_personalizacion";
-            this.bt_personalizacion.Size = new System.Drawing.Size(213, 60);
+            this.bt_personalizacion.Size = new System.Drawing.Size(213, 68);
             this.bt_personalizacion.TabIndex = 10;
             this.bt_personalizacion.Text = "Ir a personalización";
             this.bt_personalizacion.UseVisualStyleBackColor = true;
@@ -315,14 +327,67 @@ namespace Proyecto_Final___Wingo
             this.panel_recors.Size = new System.Drawing.Size(221, 639);
             this.panel_recors.TabIndex = 11;
             // 
+            // bt_recor3
+            // 
+            this.bt_recor3.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_recor3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_recor3.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor3.IconColor = System.Drawing.Color.Black;
+            this.bt_recor3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor3.Location = new System.Drawing.Point(0, 218);
+            this.bt_recor3.Name = "bt_recor3";
+            this.bt_recor3.Size = new System.Drawing.Size(213, 68);
+            this.bt_recor3.TabIndex = 14;
+            this.bt_recor3.Text = "Nuevo Recorrido";
+            this.bt_recor3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor3.UseVisualStyleBackColor = true;
+            this.bt_recor3.Click += new System.EventHandler(this.bt_recor3_Click);
+            // 
+            // bt_recor2
+            // 
+            this.bt_recor2.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_recor2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_recor2.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor2.IconColor = System.Drawing.Color.Black;
+            this.bt_recor2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor2.Location = new System.Drawing.Point(0, 142);
+            this.bt_recor2.Name = "bt_recor2";
+            this.bt_recor2.Size = new System.Drawing.Size(213, 68);
+            this.bt_recor2.TabIndex = 13;
+            this.bt_recor2.Text = "Nuevo Recorrido";
+            this.bt_recor2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor2.UseVisualStyleBackColor = true;
+            this.bt_recor2.Click += new System.EventHandler(this.bt_recor2_Click);
+            // 
+            // bt_recor1
+            // 
+            this.bt_recor1.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_recor1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_recor1.IconChar = FontAwesome.Sharp.IconChar.Car;
+            this.bt_recor1.IconColor = System.Drawing.Color.Black;
+            this.bt_recor1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bt_recor1.Location = new System.Drawing.Point(0, 65);
+            this.bt_recor1.Name = "bt_recor1";
+            this.bt_recor1.Size = new System.Drawing.Size(213, 68);
+            this.bt_recor1.TabIndex = 12;
+            this.bt_recor1.Text = "Nuevo Recorrido";
+            this.bt_recor1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_recor1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_recor1.UseVisualStyleBackColor = true;
+            this.bt_recor1.Click += new System.EventHandler(this.bt_recor1_Click);
+            // 
             // bt_cerrar
             // 
+            this.bt_cerrar.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor1;
+            this.bt_cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
-            this.bt_cerrar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(63)))), ((int)(((byte)(191)))));
+            this.bt_cerrar.IconColor = System.Drawing.Color.Black;
             this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_cerrar.Location = new System.Drawing.Point(0, 550);
             this.bt_cerrar.Name = "bt_cerrar";
-            this.bt_cerrar.Size = new System.Drawing.Size(213, 60);
+            this.bt_cerrar.Size = new System.Drawing.Size(213, 68);
             this.bt_cerrar.TabIndex = 11;
             this.bt_cerrar.UseVisualStyleBackColor = true;
             this.bt_cerrar.Click += new System.EventHandler(this.iconButton1_Click);
@@ -333,7 +398,7 @@ namespace Proyecto_Final___Wingo
             this.panel_nom.Controls.Add(this.bt_enviar_nom);
             this.panel_nom.Controls.Add(this.lbl_nombre);
             this.panel_nom.Controls.Add(this.txt_nom);
-            this.panel_nom.Location = new System.Drawing.Point(57, 658);
+            this.panel_nom.Location = new System.Drawing.Point(47, 655);
             this.panel_nom.Name = "panel_nom";
             this.panel_nom.Size = new System.Drawing.Size(297, 91);
             this.panel_nom.TabIndex = 12;
@@ -363,13 +428,15 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_mod_paso
             // 
+            this.bt_mod_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_mod_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_mod_paso.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
             this.bt_mod_paso.IconColor = System.Drawing.Color.Black;
             this.bt_mod_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_mod_paso.IconSize = 40;
             this.bt_mod_paso.Location = new System.Drawing.Point(861, 104);
             this.bt_mod_paso.Name = "bt_mod_paso";
-            this.bt_mod_paso.Size = new System.Drawing.Size(128, 46);
+            this.bt_mod_paso.Size = new System.Drawing.Size(142, 75);
             this.bt_mod_paso.TabIndex = 23;
             this.bt_mod_paso.Text = "Modificar Paso";
             this.bt_mod_paso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -379,13 +446,15 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_el_paso
             // 
+            this.bt_el_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_el_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_el_paso.IconChar = FontAwesome.Sharp.IconChar.Xmark;
             this.bt_el_paso.IconColor = System.Drawing.Color.Black;
             this.bt_el_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_el_paso.IconSize = 40;
-            this.bt_el_paso.Location = new System.Drawing.Point(727, 104);
+            this.bt_el_paso.Location = new System.Drawing.Point(713, 104);
             this.bt_el_paso.Name = "bt_el_paso";
-            this.bt_el_paso.Size = new System.Drawing.Size(128, 46);
+            this.bt_el_paso.Size = new System.Drawing.Size(142, 75);
             this.bt_el_paso.TabIndex = 22;
             this.bt_el_paso.Text = "Eliminar paso";
             this.bt_el_paso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -395,6 +464,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_nuevo_paso
             // 
+            this.bt_nuevo_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
+            this.bt_nuevo_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_nuevo_paso.IconChar = FontAwesome.Sharp.IconChar.Add;
             this.bt_nuevo_paso.IconColor = System.Drawing.Color.Black;
             this.bt_nuevo_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -430,51 +501,6 @@ namespace Proyecto_Final___Wingo
             this.panel_envio.Name = "panel_envio";
             this.panel_envio.Size = new System.Drawing.Size(626, 162);
             this.panel_envio.TabIndex = 19;
-            // 
-            // bt_recor1
-            // 
-            this.bt_recor1.IconChar = FontAwesome.Sharp.IconChar.Car;
-            this.bt_recor1.IconColor = System.Drawing.Color.Black;
-            this.bt_recor1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_recor1.Location = new System.Drawing.Point(0, 73);
-            this.bt_recor1.Name = "bt_recor1";
-            this.bt_recor1.Size = new System.Drawing.Size(213, 60);
-            this.bt_recor1.TabIndex = 12;
-            this.bt_recor1.Text = "Nuevo Recorrido";
-            this.bt_recor1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_recor1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_recor1.UseVisualStyleBackColor = true;
-            this.bt_recor1.Click += new System.EventHandler(this.bt_recor1_Click);
-            // 
-            // bt_recor2
-            // 
-            this.bt_recor2.IconChar = FontAwesome.Sharp.IconChar.Car;
-            this.bt_recor2.IconColor = System.Drawing.Color.Black;
-            this.bt_recor2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_recor2.Location = new System.Drawing.Point(0, 142);
-            this.bt_recor2.Name = "bt_recor2";
-            this.bt_recor2.Size = new System.Drawing.Size(213, 60);
-            this.bt_recor2.TabIndex = 13;
-            this.bt_recor2.Text = "Nuevo Recorrido";
-            this.bt_recor2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_recor2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_recor2.UseVisualStyleBackColor = true;
-            this.bt_recor2.Click += new System.EventHandler(this.bt_recor2_Click);
-            // 
-            // bt_recor3
-            // 
-            this.bt_recor3.IconChar = FontAwesome.Sharp.IconChar.Car;
-            this.bt_recor3.IconColor = System.Drawing.Color.Black;
-            this.bt_recor3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_recor3.Location = new System.Drawing.Point(0, 218);
-            this.bt_recor3.Name = "bt_recor3";
-            this.bt_recor3.Size = new System.Drawing.Size(213, 60);
-            this.bt_recor3.TabIndex = 14;
-            this.bt_recor3.Text = "Nuevo Recorrido";
-            this.bt_recor3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_recor3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_recor3.UseVisualStyleBackColor = true;
-            this.bt_recor3.Click += new System.EventHandler(this.bt_recor3_Click);
             // 
             // Manejo
             // 

@@ -259,6 +259,8 @@ namespace Proyecto_Final___Wingo
                         button.FlatAppearance.MouseOverBackColor = button.BackColor;
                         button.FlatAppearance.MouseDownBackColor = button.BackColor;
                         button.Cursor = Cursors.Hand;
+                        button.FlatStyle = FlatStyle.Flat;
+                        button.Font = Program.buttons;
                     }
                 }
                 else if (control is Panel)

@@ -379,7 +379,7 @@ namespace Proyecto_Final___Wingo
             bt_recor2.Enabled = true;
             bt_recor3.Enabled = true;
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_recor1, panel_borde, new Point(0, bt_recor1.Location.Y));
+            funciones.btPressed(sender, Color.Black, bt_recor1, panel_borde, new Point(0, bt_recor1.Location.Y));
             funciones.btNotPressed(bt_recor2);
             funciones.btNotPressed(bt_recor3);
         }
@@ -404,7 +404,7 @@ namespace Proyecto_Final___Wingo
             bt_recor2.Enabled = false;
             bt_recor3.Enabled = true;
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_recor2, panel_borde, new Point(0, bt_recor2.Location.Y));
+            funciones.btPressed(sender, Color.Black, bt_recor2, panel_borde, new Point(0, bt_recor2.Location.Y));
             funciones.btNotPressed(bt_recor1);
             funciones.btNotPressed(bt_recor3);
         }
@@ -429,7 +429,7 @@ namespace Proyecto_Final___Wingo
             bt_recor2.Enabled = true;
             bt_recor3.Enabled = false;
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_recor3, panel_borde, new Point(0, bt_recor3.Location.Y));
+            funciones.btPressed(sender, Color.Black, bt_recor3, panel_borde, new Point(0, bt_recor3.Location.Y));
             funciones.btNotPressed(bt_recor1);
             funciones.btNotPressed(bt_recor2);
         }
@@ -708,6 +708,7 @@ namespace Proyecto_Final___Wingo
                             ProgressBar progressBar = new ProgressBar();
                             progressBar.cant_msgs = 0;
                             progressBar.cant_msgs = mensajes.Count;
+                            progressBar.BackColor = Color.FromArgb(190,21,3);
                             progressBar.Show();
                             int num_mensaje = 0;
                             arduino.WriteLine($"m:{mensajes.Count}:{Convert.ToInt16(txt_delay_carga.Text)*1000}" + '\n');
@@ -733,7 +734,7 @@ namespace Proyecto_Final___Wingo
                                 num_mensaje++;
                                 if (distinto || result == DialogResult.Yes)
                                 {
-                                    Thread.Sleep(100);
+                                    Thread.Sleep(150);
                                 }
                             }
                             progressBar.Close();
